@@ -1,4 +1,3 @@
-<!-- LIB -->
 <?php require_once('product_c/product_c.php');?>
 
 <?php 
@@ -17,6 +16,8 @@
     $product_rate = $atz->get_rate($product['Product_ID']);
         
     $atz->rate_product();
+
+    $atz->add_contact();
 ?>
 
 <!doctype html>
@@ -133,6 +134,16 @@
                                     </div>
                                     <?=$product['Product_PriceType']?>
                                 </div>
+
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary mt-3" data-toggle="modal" data-target="#OrderModal">
+                                    Liên hệ đặt hàng
+                                </button>
+
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-danger mt-3" data-toggle="modal" data-target="#exampleModal">
+                                    Thanh toán online
+                                </button>
                             </div>
 
                             <div class="col-md-12 mt-4">
@@ -149,7 +160,7 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                        <div class="fb-comments" data-href="http://3nong.getatz.com/<?=$product['Product_Content_vi']?>" data-width="100%" data-numposts="5"></div>
+                                        <div class="fb-comments" data-href="http://3nong.getatz.com/<?=$product['Product_ID']?>" data-width="100%" data-numposts="5"></div>
                                     </div>
                                 </div>
                             </div>
@@ -201,6 +212,89 @@
             </div>
         </div>
         <!-- END LIST PRODUCT -->
+
+        <!-- Modal | liên hệ đặt hàng -->
+        <div class="modal fade" id="OrderModal" tabindex="-1" aria-labelledby="OrderModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="OrderModalLabel">Thông tin đặt hàng</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form-agent" class="form-agent" method="post" action="">
+
+                            <div class="row justify-content-center">
+                                <div class="col-md-10">
+                                    <div class="information-contact">
+                                        <div class="form-group form-row">
+                                            <div class="col">
+                                                <input type="text" class="form-control" id="Contact_Name" name="Contact_Name" placeholder="Họ &amp; tên" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group form-row">
+                                            <div class="col">
+                                                <input type="text" class="form-control" id="Contact_Mobile" name="Contact_Mobile" placeholder="Số điện thoại" required>
+                                            </div>
+                                            <div class="col">
+                                                <input type="text" class="form-control" id="Contact_Email" name="Contact_Email" placeholder="Email" required>
+                                            </div>    
+                                        </div>
+                                        <div class="form-group form-row">
+                                            <div class="col">
+                                                <input type="text" class="form-control" id="Contact_Address" name="Contact_Address" placeholder="Địa chỉ">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <textarea class="form-control" id="Contact_Message" name="Contact_Message" placeholder="Lời nhắn" rows="8" required></textarea>
+                                        </div>
+
+                                        <div class="form-group text-center">
+                                            <button type="submit" class="btn btn-secondary">Gửi</button>
+                                            <button type="reset" class="btn btn-secondary">Nhập lại</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                                        </div>
+                                    </div>
+                                
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal | thanh toán online -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Thông tin chuyển khoản</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Tel / Điện thoại: <strong><a href="tel:<?=str_replace(' ', '', SETTING['Setting_Phone'])?>"> <?=SETTING['Setting_Phone']?></a></strong></p>
+                        <p>Bank Account / Tài khoản NH: <strong>0991002010011</strong></p>
+                        <p>Bank name / Ngân hàng: <strong>TMCP An Bình - ABBANK Soái Kinh Lâm</strong></p>
+                        <p>Account name / Chủ tài khoản: <strong>CÔNG TY CỔ PHẦN TAM NÔNG (TAM NONG JSC)</strong></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <?php include('modules/footer.php') ?>
             
@@ -258,7 +352,6 @@
             // Options
             var options = {
                 max_value: 5,
-                // step_size: 0.25,
                 step_size: 0.5,
                 initial_value: <?=$product_rate?$product_rate:0?>,
                 selected_symbol_type: 'fontawesome_star', // Must be a key from symbols
@@ -268,15 +361,13 @@
                 ajax_method: 'POST',
                 url: '<?=$_SERVER['REQUEST_URI']?>',
                 additional_data: {
-                    id: <?=$product['Product_ID']?>
+                    rate_id: <?=$product['Product_ID']?>
                 }, // Additional data to send to the server
             }
 
             $(".rating").rate(options);
 
             $(".rating").on("updateSuccess", function(ev, data){
-                // console.log("This is a custom success event");
-                // console.log(data);
                 alert('Cảm ơn bạn đã đánh giá sản phẩm.')
             });
         </script>
@@ -298,6 +389,83 @@
                 $('.quanlity-input').val(quanlity);
             })
         </script>
+
+        <script>
+        <?php if(isset($rs['success'])):?>
+            alert('<?=$rs['success']['main']?>');
+        <?php endif ?>
+
+        $(document).ready(function() {
+            $('#form-agent').validate({
+                errorPlacement: function(error, element) {
+                    var place = element.closest('.input-group');
+                    if (!place.get(0)) {
+                        place = element;
+                    }
+                    if (place.get(0).type === 'checkbox') {
+                        place = element.parent();
+                    }
+                    if (error.text() !== '') {
+                        place.before(error);
+                    }
+                },
+                rules: {
+                    Contact_Name: {
+                        required: true
+                    },
+                    Contact_Email: {
+                        email: true
+                    },
+                    Contact_Mobile: {
+                        required: true,
+                        number: true,
+                        digits: true,
+                        minlength: 10
+                    },
+                    Contact_Message: {
+                        required: true
+                    },
+                },
+                messages: {
+                    Contact_Name: {
+                        required: "Chưa nhập tên!"
+                    },
+                    Contact_Email: {
+                        required: "Chưa nhập Email!",
+                        email: "Email không hợp lệ"
+                    },
+                    Contact_Mobile: {
+                        required: "Chưa nhập số điện thoại!",
+                        number: "Điện thoại phải là số!",
+                        digits: "Điện thoại không được nhập số âm !",
+                        minlength: "Điện thoại phải ít nhất có 10 số!"
+                    },
+                    Contact_Message: {
+                        required: "Chưa nhập lời nhắn!"
+                    }
+                },
+                
+                submitHandler: function(form) {
+                    $.ajax({
+                        url: "<?=$_SERVER['REQUEST_URI']?>",
+                        type: "POST",             
+                        data: $(form).serialize(),
+                        cache: false,             
+                        processData: false,
+                        dataType: "json",
+                        success: function(data) {
+                            console.log(data.status);
+                            if(data.status == 'success'){
+                                console.log(data.status);
+                                window.location.replace("<?=$atz->site_url['main']?>thanks");    
+                            }
+                        }
+                    });
+                    return false; // required to block normal submit since you used ajax
+                }
+            });
+        });
+    </script>
     </body>
 
 </html>

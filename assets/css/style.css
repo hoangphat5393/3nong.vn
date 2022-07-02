@@ -869,20 +869,21 @@ header .header-contact span {
   margin: 0 auto;
   background: #e51429;
 }
-.contact-page .information-contact input, .contact-page .information-contact textarea {
-  border: 1px solid #b19a6f;
-  background: #f5f5f5;
-}
-.contact-page .information-contact .btn-secondary {
-  background-color: var(--sub-bg-color);
-  width: 120px;
-  height: 40px;
-}
 .contact-page .article-contact {
   line-height: 31px;
 }
 
 /*END CONTACT*/
+.information-contact input, .information-contact textarea {
+  border: 1px solid #b19a6f;
+  background: #f5f5f5;
+}
+.information-contact .btn-secondary {
+  background-color: var(--sub-bg-color);
+  width: 120px;
+  height: 40px;
+}
+
 /*FOOTER*/
 footer {
   background-color: #f7f7f7;

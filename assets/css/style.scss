@@ -989,26 +989,24 @@ header{
 		}
 	}
 
-	.information-contact{
-		input, textarea{
-			border: 1px solid #b19a6f;
-			background: #f5f5f5;
-		}
-
-		.btn-secondary{
-			background-color: var(--sub-bg-color);
-			width: 120px;
-			    height: 40px;
-		}
-	}
-
 	.article-contact{
 		line-height: 31px;
 	}
 }
 /*END CONTACT*/
 
+.information-contact{
+	input, textarea{
+		border: 1px solid #b19a6f;
+		background: #f5f5f5;
+	}
 
+	.btn-secondary{
+		background-color: var(--sub-bg-color);
+		width: 120px;
+		    height: 40px;
+	}
+}
 
 /*FOOTER*/
 footer{

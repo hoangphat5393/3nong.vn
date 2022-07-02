@@ -55,7 +55,6 @@ class atz extends DB{
 		return $web_url;
 	}
 
-	
 	public function get_params($index){
         global $param;
 
@@ -65,8 +64,6 @@ class atz extends DB{
         }else{
             $module = _module_default;
         }
-            
-        
         
         // REPLACE ROUTER
         $url = '';
@@ -232,12 +229,6 @@ class atz extends DB{
 
 		return $str;
 	}
-
-
 }
-
-// $test_function = new atz;
-// $ip = $test_function->getUserIP();
-// echo 'User Real IP Address - '.$ip;
 
 ?>

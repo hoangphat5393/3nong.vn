@@ -1,4 +1,3 @@
-<!-- LIB -->
 <?php require_once('product_c/product_c.php');?>
 
 <?php 
