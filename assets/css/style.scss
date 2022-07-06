@@ -301,10 +301,23 @@ header{
 	color: rgb(20, 53, 195);
 	font-weight: 700;	
 }
+
+.sale-price{
+	font-size: 24px;
+	color: #ff0000;
+}
+
 .old-price{
-	font-size: 12px;
-	.price{color: rgb(130, 134, 158);text-decoration: line-through;}
-	.rate{color: rgb(20, 53, 195);}
+	font-size: 1rem;
+	color: #808089;
+	text-decoration: line-through;
+}
+
+.discount-price{
+	color: #ffffff;
+    background: #F23611;
+    padding: 5px 10px;
+    font-size: 12px;
 }
 
 
@@ -401,7 +414,7 @@ header{
 		}
 
 		.addcart{
-			margin-top: .75rem;
+			margin-top: .25rem;
 			padding: 8px 5px;
 			width: 100%;
 			background-color: var(--sub-bg-color);
@@ -431,6 +444,7 @@ header{
 			color: var(--sub-color);
 		}
 	}
+	min-height: 60px
 }
 
 .bg-warp{

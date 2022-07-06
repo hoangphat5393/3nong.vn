@@ -302,15 +302,22 @@ header .header-contact span {
   font-weight: 700;
 }
 
-.old-price {
-  font-size: 12px;
+.sale-price {
+  font-size: 24px;
+  color: #ff0000;
 }
-.old-price .price {
-  color: #82869e;
+
+.old-price {
+  font-size: 1rem;
+  color: #808089;
   text-decoration: line-through;
 }
-.old-price .rate {
-  color: #1435c3;
+
+.discount-price {
+  color: #ffffff;
+  background: #F23611;
+  padding: 5px 10px;
+  font-size: 12px;
 }
 
 .block .block-title {
@@ -389,7 +396,7 @@ header .header-contact span {
   border-left: 6px solid #469f06;
 }
 .product-list .product-list-item .addcart {
-  margin-top: .75rem;
+  margin-top: .25rem;
   padding: 8px 5px;
   width: 100%;
   background-color: var(--sub-bg-color);
@@ -411,6 +418,7 @@ header .header-contact span {
 .price-block {
   font: 1.25rem SVNAvoBold;
   font-weight: 700;
+  min-height: 60px;
 }
 .price-block a {
   color: var(--main-color);

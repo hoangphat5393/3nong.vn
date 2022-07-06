@@ -116,8 +116,9 @@
                                 <div class="rating mb-3"></div>
 
                                 <div class="price-block">
-                                    <?php if ($product['Product_SalePrice']): ?>
-                                        Giá: <span class="text-red"><?=number_format($product['Product_SalePrice'],0,',','.')?> VNĐ<?=!empty($product['Product_PriceType'])?'/<sub>'.$product['Product_PriceType'].'</sub>':''?></span>
+                                    <?php if ($product['Product_SalePrice']):?>
+                                        Giá: <span class="sale-price"><?=number_format($product['Product_SalePrice'],0,',','.')?> VNĐ<?=!empty($product['Product_PriceType'])?'/<sub>'.$product['Product_PriceType'].'</sub>':''?></span>
+                                        <span class="old-price"><?=number_format($product['Product_Price'],0,',','.')?> VNĐ<?=!empty($product['Product_PriceType'])?'/<sub>'.$product['Product_PriceType'].'</sub>':''?></span>
                                     <?php else:?>
                                         Giá: <a href="tel:<?=str_replace(' ', '', SETTING['Setting_Phone'])?>" title="Liên hệ">Liên hệ</a>
                                     <?php endif ?>
@@ -198,7 +199,13 @@
                                 </a>
                                 <div class="price-block">
                                     <?php if ($v['Product_SalePrice']): ?>
-                                        Giá: <span class="text-red"><?=number_format($v['Product_SalePrice'],0,',','.')?> VNĐ<?=!empty($v['Product_PriceType'])?'/<sub>'.$v['Product_PriceType'].'</sub>':''?></span>
+                                        Giá: <span class="sale-price"><?=number_format($v['Product_SalePrice'],0,',','.')?> VNĐ<?=!empty($v['Product_PriceType'])?'/<sub>'.$v['Product_PriceType'].'</sub>':''?></span>
+                                        <?php if ($v['Product_Discount']): ?>
+                                            <div class="mt-2 d-flex justify-content-between">
+                                                <span class="old-price"><?=number_format($v['Product_Price'],0,',','.')?> VNĐ<?=!empty($v['Product_PriceType'])?'/<sub>'.$v['Product_PriceType'].'</sub>':''?></span>
+                                                <span class="discount-price">- <?=number_format($v['Product_Discount'],0,',','.')?> <?=$v['Product_DiscountUnit']?></span>
+                                            </div>
+                                        <?php endif ?>
                                     <?php else:?>
                                         Giá: <a href="tel:<?=str_replace(' ', '', SETTING['Setting_Phone'])?>" title="Liên hệ">Liên hệ</a>
                                     <?php endif ?>
