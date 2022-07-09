@@ -208,7 +208,7 @@
 													<div class="form-group <?=isset($errors['Product_Description_vi'])?'has-error':''?>">
 														<label for="Product_Description_vi">Mô tả</label>
 														<small class="help-block" data-bv-validator="notEmpty" data-bv-for="title" data-bv-result="INVALID" style=""><?=isset($errors['Product_Description_vi'])?$errors['Product_Description_vi']:''?></small>
-														<textarea rows="5" name="Product_Description_vi" class="form-control"><?=$post['Product_Description_vi']?>	</textarea> 
+														<textarea rows="5" name="Product_Description_vi" class="form-control summernote-mini"><?=$post['Product_Description_vi']?>	</textarea> 
 													</div>
 
 													<div class="form-group <?=isset($errors['Product_Content_vi'])?'has-error':''?>">
@@ -384,6 +384,44 @@
 				
 				pageSetUp();
 				
+
+				$('.summernote-mini').summernote({
+					height: 300,
+					lineHeights: ['0.2', '0.3', '0.4', '0.5', '0.6', '0.8', '1.0', '1.2', '1.4', '1.5', '1.6', '1.8', '2.0', '3.0'],
+                    fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '24', '36'],
+					toolbar: [
+					    ['style', ['style']],
+					    ['font', ['bold', 'italic', 'underline', 'clear']],
+					    ['fontname', ['fontname']],
+					    ['fontsize', ['fontsize']],
+					    ['color', ['color']],
+					    ['para', ['ul', 'ol', 'paragraph']],
+					    ['height', ['height']],
+					    ['table', ['table']],
+					    ['insert', ['link', 'video', 'hr']],
+					    ['view', ['fullscreen', 'codeview', 'help']]
+					],
+					image: [
+						['custom', ['imageAttributes']],
+						['imagesize', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
+						['float', ['floatLeft', 'floatRight', 'floatNone']],
+						['remove', ['removeMedia']]
+					],
+					callbacks: {
+			            onPaste: function (e) {
+			                var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+				            e.preventDefault();
+				            document.execCommand('insertText', false, bufferText);
+			            },
+					    onImageUpload: function(files, editor, welEditable) {
+						    var my_editor = $(this);
+						    $.each(files, function(k, v){
+							    sendFile(v, my_editor, welEditable);
+						    });
+					    }
+				    }
+				});
+
 				// input form
 
 				$('.summernote').summernote({
