@@ -294,6 +294,11 @@
 													</div>
 
 													<div class="form-group">
+														<label>Lượt mua</label>
+														<input type="text" class="form-control" name="Product_Buy" value="<?=$post['Product_Buy']?>" />
+													</div>
+
+													<div class="form-group">
 														<label>Thứ tự</label>
 														<input type="text" class="form-control" name="Product_Priority" value="<?=$post['Product_Priority']?>" />
 													</div>

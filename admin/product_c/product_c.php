@@ -21,6 +21,7 @@ class product_controller extends atz{
 			'Product_SalePrice'=> 0,
 			'Product_Keywords_vi'=> '',
 			'Product_Priority'=> 1,
+			'Product_Buy'=> 0,
 			'Product_Hot'=> 0,
 			'Product_Show'=> 1,
 			'Product_Cat'=> '',
@@ -130,6 +131,9 @@ class product_controller extends atz{
 				$errors['Product_Priority'] = 'Chưa nhập độ ưu tiên';
 			}elseif(!is_numeric($post['Product_Priority'])){
 				$errors['Product_Priority'] = 'Chỉ được nhập số';
+			}
+			if(!is_numeric($post['Product_Buy'])){
+				$errors['Product_Buy'] = 'Chỉ được nhập số';
 			}
 			
 				

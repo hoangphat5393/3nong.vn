@@ -109,7 +109,8 @@
                                 
                                 <div class="row pro-attr mb-3">
                                     <div class="col-sm-12 view">
-                                        <strong>Lượt xem:</strong> <span><?=$product['Product_View_vi']?></span>
+                                        <strong>Lượt xem:</strong> <span><?=$product['Product_View_vi']?></span> | 
+                                        <strong>Lượt mua:</strong> <span><?=$product['Product_Buy']?></span>
                                     </div>
                                 </div>
 
