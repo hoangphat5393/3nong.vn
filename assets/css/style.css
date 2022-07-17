@@ -968,5 +968,65 @@ footer .footer-copyright a {
 }
 
 /*END FOOTER*/
+.contact-fixed {
+  position: fixed;
+  right: 15px;
+  bottom: 20%;
+  z-index: 999;
+}
+.contact-fixed div {
+  margin-bottom: 20px;
+}
+.contact-fixed img {
+  width: 44px;
+  height: 44px;
+}
+.contact-fixed .contact-phone {
+  position: relative;
+}
+.contact-fixed .contact-phone .wrap-icon:before {
+  position: absolute;
+  content: '';
+  width: 60px;
+  height: 60px;
+  background: rgba(101, 160, 65, 0.48);
+  border-radius: 50%;
+  left: -8px;
+  top: -8px;
+  -webkit-animation: pulse 1s infinite ease-in-out;
+  -moz-animation: pulse 1s infinite ease-in-out;
+  -ms-animation: pulse 1s infinite ease-in-out;
+  -o-animation: pulse 1s infinite ease-in-out;
+  animation: pulse 1s infinite ease-in-out;
+}
+.contact-fixed .contact-phone .wrap-icon img {
+  position: relative;
+  background-color: var(--sub-bg-color);
+  border-radius: 50%;
+  width: 44px;
+  padding: 10px;
+  z-index: 99;
+}
+
+@keyframes pulse {
+  0% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+  to {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+}
+.animate__pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+}
 
 /*# sourceMappingURL=style.css.map */
