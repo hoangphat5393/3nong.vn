@@ -5,9 +5,9 @@ class DB{
 
 	function connect(){
 
-		$host = 'localhost';
+		$host = 'db';
 		$username = 'root';
-		$password = '';
+		$password = '123456';
 		$dbname = '3nong';
 		
 		// $host = 'localhost';

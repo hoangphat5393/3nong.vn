@@ -77,13 +77,19 @@
                         <div class="col-md-3 product-list-item">
                             <a href="<?=$atz->site_url['main'].'san-pham/'.$atz->slug($v['Product_Name_vi']).'-'.$v['Product_ID'].'.html'?>" title="<?=$v['Product_Name_vi']?>">
                                 <figure>
-                                    <img class="w-100" src="<?=str_replace('../', '', $v['Product_Thumbnail'])?>" alt="<?=$v['Product_Name_vi']?>">
+                                    <img class="w-100" src="<?=$v['Product_Thumbnail']?>" alt="<?=$v['Product_Name_vi']?>">
                                     <figcaption><?=$v['Product_Name_vi']?></figcaption>
                                 </figure>
                             </a>
                             <div class="price-block">
                                 <?php if ($v['Product_SalePrice']): ?>
-                                    Giá: <span class="text-red"><?=number_format($v['Product_SalePrice'],0,',','.')?> VNĐ<?=!empty($v['Product_PriceType'])?'/<sub>'.$v['Product_PriceType'].'</sub>':''?></span>
+                                    Giá: <span class="sale-price"><?=number_format($v['Product_SalePrice'],0,',','.')?> VNĐ<?=!empty($v['Product_PriceType'])?'/<sub>'.$v['Product_PriceType'].'</sub>':''?></span>
+                                    <?php if ($v['Product_Discount']): ?>
+                                        <div class="mt-2 d-flex justify-content-between">
+                                            <span class="old-price"><?=number_format($v['Product_Price'],0,',','.')?> VNĐ<?=!empty($v['Product_PriceType'])?'/<sub>'.$v['Product_PriceType'].'</sub>':''?></span>
+                                            <span class="discount-price">- <?=number_format($v['Product_Discount'],0,',','.')?> <?=$v['Product_DiscountUnit']?></span>
+                                        </div>
+                                    <?php endif ?>
                                 <?php else:?>
                                     Giá: <a href="tel:<?=str_replace(' ', '', SETTING['Setting_Phone'])?>" title="Liên hệ">Liên hệ</a>
                                 <?php endif ?>

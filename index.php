@@ -1,10 +1,10 @@
-<!-- LIB -->
-<?php 
+<?php
+    ob_start(); session_start(); // First of file
     
     require_once('routes.php');
 
     require_once('lib/atz.php');
-
+    
     $atz = new atz();
 
     define('_module_default', 'index/index');

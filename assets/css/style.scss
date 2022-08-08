@@ -301,10 +301,23 @@ header{
 	color: rgb(20, 53, 195);
 	font-weight: 700;	
 }
+
+.sale-price{
+	font-size: 24px;
+	color: #ff0000;
+}
+
 .old-price{
-	font-size: 12px;
-	.price{color: rgb(130, 134, 158);text-decoration: line-through;}
-	.rate{color: rgb(20, 53, 195);}
+	font-size: 1rem;
+	color: #808089;
+	text-decoration: line-through;
+}
+
+.discount-price{
+	color: #ffffff;
+    background: #F23611;
+    padding: 5px 10px;
+    font-size: 12px;
 }
 
 
@@ -401,7 +414,7 @@ header{
 		}
 
 		.addcart{
-			margin-top: .75rem;
+			margin-top: .25rem;
 			padding: 8px 5px;
 			width: 100%;
 			background-color: var(--sub-bg-color);
@@ -431,6 +444,7 @@ header{
 			color: var(--sub-color);
 		}
 	}
+	min-height: 60px
 }
 
 .bg-warp{
@@ -989,26 +1003,24 @@ header{
 		}
 	}
 
-	.information-contact{
-		input, textarea{
-			border: 1px solid #b19a6f;
-			background: #f5f5f5;
-		}
-
-		.btn-secondary{
-			background-color: var(--sub-bg-color);
-			width: 120px;
-			    height: 40px;
-		}
-	}
-
 	.article-contact{
 		line-height: 31px;
 	}
 }
 /*END CONTACT*/
 
+.information-contact{
+	input, textarea{
+		border: 1px solid #b19a6f;
+		background: #f5f5f5;
+	}
 
+	.btn-secondary{
+		background-color: var(--sub-bg-color);
+		width: 120px;
+		    height: 40px;
+	}
+}
 
 /*FOOTER*/
 footer{
@@ -1093,3 +1105,72 @@ footer{
 }
 /*END FOOTER*/
 
+
+.contact-fixed{
+	position: fixed;
+    right: 15px;
+    bottom: 20%;
+    z-index: 999;
+
+    div{
+    	margin-bottom: 20px;
+    }
+
+    img{
+    	width: 44px;
+    	height: 44px;
+    }
+
+    .contact-phone{
+    	position: relative;
+
+    	.wrap-icon{
+
+	    	&:before {
+			    position: absolute;
+			    content: '';
+			    width: 60px;
+			    height: 60px;
+			    background: rgba(101, 160, 65, .48);
+			    border-radius: 50%;
+			    left: -8px;
+    			top: -8px;
+			    -webkit-animation: pulse 1s infinite ease-in-out;
+			    -moz-animation: pulse 1s infinite ease-in-out;
+			    -ms-animation: pulse 1s infinite ease-in-out;
+			    -o-animation: pulse 1s infinite ease-in-out;
+			    animation: pulse 1s infinite ease-in-out;
+			}
+
+			img{
+				position: relative;
+				background-color: var(--sub-bg-color);
+			    border-radius: 50%;
+			    width: 44px;
+			    padding: 10px;
+			    z-index: 99;
+			}
+    	}
+    }
+}
+
+@keyframes pulse {
+    0% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+    50% {
+        -webkit-transform: scale3d(1.05, 1.05, 1.05);transform: scale3d(1.05, 1.05, 1.05)
+    }
+    to {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1)
+    }
+}
+
+.animate__pulse {
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out
+}

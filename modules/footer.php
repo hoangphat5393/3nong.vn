@@ -4,6 +4,22 @@
     $articles = $atz->get_articles();
 ?>
 
+
+<div class="contact-fixed">
+    <div class="zalo">
+        <a href="//zalo.me/<?=str_replace(' ', '', SETTING['Setting_Phone'])?>" title="<?=str_replace(' ', '', SETTING['Setting_Phone'])?>" target="_blank">
+            <img src="<?=$atz->site_url['main']?>assets/images/icon/zalo-icon.png" alt="<?=SETTING['Setting_Title']?>" class="img-fluid">
+        </a>
+    </div>
+    <div class="contact-phone">
+        <a href="tel:<?=str_replace(' ', '', SETTING['Setting_Phone'])?>" title="<?=str_replace(' ', '', SETTING['Setting_Phone'])?>">
+            <div class="wrap-icon">
+                <img src="<?=$atz->site_url['main']?>assets/images/icon/hotline.svg" alt="<?=SETTING['Setting_Title']?>" class="img-fluid">
+            </div>
+        </a>
+    </div>
+</div>
+
 <footer class="footer-area">
     <div class="footer-cat pt-3">
         <div class="container">

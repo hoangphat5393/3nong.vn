@@ -2,8 +2,6 @@
 <?php 
     $atz = new agent_controller();
     $atz->add_agent();
-
-    $page_content = $atz->get_page_content(1);
 ?>
 
 <!-- <a href="tel:<?=preg_replace('/[^0-9]/', '', SETTING['Setting_Phone'])?>"><?=SETTING['Setting_Phone']?></a> -->

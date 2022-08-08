@@ -302,15 +302,22 @@ header .header-contact span {
   font-weight: 700;
 }
 
-.old-price {
-  font-size: 12px;
+.sale-price {
+  font-size: 24px;
+  color: #ff0000;
 }
-.old-price .price {
-  color: #82869e;
+
+.old-price {
+  font-size: 1rem;
+  color: #808089;
   text-decoration: line-through;
 }
-.old-price .rate {
-  color: #1435c3;
+
+.discount-price {
+  color: #ffffff;
+  background: #F23611;
+  padding: 5px 10px;
+  font-size: 12px;
 }
 
 .block .block-title {
@@ -389,7 +396,7 @@ header .header-contact span {
   border-left: 6px solid #469f06;
 }
 .product-list .product-list-item .addcart {
-  margin-top: .75rem;
+  margin-top: .25rem;
   padding: 8px 5px;
   width: 100%;
   background-color: var(--sub-bg-color);
@@ -411,6 +418,7 @@ header .header-contact span {
 .price-block {
   font: 1.25rem SVNAvoBold;
   font-weight: 700;
+  min-height: 60px;
 }
 .price-block a {
   color: var(--main-color);
@@ -869,20 +877,21 @@ header .header-contact span {
   margin: 0 auto;
   background: #e51429;
 }
-.contact-page .information-contact input, .contact-page .information-contact textarea {
-  border: 1px solid #b19a6f;
-  background: #f5f5f5;
-}
-.contact-page .information-contact .btn-secondary {
-  background-color: var(--sub-bg-color);
-  width: 120px;
-  height: 40px;
-}
 .contact-page .article-contact {
   line-height: 31px;
 }
 
 /*END CONTACT*/
+.information-contact input, .information-contact textarea {
+  border: 1px solid #b19a6f;
+  background: #f5f5f5;
+}
+.information-contact .btn-secondary {
+  background-color: var(--sub-bg-color);
+  width: 120px;
+  height: 40px;
+}
+
 /*FOOTER*/
 footer {
   background-color: #f7f7f7;
@@ -959,5 +968,65 @@ footer .footer-copyright a {
 }
 
 /*END FOOTER*/
+.contact-fixed {
+  position: fixed;
+  right: 15px;
+  bottom: 20%;
+  z-index: 999;
+}
+.contact-fixed div {
+  margin-bottom: 20px;
+}
+.contact-fixed img {
+  width: 44px;
+  height: 44px;
+}
+.contact-fixed .contact-phone {
+  position: relative;
+}
+.contact-fixed .contact-phone .wrap-icon:before {
+  position: absolute;
+  content: '';
+  width: 60px;
+  height: 60px;
+  background: rgba(101, 160, 65, 0.48);
+  border-radius: 50%;
+  left: -8px;
+  top: -8px;
+  -webkit-animation: pulse 1s infinite ease-in-out;
+  -moz-animation: pulse 1s infinite ease-in-out;
+  -ms-animation: pulse 1s infinite ease-in-out;
+  -o-animation: pulse 1s infinite ease-in-out;
+  animation: pulse 1s infinite ease-in-out;
+}
+.contact-fixed .contact-phone .wrap-icon img {
+  position: relative;
+  background-color: var(--sub-bg-color);
+  border-radius: 50%;
+  width: 44px;
+  padding: 10px;
+  z-index: 99;
+}
+
+@keyframes pulse {
+  0% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+  to {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+}
+.animate__pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+}
 
 /*# sourceMappingURL=style.css.map */

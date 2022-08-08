@@ -105,7 +105,13 @@
                                 </a>
                                 <div class="price-block">
                                     <?php if ($v['Product_SalePrice']): ?>
-                                        Giá: <span class="text-red"><?=number_format($v['Product_SalePrice'],0,',','.')?> VNĐ<?=!empty($v['Product_PriceType'])?'/<sub>'.$v['Product_PriceType'].'</sub>':''?></span>
+                                        Giá: <span class="sale-price"><?=number_format($v['Product_SalePrice'],0,',','.')?> VNĐ<?=!empty($v['Product_PriceType'])?'/<sub>'.$v['Product_PriceType'].'</sub>':''?></span>
+                                        <?php if ($v['Product_Discount']): ?>
+                                            <div class="mt-2 d-flex justify-content-between">
+                                                <span class="old-price"><?=number_format($v['Product_Price'],0,',','.')?> VNĐ<?=!empty($v['Product_PriceType'])?'/<sub>'.$v['Product_PriceType'].'</sub>':''?></span>
+                                                <span class="discount-price">- <?=number_format($v['Product_Discount'],0,',','.')?> <?=$v['Product_DiscountUnit']?></span>
+                                            </div>
+                                        <?php endif ?>
                                     <?php else:?>
                                         Giá: <a href="tel:<?=str_replace(' ', '', SETTING['Setting_Phone'])?>" title="Liên hệ">Liên hệ</a>
                                     <?php endif ?>
@@ -164,7 +170,13 @@
                                         </a>
                                         <div class="price-block">
                                             <?php if ($v1['Product_SalePrice']): ?>
-                                                Giá: <span class="text-red"><?=number_format($v1['Product_SalePrice'],0,',','.')?> VNĐ<?=!empty($v1['Product_PriceType'])?'/<sub>'.$v1['Product_PriceType'].'</sub>':''?></span>
+                                                Giá: <span class="sale-price"><?=number_format($v1['Product_SalePrice'],0,',','.')?> VNĐ<?=!empty($v1['Product_PriceType'])?'/<sub>'.$v1['Product_PriceType'].'</sub>':''?></span>
+                                                <?php if ($v1['Product_Discount']): ?>
+                                                    <div class="mt-2 d-flex justify-content-between">
+                                                        <span class="old-price"><?=number_format($v1['Product_Price'],0,',','.')?> VNĐ<?=!empty($v1['Product_PriceType'])?'/<sub>'.$v1['Product_PriceType'].'</sub>':''?></span>
+                                                        <span class="discount-price">- <?=number_format($v1['Product_Discount'],0,',','.')?> <?=$v1['Product_DiscountUnit']?></span>
+                                                    </div>
+                                                <?php endif ?>
                                             <?php else:?>
                                                 Giá: <a href="tel:<?=str_replace(' ', '', SETTING['Setting_Phone'])?>" title="Liên hệ">Liên hệ</a>
                                             <?php endif ?>
@@ -248,9 +260,9 @@
 
                     <div class="col-md-5">
                         <div class="block">
-                            <div class="block-title">Video clips</div>
+                            <div class="block-title">Video</div>
 
-                            <div class="row mt-4">
+                            <!-- <div class="row mt-4">
                                 <div class="col-md-12">
                                     <div id="ajax_video" class="ajax_video">
                                         <iframe width="100%" height="290" src="//www.youtube.com/embed/rwOb8lwMNA4" frameborder="0" allowfullscreen=""></iframe>
@@ -261,7 +273,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 

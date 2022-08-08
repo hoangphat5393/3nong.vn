@@ -1,9 +1,8 @@
-<?php ob_start(); session_start();?>
-<?php 
+<?php
 	require_once("db.php");
 	
 	// Thông tin cấu hình do coder cài đặt
-	require('config.php');
+	require_once('config.php');
 
 	include_once 'image.php';
 ?>
@@ -24,15 +23,15 @@ class atz extends DB{
 	}
 
 	public function config_url(){
-		
+
 		// Đường dẫn tuyệt đối | Absolute path
-		if($_SERVER['HTTP_HOST']=='localhost'){
+		if(strpos($_SERVER['HTTP_HOST'],'localhost')!== false){
 			$web_url['root'] = $_SERVER['DOCUMENT_ROOT'].'/'.DOMAIN.'/';
 		}else{
 			$web_url['root'] = $_SERVER['DOCUMENT_ROOT'].'/';
 		}
 		
-		if($_SERVER['HTTP_HOST']=='localhost'){
+		if(strpos($_SERVER['HTTP_HOST'],'localhost')!== false){
 			$web_url['main'] = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://".$_SERVER['HTTP_HOST']."/".DOMAIN.'/';
 		}else{
 			$web_url['main'] = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://".$_SERVER['HTTP_HOST'].'/';
@@ -197,21 +196,6 @@ class atz extends DB{
 
 
 	public function slug($str, $spaceRepl = "-") {
-		// // Replace "&" char with "and"
-		// $str = str_replace("&", "and", $str);
-
-		// // Delete any chars but letters, numbers, spaces and _, -
-		// $str = preg_replace("/[^a-zA-Z0-9 _-]/", "", $str);
-		// $str=preg_replace('/[^A-Za-z0-9-]+/', '-', $str);
-
-		// // Optional: Make the string lowercase
-		// $str = strtolower($str);
-
-		// // Optional: Delete double spaces
-		// $str = preg_replace("/[ ]+/", " ", $str);
-
-		// // Replace spaces with replacement
-		// $str = str_replace(" ", $spaceRepl, $str);
 
 		$str = preg_replace("/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/", 'a', $str);
 		$str = preg_replace("/(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/", 'e', $str);
@@ -232,12 +216,5 @@ class atz extends DB{
 
 		return $str;
 	}
-
-
 }
-
-// $test_function = new atz;
-// $ip = $test_function->getUserIP();
-// echo 'User Real IP Address - '.$ip;
-
 ?>
