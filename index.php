@@ -9,6 +9,10 @@
 
     define('_module_default', 'index/index');
 
+    define('_module_admin', 'admin/index/index');
+
+    
+
     // CHECK MODULE
     if(!empty($_GET['module'])){
         $module = $_GET['module'];
@@ -71,7 +75,13 @@
             $module = _module_default;
         }
     }
-        
+    
+    
+    // CHECK FILE ADMIN
+    if(strpos($_GET['module'],'admin')!== false){
+        $module = 'admin/'.$module;
+    }
+    
     
     // LOAD MODULE
     if(file_exists($module.'.php')){

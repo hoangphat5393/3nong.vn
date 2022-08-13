@@ -1,8 +1,13 @@
 :root{
-	--main-color: #ed9326;
-	--main-bg-color: #ed9326;
-	--sub-color: #65a041;
-	--sub-bg-color: #65a041;
+	// --main-color: #ed9326;
+	// --main-bg-color: #ed9326;
+	// --sub-color: #65a041;
+	// --sub-bg-color: #65a041;
+
+	--main-color: #65a041;
+	--main-bg-color: #65a041;
+	--sub-color: #ed9326;
+	--sub-bg-color: #ed9326;
 }
 
 .text-red{color: #ff0000}
@@ -35,7 +40,12 @@ body {
     color: rgb(51, 51, 51);
 }
 
-
+.wrap{
+	// background-color: rgba(232, 232, 232, 0.74);
+	// background-color: #d5a36e;
+	// background-color: #e9ecef;
+	background-color: rgb(42, 44, 43, .83);
+}
 .transition {
     transition: all 0.3s linear;
     -webkit-transition: all 0.3s linear;
@@ -62,6 +72,8 @@ body {
 
 header{
 	font-size: 14px;
+	padding: 17px 0;
+	background-color: rgb(227, 227, 227, .67);
 	a{&:hover{text-decoration: none;color: #000;}}
 
 	@media only screen and (max-width : 575.98px) {
@@ -142,6 +154,9 @@ header{
 		    color: #084ea0;
 		    font: 20px RobotoBold;
 		    font-weight: bold;
+		}
+		a:not(:last-child){
+			margin-right: 10px;
 		}
 	}
 }
@@ -303,7 +318,7 @@ header{
 }
 
 .sale-price{
-	font-size: 24px;
+	font-size: 20px;
 	color: #ff0000;
 }
 
@@ -334,7 +349,8 @@ header{
 
 	    a{
 	    	font: 14px RobotoRegular;
-    		color: #084ea0;
+    		// color: #084ea0;
+    		color: #ffc500;
 	    }
 
     	&:after{
@@ -357,12 +373,15 @@ header{
 /*PRODUCT LIST*/
 .product-list{
 	
-	@extend .bg-white;
-
+	// @extend .bg-white;
+	.block-title p{
+		color: #ffc500;
+	}
     .product-list-item{
     	@extend .bg-white;
     	border-radius: 8px;
     	margin-bottom: 1rem;
+		padding: 10px;
     	
     	figure{
 			margin-bottom: .5rem;

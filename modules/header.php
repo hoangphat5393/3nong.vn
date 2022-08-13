@@ -31,12 +31,19 @@
                     </div>
                 </div>
                 
-                <div class="header-contact d-flex align-items-center text-center">
+                <div class="header-contact d-flex align-items-center">
                     <a href="tel:<?=str_replace(' ', '', SETTING['Setting_Phone'])?>" class="d-flex align-items-center">
                         <img src="<?=$atz->site_url['main']?>assets/images/header/hotline.svg" alt="" class="img-fluid">
                         <p>
-                            Chăm sóc khách hàng:<br>
+                            Hotline:<br>
                             <span><?=SETTING['Setting_Phone']?></span>
+                        </p>
+                    </a>
+                    <a href="mailto:<?=SETTING['Setting_Email']?>" class="d-flex align-items-center">
+                        <img src="<?=$atz->site_url['main']?>assets/images/header/email.svg" alt="<?=SETTING['Setting_Email']?>" class="img-fluid">
+                        <p>
+                            Email:<br>
+                            <span><?=SETTING['Setting_Email']?></span>
                         </p>
                     </a>
                 </div>
