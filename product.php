@@ -50,34 +50,14 @@
         <?php include('modules/menu.php')?>
         <!-- END MENU -->
 
-        <!-- BREADCRUMB -->
-        <!-- <div class="bg-warp-1">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                                <li class="breadcrumb-item"><a href="#">Sản phẩm</a></li>
-                                <li class="breadcrumb-item"><a href="#">CÁ</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Cá tai tượng</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- END BREADCRUMB -->
-
         <!-- MAIN PRODUCT -->
-        <div class="container  mt-3 mb-3">
+        <?php if (!empty($product)): ?>
+            <div class="container mt-4 mb-3">
 
-            <div class="row product-detail">
-                <div class="col-md-12">
-                    <div class="row">
-                        <?php if (!empty($product)): ?>
-
-                            <div class="col-md-7">
+                <div class="row product-detail">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6">
                                 <div id="slider_0" class="splide mb-3">
                                     <div class="splide__track">
                                         <ul class="splide__list">
@@ -103,7 +83,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <h1 class="pro-title"><?=$product['Product_Name_vi']?></h1>
                                 <?=$product['Product_Description_vi']?>
                                 
@@ -147,79 +127,90 @@
                                     Thanh toán online
                                 </button>
                             </div>
-
-                            <div class="col-md-12 mt-4">
-                                <nav>
-                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                        <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">THÔNG TIN SẢN PHẨM</a>
-                                        <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">BÌNH LUẬN</a>
-                                    </div>
-                                </nav>
-                                <div class="tab-content" id="nav-tabContent">
-                                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                        <div class="content-tabs-pro-detail info-pro-detail active">
-                                            <?=$product['Product_Content_vi']?>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                        <div class="fb-comments" data-href="http://3nong.getatz.com/<?=$product['Product_ID']?>" data-width="100%" data-numposts="5"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        <?php else: ?>
-                            <p>Không có sản phẩm này</p>
-                        <?php endif ?>   
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <!-- END MAIN PRODUCT -->
-
-        <!-- LIST PRODUCT -->
-        <div class="container product-list mt-3 mb-3">
-
-            <div class="block product-list py-2">
-                        
-                <div class="row">
-                    <div class="col-md-12 mb-3">
-                        <div class="d-flex align-items-center block-title text-center">
-                            <div class="flex-grow-1">Sản phẩm cùng loại</div>
                         </div>
                     </div>
 
-                    <?php if (!empty($relative_products)): ?>
-                        <?php foreach ($relative_products as $v): ?>
-                            <div class="col-md-3 product-list-item">
-                                <a href="<?=$atz->site_url['main'].'san-pham/'.$atz->slug($v['Product_Name_vi']).'-'.$v['Product_ID'].'.html'?>" title="<?=$v['Product_Name_vi']?>">
-                                    <figure>
-                                        <img class="w-100" src="<?=$v['Product_Thumbnail']?>" alt="<?=$v['Product_Name_vi']?>">
-                                        <figcaption><?=$v['Product_Name_vi']?></figcaption>
-                                    </figure>
-                                </a>
-                                <div class="price-block">
-                                    <?php if ($v['Product_SalePrice']): ?>
-                                        Giá: <span class="sale-price"><?=number_format($v['Product_SalePrice'],0,',','.')?> VNĐ<?=!empty($v['Product_PriceType'])?'/<sub>'.$v['Product_PriceType'].'</sub>':''?></span>
-                                        <?php if ($v['Product_Discount']): ?>
-                                            <div class="mt-2 d-flex justify-content-between">
-                                                <span class="old-price"><?=number_format($v['Product_Price'],0,',','.')?> VNĐ<?=!empty($v['Product_PriceType'])?'/<sub>'.$v['Product_PriceType'].'</sub>':''?></span>
-                                                <span class="discount-price">- <?=number_format($v['Product_Discount'],0,',','.')?> <?=$v['Product_DiscountUnit']?></span>
-                                            </div>
-                                        <?php endif ?>
-                                    <?php else:?>
-                                        Giá: <a href="tel:<?=str_replace(' ', '', SETTING['Setting_Phone'])?>" title="Liên hệ">Liên hệ</a>
-                                    <?php endif ?>
-                                </div>
-                                <a class="btn addcart" href="<?=$atz->site_url['main'].'san-pham/'.$atz->slug($v['Product_Name_vi']).'-'.$v['Product_ID'].'.html'?>" title="<?=$v['Product_Name_vi']?>">Mua ngay</a>
-                            </div>
-                        <?php endforeach ?>
-                    <?php endif ?>
-                    
                 </div>
             </div>
-        </div>
-        <!-- END LIST PRODUCT -->
+            <!-- END MAIN PRODUCT -->
+            
+            <div class="container-fluid container-lg">
+                <div class="row product-detail">
+                    <div class="col-md-12 mt-4">
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">THÔNG TIN SẢN PHẨM</a>
+                                <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">BÌNH LUẬN</a>
+                            </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <div class="content-tabs-pro-detail info-pro-detail active">
+                                    <?=$product['Product_Content_vi']?>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                <div class="fb-comments" data-href="http://3nong.getatz.com/<?=$product['Product_ID']?>" data-width="100%" data-numposts="5"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <!-- RELATIVE PRODUCTS -->
+            <div class="container product-list mt-3 mb-3">
+
+                <div class="block product-list py-2">
+                            
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <div class="d-flex align-items-center block-title text-center">
+                                <div class="flex-grow-1">Sản phẩm cùng loại</div>
+                            </div>
+                        </div>
+
+                        <?php if (!empty($relative_products)): ?>
+                            <?php foreach ($relative_products as $v): ?>
+                                <div class="col-6 col-lg-3 product-list-item">
+                                    <a href="<?=$atz->site_url['main'].'san-pham/'.$atz->slug($v['Product_Name_vi']).'-'.$v['Product_ID'].'.html'?>" title="<?=$v['Product_Name_vi']?>">
+                                        <figure>
+                                            <img class="w-100" src="<?=$v['Product_Thumbnail']?>" alt="<?=$v['Product_Name_vi']?>">
+                                            <figcaption><?=$v['Product_Name_vi']?></figcaption>
+                                        </figure>
+                                    </a>
+                                    <div class="price-block">
+                                        <?php if ($v['Product_SalePrice']): ?>
+                                            Giá: <span class="sale-price"><?=number_format($v['Product_SalePrice'],0,',','.')?> VNĐ<?=!empty($v['Product_PriceType'])?'/<sub>'.$v['Product_PriceType'].'</sub>':''?></span>
+                                            <?php if ($v['Product_Discount']): ?>
+                                                <div class="mt-2 d-flex justify-content-between">
+                                                    <span class="old-price"><?=number_format($v['Product_Price'],0,',','.')?> VNĐ<?=!empty($v['Product_PriceType'])?'/<sub>'.$v['Product_PriceType'].'</sub>':''?></span>
+                                                    <span class="discount-price">- <?=number_format($v['Product_Discount'],0,',','.')?> <?=$v['Product_DiscountUnit']?></span>
+                                                </div>
+                                            <?php endif ?>
+                                        <?php else:?>
+                                            Giá: <a href="tel:<?=str_replace(' ', '', SETTING['Setting_Phone'])?>" title="Liên hệ">Liên hệ</a>
+                                        <?php endif ?>
+                                    </div>
+                                    <a class="btn addcart" href="<?=$atz->site_url['main'].'san-pham/'.$atz->slug($v['Product_Name_vi']).'-'.$v['Product_ID'].'.html'?>" title="<?=$v['Product_Name_vi']?>">Xem thêm</a>
+                                </div>
+                            <?php endforeach ?>
+                        <?php endif ?>
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- END RELATIVE PRODUCTS -->
+
+        <?php else: ?>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Không có sản phẩm này</p>
+                    </div>
+                </div>
+            </div>
+        <?php endif ?>
 
         <!-- Modal | liên hệ đặt hàng -->
         <div class="modal fade" id="OrderModal" tabindex="-1" aria-labelledby="OrderModalLabel" aria-hidden="true">

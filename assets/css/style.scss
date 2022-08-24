@@ -4,10 +4,10 @@
 	// --sub-color: #65a041;
 	// --sub-bg-color: #65a041;
 
-	--main-color: #65a041;
-	--main-bg-color: #65a041;
-	--sub-color: #ed9326;
-	--sub-bg-color: #ed9326;
+	--main-color: #448847;
+	--main-bg-color: #448847;
+	--sub-color: #F0A02E;
+	--sub-bg-color: #F0A02E;
 }
 
 .text-red{color: #ff0000}
@@ -41,10 +41,8 @@ body {
 }
 
 .wrap{
-	// background-color: rgba(232, 232, 232, 0.74);
-	// background-color: #d5a36e;
-	// background-color: #e9ecef;
 	background-color: rgb(42, 44, 43, .83);
+	background-color: #373026;
 }
 .transition {
     transition: all 0.3s linear;
@@ -163,9 +161,8 @@ header{
 
 /*MENU*/
 
-.navbar{
-	padding: 0;
-}
+.navbar{padding: 0;}
+
 .main-menu {
 	@extend .main-bg-color;
 
@@ -174,7 +171,7 @@ header{
 		width: inherit;
 		height: 100%;
 
-		.dropdown-toggle{
+		>.dropdown-toggle{
 			height: inherit;
 			background-color: var(--sub-bg-color);
 			text-transform: uppercase;
@@ -184,6 +181,10 @@ header{
 			display: block;
 			width: inherit;
 			border-radius: 0;
+
+			.navbar-toggler-icon{
+				margin-right: 8px;
+			}
 		}
 
 		.dropdown-menu{
@@ -191,7 +192,7 @@ header{
 			left: auto;
 			padding: 0;
 			margin: 0;
-			border-radius: 0 0 10px 10px;
+			// border-radius: 0 0 10px 10px;
 
 			.dropdown-item{
 				@extend .cat-link-style;
@@ -200,25 +201,44 @@ header{
 			.list-group-item{
 				border: none;
 				img{margin-right: .75rem;}
-				padding: 0 1.25rem;
+				padding: 0;	
+
+				.btn-group{
+					width: 100%;
+				}
 				a{
 					display: block;
-					padding: 11px 0;
+					width: 100%;
+					padding: 12px;
 				    text-transform: capitalize;
 				    border-bottom: 1px dotted #e6e6e6;
 				    color:  var(--sub-color);
 				    font-weight: bold;
-				}	
+				}
+
+				.submenu{
+					position: absolute;
+					will-change: transform;
+					top: 0px;
+					left: 0px;
+					transform: translate3d(243px, 0px, 0px);
+					border-radius: 0;
+
+					a{
+
+						padding: 12px;
+						color:  var(--sub-color);
+					}
+				}
 			}
 		}
-		margin-right: 16px
 	}
 	.navbar-nav{
 		.nav-item{
 			.nav-link{
 				font-weight: 700;
 				color: #fff;
-				font-size: 18px;
+				font-size: 16px;
 				padding: 12.5px 18px;
 				text-transform: capitalize;
 			}
@@ -228,8 +248,6 @@ header{
 }
 
 /*END MENU*/
-
-
 
 
 /*SLIDER*/
@@ -248,17 +266,21 @@ header{
 		.list-group{
 			border-radius: 0 0 10px 10px;
 
+			@media (min-width: 992px) {
+				padding-right: 10px;
+			}
+
 			.list-group-item{
 				border-top: none;
 				border-bottom: none;
 				img{margin-right: .75rem;}
-				padding: 0 1.25rem;
+				padding: 0 12px;
 				a{
 					display: block;
-					padding: 11px 0;
+					padding: 12px 0;
 				    text-transform: capitalize;
 				    border-bottom: 1px dotted #e6e6e6;
-				    color:  var(--sub-color);
+				    color: var(--sub-color);
 				    font-weight: bold;
 				}	
 			}
@@ -268,10 +290,8 @@ header{
 
 	.slider-right{
 		img{
-			/*padding: 10px 0 0;*/
     		border-radius: 10px;
 		}
-	
 	}
 
 }
@@ -335,21 +355,19 @@ header{
     font-size: 12px;
 }
 
-
 .block{
 	.block-title{
-		
+		position: relative;
 		padding-bottom: .75rem;
 		border-bottom: 2px solid #ebebeb;
 		text-transform: uppercase;
-	    font: 1.5rem SVNAvoBold;
+	    font-family: SVNAvoBold;
+		font-size: 22px;
 	    font-weight: 700;
 	    color: #252525;
-	    position: relative;
 
 	    a{
-	    	font: 14px RobotoRegular;
-    		// color: #084ea0;
+	    	font-size: 14px;
     		color: #ffc500;
 	    }
 
@@ -1127,8 +1145,8 @@ footer{
 
 .contact-fixed{
 	position: fixed;
-    right: 15px;
-    bottom: 20%;
+    right: 32px;
+    bottom: 12%;
     z-index: 999;
 
     div{
@@ -1150,7 +1168,7 @@ footer{
 			    content: '';
 			    width: 60px;
 			    height: 60px;
-			    background: rgba(101, 160, 65, .48);
+				background-color: rgb(240, 160, 46, .65);
 			    border-radius: 50%;
 			    left: -8px;
     			top: -8px;
@@ -1173,6 +1191,13 @@ footer{
     }
 }
 
+// #fb-root .fb_dialog .fb_dialog_content{
+// 	display: block;
+// 	iframe{
+// 		right: 0!important;
+// 	}
+// }
+
 @keyframes pulse {
     0% {
         -webkit-transform: scaleX(1);
@@ -1193,3 +1218,5 @@ footer{
     -webkit-animation-timing-function: ease-in-out;
     animation-timing-function: ease-in-out
 }
+
+

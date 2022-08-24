@@ -1,4 +1,6 @@
 <?php
+	ob_start(); session_start(); // First of file
+	
 	require_once("db.php");
 	
 	// Thông tin cấu hình do coder cài đặt

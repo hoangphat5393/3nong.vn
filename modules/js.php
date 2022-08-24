@@ -17,13 +17,38 @@
 <!-- Rater.js -->
 <script src="<?=$atz->site_url['main']?>assets/raterjs/rater.min.js"></script>
 
+
+
+<script>
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "103659642350427");
+    chatbox.setAttribute("attribution", "biz_inbox");
+</script>
+
+<!-- Your SDK code -->
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            xfbml            : true,
+            version          : 'v14.0'
+        });
+    };
+
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
 <script>
     $("button").click(function(){
         $("p").toggleClass("main");
     });
-</script>
-
-<script>
+    
     $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
         if (!$(this).next().hasClass('show')) {
             $(this).parents('.dropdown-menu').first().find('.show').removeClass('show');
@@ -49,9 +74,9 @@
 
     $().ready(function(e) {
         $('.list-video').change(function(){
-          var url='https://www.youtube.com/embed/'+$(this).val();
-          $('#ajax_video iframe').attr('src',url);
-        })
+            var url='https://www.youtube.com/embed/'+$(this).val();
+            $('#ajax_video iframe').attr('src',url);
+        });
     });
 </script>
 

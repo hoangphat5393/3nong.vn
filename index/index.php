@@ -1,5 +1,5 @@
 <!-- LIB -->
-<?php require_once('index_c/index_c.php');?>
+<?php require_once('index/index_c.php');?>
 
 <?php 
     $atz = new index_controller();
@@ -66,20 +66,6 @@
             <?php include('modules/slider.php')?>
             <!-- END SLIDER -->
 
-
-            <!-- BANNER -->
-            <!-- <div class="container mt-3">
-                <div class="row animate_bn">
-                    <div class="col-12 col-lg-6 mb-3">
-                        <img src="assets/images/banner1.png" class="img-fluid d-block mx-auto" alt="<?=SETTING['Setting_Title']?>">
-                    </div>
-                    <div class="col-12 col-lg-6 mb-3">
-                        <img src="assets/images/banner2.png" class="img-fluid d-block mx-auto" alt="<?=SETTING['Setting_Title']?>">
-                    </div>
-                </div>
-            </div> -->
-            <!-- END BANNER -->
-
             <!-- BEST SELL -->
             <div class="container my-3">
 
@@ -119,8 +105,8 @@
                                             Giá: <a href="tel:<?=str_replace(' ', '', SETTING['Setting_Phone'])?>" title="Liên hệ">Liên hệ</a>
                                         <?php endif ?>
                                     </div>
-                                    <a class="btn addcart" href="<?=$atz->site_url['main'].'san-pham/'.$atz->slug($v['Product_Name_vi']).'-'.$v['Product_ID'].'.html'?>" title="<?=$v['Product_Name_vi']?>">Mua ngay</a>
-                                    <!-- <button class="btn addcart">Mua ngay</button> -->
+                                    <a class="btn addcart" href="<?=$atz->site_url['main'].'san-pham/'.$atz->slug($v['Product_Name_vi']).'-'.$v['Product_ID'].'.html'?>" title="<?=$v['Product_Name_vi']?>">Xem thêm</a>
+                                    <!-- <button class="btn addcart">Xem thêm</button> -->
                                 </div>
                             <?php endforeach ?>
 
@@ -184,7 +170,7 @@
                                                     Giá: <a href="tel:<?=str_replace(' ', '', SETTING['Setting_Phone'])?>" title="Liên hệ">Liên hệ</a>
                                                 <?php endif ?>
                                             </div>
-                                            <a class="btn addcart" href="<?=$atz->site_url['main'].'san-pham/'.$atz->slug($v1['Product_Name_vi']).'-'.$v1['Product_ID'].'.html'?>" title="<?=$v1['Product_Name_vi']?>">Mua ngay</a>
+                                            <a class="btn addcart" href="<?=$atz->site_url['main'].'san-pham/'.$atz->slug($v1['Product_Name_vi']).'-'.$v1['Product_ID'].'.html'?>" title="<?=$v1['Product_Name_vi']?>">Xem thêm</a>
                                         </div>
                                     <?php endforeach ?>
 
@@ -285,81 +271,6 @@
             </div>
             <!-- END POST & EVENT -->
 
-            <!-- PARTNER -->
-            <!-- <div class="container mt-3 mb-3">
-                <div class="block partner py-2">
-                            
-                    <div class="owl-partner owl-carousel owl-theme mt-3">
-
-                        <div class="item product-list-item">
-                            <a href="#" title="">
-                                <figure>
-                                    <img class="w-100" src="assets/images/partner1.jpg" alt="">
-                                    <figcaption></figcaption>
-                                </figure>
-                            </a>
-                        </div>
-
-                        <div class="item product-list-item">
-                            <a href="#" title="">
-                                <figure>
-                                    <img class="w-100" src="assets/images/partner2.jpg" alt="">
-                                    <figcaption></figcaption>
-                                </figure>
-                            </a>
-                        </div>
-
-                        <div class="item product-list-item">
-                            <a href="#" title="">
-                                <figure>
-                                    <img class="w-100" src="assets/images/partner3.jpg" alt="">
-                                    <figcaption></figcaption>
-                                </figure>
-                            </a>
-                        </div>
-
-                        <div class="item product-list-item">
-                            <a href="#" title="">
-                                <figure>
-                                    <img class="w-100" src="assets/images/partner4.jpg" alt="">
-                                    <figcaption></figcaption>
-                                </figure>
-                            </a>
-                        </div>
-
-                        <div class="item product-list-item">
-                            <a href="#" title="">
-                                <figure>
-                                    <img class="w-100" src="assets/images/partner5.jpg" alt="">
-                                    <figcaption></figcaption>
-                                </figure>
-                            </a>
-                        </div>
-
-                        <div class="item product-list-item">
-                            <a href="#" title="">
-                                <figure>
-                                    <img class="w-100" src="assets/images/partner6.jpg" alt="">
-                                    <figcaption></figcaption>
-                                </figure>
-                            </a>
-                        </div>
-
-                        <div class="item product-list-item">
-                            <a href="#" title="">
-                                <figure>
-                                    <img class="w-100" src="assets/images/partner7.jpg" alt="">
-                                    <figcaption></figcaption>
-                                </figure>
-                            </a>
-                        </div>
-                    
-                    </div>
-        
-                </div>
-            </div> -->
-            <!-- PARTNER -->
-
         </div>
 
         <?php include('modules/footer.php') ?>
@@ -376,11 +287,11 @@
                 responsiveClass: true,
                 responsive: {
                     0: {
-                        items: 2,
+                        items: 1,
                         nav: false
                     },
-                    600: {
-                        items: 4,
+                    768: {
+                        items: 2,
                         nav: false
                     },
                     1000: {
@@ -397,11 +308,11 @@
                 responsiveClass: true,
                 responsive: {
                     0: {
-                        items: 2,
+                        items: 1,
                         nav: false
                     },
                     768: {
-                        items: 3,
+                        items: 2,
                         nav: false
                     },
                     1000: {

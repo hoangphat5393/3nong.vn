@@ -65,7 +65,7 @@
     <!-- END BREADCRUMB -->
 
     <!-- LIST PRODUCT -->
-    <div class="container product-list mt-3 mb-3">
+    <div class="container product-list mt-4 mb-3">
 
         <div class="block product-list py-2">
                     
@@ -102,7 +102,7 @@
                                         Giá: <a href="tel:<?=str_replace(' ', '', SETTING['Setting_Phone'])?>" title="Liên hệ">Liên hệ</a>
                                     <?php endif ?>
                                 </div>
-                                <a class="btn addcart" href="<?=$atz->site_url['main'].'san-pham/'.$atz->slug($v['Product_Name_vi']).'-'.$v['Product_ID'].'.html'?>" title="<?=$v['Product_Name_vi']?>">Mua ngay</a>
+                                <a class="btn addcart" href="<?=$atz->site_url['main'].'san-pham/'.$atz->slug($v['Product_Name_vi']).'-'.$v['Product_ID'].'.html'?>" title="<?=$v['Product_Name_vi']?>">Xem thêm</a>
                                 
                             </div>
 

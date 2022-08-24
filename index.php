@@ -1,5 +1,5 @@
 <?php
-    ob_start(); session_start(); // First of file
+    // ob_start(); session_start(); // First of file
     
     require_once('routes.php');
 
@@ -10,8 +10,6 @@
     define('_module_default', 'index/index');
 
     define('_module_admin', 'admin/index/index');
-
-    
 
     // CHECK MODULE
     if(!empty($_GET['module'])){
@@ -30,7 +28,7 @@
             }
         }
     }
-    
+
 
     // CHECK URL
     if(!empty($url)){
@@ -78,9 +76,9 @@
     
     
     // CHECK FILE ADMIN
-    if(strpos($_GET['module'],'admin')!== false){
-        $module = 'admin/'.$module;
-    }
+    // if(strpos($_GET['module'],'admin')!== false){
+    //     $module = 'admin/'.$module;
+    // }
     
     
     // LOAD MODULE

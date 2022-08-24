@@ -20,6 +20,13 @@
     </div>
 </div>
 
+<!-- Messenger Plugin chat Code -->
+<div id="fb-root"></div>
+
+<!-- Your Plugin chat code -->
+<div id="fb-customer-chat" class="fb-customerchat">
+</div>
+
 <footer class="footer-area">
     <div class="footer-cat pt-3">
         <div class="container">

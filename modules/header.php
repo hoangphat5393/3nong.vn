@@ -9,7 +9,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="d-flex align-items-center">
+            <div class="d-lg-flex flex-cloumn align-items-center">
                 <div class="d-flex align-items-center my-2">
                     <div class="logo">
                         <a href="<?=$atz->site_url['main']?>" title="<?=SETTING['Setting_Title']?>"><img src="<?=$atz->site_url['main']?>assets/images/header/logo.png" alt="<?=SETTING['Setting_Title']?>" class="img-fluid"></a>
