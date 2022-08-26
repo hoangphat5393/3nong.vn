@@ -122,7 +122,7 @@
                 <?php foreach ($cat_product as $v): ?>
                     <?php if ($v['Cat_Thumbnail']): ?>
                         <div class="container">
-                            <div class="row">
+                            <div class="row mb-3">
                                 <div class="col-md-12 animate_bn">
                                     <a href="<?=$atz->site_url['main'].'danh-sach-san-pham/'.$atz->slug($v['Cat_Name_vi']).'-'.$v['Cat_ID'].'.html'?>" title="<?=$v['Cat_Name_vi']?>">
                                         <figure class="cate-banner">

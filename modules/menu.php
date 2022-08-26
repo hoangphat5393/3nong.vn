@@ -32,7 +32,6 @@
                                 <?php foreach ($product_cats as $v): ?>
                                     <li class="dropdown-item list-group-item">
                                         <div class="btn-group dropright">
-                                            
                                             <?php if (!empty($v['Cat_Child'])): ?>
                                                 <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="<?=$product_list_url.$atz->slug($v['Cat_Name_vi']).'-'.$v['Cat_ID'].'.html'?>" title="<?=$v['Cat_Name_vi']?>"><?=$v['Cat_Name_vi']?></a>
                                                 <div class="dropdown-menu submenu">
@@ -64,7 +63,7 @@
                 <?php endif ?>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="<?=$atz->site_url['main'].'dai-ly.html'?>">Đăng ký đại lý</a>
+                    <a class="nav-link" href="<?=$atz->site_url['main'].'dai-ly.html'?>">Đại lý</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?=$atz->site_url['main'].'lien-he.html'?>">Liên hệ</a>

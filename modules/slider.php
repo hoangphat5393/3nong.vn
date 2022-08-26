@@ -28,7 +28,7 @@
                 </div>
             </div>
 
-            <div class="col-md-12 pt-2">
+            <div class="col-md-12 p-0 pt-md-2 px-md-3">
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <?php $i = 0; ?>
