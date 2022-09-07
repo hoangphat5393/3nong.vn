@@ -13,8 +13,7 @@ class post_controller extends atz{
 		// $rs = preg_replace('/(.+?).(html)/', $replacement, $this->param)
 		$ex = explode('.',$this->param);
 		$ex1 = explode('-',$ex[0]);
-		$this->id = end($ex1);
-			
+		$this->id = end($ex1);	
 	}
 
 	// Lấy thông tin chuyên mục

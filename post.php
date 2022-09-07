@@ -2,7 +2,6 @@
 <?php require_once('post_c/post_c.php');?>
 
 <?php
-    
     $atz = new post_controller();
     
     $post = $atz->get_post($atz->id);
@@ -13,8 +12,7 @@
         $atz->update_view($post['Post_ID'],$post['Post_View_vi']);
     }
 
-    $relative_posts = $atz->get_relative_posts($atz->id);
-        
+    $relative_posts = $atz->get_relative_posts($atz->id);    
 ?>
 
 <!doctype html>

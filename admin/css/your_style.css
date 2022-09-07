@@ -23,7 +23,6 @@ table.vcenter>tbody>tr>td{
     vertical-align: middle;
 }
 /*
-
 .has-error .checkbox, .has-error .checkbox-inline, .has-error .control-label, .has-error .help-block, .has-error .radio, .has-error .radio-inline, .has-error.checkbox label, .has-error.checkbox-inline label, .has-error.radio label, .has-error.radio-inline label {
     color: #ff0000;
 }
@@ -97,19 +96,6 @@ table.vcenter>tbody>tr>td{
     background-color: #e04f1a;
 }
 
-/*.options-container .options-overlay .badge {
-    display: inline-block;
-    padding: .25em .4em;
-    font-size: 75%;
-    font-weight: 600;
-    line-height: 1;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: .25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}*/
-
 .options-container .options-overlay .badge {
     display: inline-block;
     padding: .25em .5em;
@@ -123,13 +109,6 @@ table.vcenter>tbody>tr>td{
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
-/*
-.options-container .options-overlay .badge {
-    padding: .25em .5em;
-    margin: 0 .2em;
-    font-size: 1.5rem;
-    border-radius: .25rem;
-}*/
 
 .input-group.select-group .input-group-btn select{
     min-width: 80px;

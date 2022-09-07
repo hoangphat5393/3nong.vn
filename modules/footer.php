@@ -34,7 +34,7 @@
                 <div class="col-md-4">
 
                     <div class="d-flex align-items-center mb-3">
-                        <div class="logo">
+                        <div class="logo mx-auto mx-md-0">
                             <a href="<?=$atz->site_url['main']?>">
                                 <img src="<?=$atz->site_url['main']?>assets/images/header/logo.png" alt="<?=SETTING['Setting_Title']?>" class="img-fluid" width="120">
                             </a>

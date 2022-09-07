@@ -189,12 +189,6 @@ class product_controller extends atz{
 				// Xóa bỏ ảnh mà người dùng đã xóa
 				if(isset($current_data)){
 					$diff = array_diff($current_data['Product_Imgs'], $temp_images);
-
-					// echo '<pre>';
-					// print_r($current_data['Product_Imgs']);
-					// print_r($temp_images);
-					// print_r($diff);
-					// die;
 						
 					foreach($diff as $name){
 						if(file_exists($dir.$name)){
