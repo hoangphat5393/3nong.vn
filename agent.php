@@ -168,7 +168,8 @@
                         success: function(data) {
                             console.log(data.status);
                             if(data.status == 'success'){
-                                window.location.replace("<?=$atz->site_url['main']?>agent_thanks");    
+                                window.location.replace("<?=$atz->site_url['main']?>dang-ky-dai-ly-thanh-cong.html");
+                                form.reset();
                             }
                         }
                     });

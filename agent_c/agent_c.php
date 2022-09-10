@@ -24,15 +24,6 @@ class agent_controller extends atz{
 		);
 	}
 
-	public function get_page_content($id){
-
-		$data = $this->select('setting_page',array('Setting_Page_ID'=>$id));
-			
-		if(!empty($data)){
-			return $data[0];	
-		}
-	}
-
 	// Insert agent
 	public function add_agent(){
 

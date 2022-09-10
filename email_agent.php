@@ -3,7 +3,7 @@
 <p>Chúng tôi sẽ liên hệ lai trong thời gian sớm nhất</p>
 <div style="clear:both">
     <h2 style="font-size:16px;margin:0px;font-weight:bold;margin-bottom:10px">Thông tin đăng ký</h2>
-    <div style="background:#eee;padding:10px 5px"><span style="width:200px;display:inline-block">Tên đại lý:</span> test</div>
+    <div style="background:#eee;padding:10px 5px"><span style="width:200px;display:inline-block">Tên đại lý:</span> <?=$post['Agent_Name']?></div>
     <div style="padding:0px 5px;margin-top:10px"><span style="width:200px;display:inline-block">Điện thoại:</span> <a href="tel:<?=$post['Agent_Mobile']?>"><?=$post['Agent_Mobile']?></a></div>
     <div style="padding:0px 5px;margin-top:10px"><span style="width:200px;display:inline-block">Email:</span> <a href="mailto:<?=$post['Agent_Email']?>" target="_blank"><?=$post['Agent_Email']?></a></div>
     <div style="padding:0px 5px;margin-top:10px"><span style="width:200px;display:inline-block">Địa chỉ:</span> <?=$post['Agent_Address']?></div>

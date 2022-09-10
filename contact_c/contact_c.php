@@ -1,5 +1,14 @@
 <?php ob_start(); require_once('lib/atz.php');?>
-<?php 
+<?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
 class contact_controller extends atz{
 
 	public function __construct() { 
@@ -13,15 +22,6 @@ class contact_controller extends atz{
 			'Contact_Email'=>'',
 			'Contact_Message'=>''
 		);
-	}
-
-	public function get_page_content($id){
-
-		$data = $this->select('setting_page',array('Setting_Page_ID'=>$id));
-			
-		if(!empty($data)){
-			return $data[0];	
-		}
 	}
 
 	// Insert contact
@@ -63,18 +63,98 @@ class contact_controller extends atz{
 				// Insert
 				$post['Contact_Created'] = time();
 
-				$rs = $this->insert('contact', $post);
+				$last_id = $this->insert('contact', $post);
 
-				if($rs){
-					// $success = 'Gửi thành công';
-					// $rs = array('success' => $success);
-					echo 'Gửi thành công';exit;
+				if(!empty($last_id)){
+
+					// SEND MAIL
+					ob_start();
+						
+					// local host
+					include_once $this->site_url['root'].'email_contact.php';
+
+					$body = ob_get_contents();
+						
+					ob_end_clean();
+						
+					$mail = $this->send_mail($body,$post['Contact_Email'],$post['Contact_Name']);
+					// END SEND MAIL
+
+					// $success['main'] = 'Đặt hàng thành công! Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.\nThông tin liên hệ đã được gửi vào mail của bạn (Nếu không thấy mail xin hay kiểm tra thư mục spam)';
+					$rs = array('status' => 'success');
+
+
+				}else{
+					// $errors['main'] = 'Có lỗi xảy ra. Vui lòng thử lại sau!';
+					// $rs = array('error' => $errors);
+					$rs = array('status' => 'fail');
 				}
 
 			}else{
 				$rs = array('errors' => $errors);
 				return $rs;	
 			}
+		}
+	}
+
+	public function send_mail($body,$mail_to='',$mail_name=''){
+		
+		//Instantiation and passing `true` enables exception
+		$mail = new PHPMailer(true);
+		$mail->CharSet = 'UTF-8';
+
+		//Server settings
+		// $mail->SMTPDebug = 2;
+		$mail->IsSMTP(); // set mailer to use SMTP
+		$mail->SMTPOptions = array(
+		    'ssl' => array(
+		        'verify_peer' => false,
+		        'verify_peer_name' => false,
+		        'allow_self_signed' => true
+		    )
+		);
+		// $mail->Host = "smtp.gmail.com"; // specify main and backup server
+		$mail->Host = "mail.3nong.vn"; // specify main and backup server
+		$mail->Port = 465; // set the port to use
+		$mail->SMTPAuth = true; // turn on SMTP authentication
+		$mail->SMTPSecure = 'ssl'; 
+		$mail->Username = "noreply@3nong.vn"; // your SMTP username or your gmail username
+		$mail->Password = "vW3SBA4e"; // your SMTP password or your gmail password
+
+		//Recipients
+		$from = "noreply@3nong.vn"; // Reply to this email
+		$to = $mail_to; // Recipients email ID
+		$name = $mail_name; // Recipient's name
+
+		$replyto = SETTING['Setting_Email']; // Reply email ID
+		$replyname = SETTING['Setting_Title']; // Reply's name
+		
+		// $ccto = SETTING['Setting_Email']; // CC email ID
+		// $ccname = SETTING['Setting_Title']; // CC's name
+		
+		$mail->From = $from;
+		$mail->FromName = SETTING['Setting_Title']; // Name to indicate where the email came from when the recepient received
+
+		if($to && $name){
+			$mail->AddAddress($to,$name);	
+		}
+		$mail->AddAddress(SETTING['Setting_Email'],SETTING['Setting_Title']);
+
+		// $mail->AddCC($ccto,$ccname);
+		$mail->AddReplyTo($replyto,$replyname);
+		
+		$mail->WordWrap = 50; // set word wrap
+		$mail->IsHTML(true); // send as HTML
+		$mail->Subject = "Đặt hàng tại website ".$this->site_url['main'];
+		$mail->Body = $body;
+		$mail->AltBody = "Mail nay duoc gửi từ ".$this->site_url['main']; //Text Body
+
+		if(!$mail->Send()){
+		    // return "<h1>Loi khi goi mail: " . $mail->ErrorInfo . '</h1>';
+		    return 0;
+		}else{
+		    // return "<h1>Send mail thanh cong</h1>";
+		    return 1;
 		}
 	}
 }

@@ -68,15 +68,15 @@
 
             <div class="article-contact col-md-6">
                 <p><strong><?=SETTING['Setting_Company']?></strong></p>
-                <p><strong>Địa chỉ:&nbsp;</strong><?=SETTING['Setting_Address']?></p>
-                <p><strong>Kho:</strong>&nbsp;<?=SETTING['Setting_Address']?></p>
+                <p><strong>Địa chỉ:&nbsp;</strong><a href="https://goo.gl/maps/QU9ttGQYQEeD4Yy38" target="_blank"><?=SETTING['Setting_Address']?></a></p>
+                <p><strong>Kho:</strong>&nbsp;<a href="https://goo.gl/maps/QU9ttGQYQEeD4Yy38" target="_blank"><?=SETTING['Setting_Address']?></a></p>
                 <p><strong>Hotline:</strong> <?=SETTING['Setting_Phone']?></p>
                 <p><strong><strong>Email:&nbsp;</strong></strong><a href="mailto:<?=SETTING['Setting_Email']?>"><?=SETTING['Setting_Email']?></a></p>
                 <p><strong>MST:</strong>&nbsp;<?=SETTING['Setting_CompanyCode']?></p>
             </div>
 
             <div class="col-md-6">
-                <form class="form-contact" method="post" action="">
+                <form id="form-contact" class="form-contact" method="post" action="">
 
                     <div class="row">
 
@@ -85,30 +85,27 @@
                             <div class="information-contact">
                                 <div class="form-group form-row">
                                     <div class="col">
-                                        <input type="text" class="form-control" id="User_Name" name="User_Name" placeholder="Họ &amp; tên" required>
+                                        <input type="text" class="form-control" id="Contact_Name" name="Contact_Name" placeholder="Họ &amp; tên" required>
                                     </div>
                                     
                                 </div>
 
                                 <div class="form-group form-row">
-
                                     <div class="col">
-                                        <input type="text" class="form-control" id="User_Mobile" name="User_Mobile" placeholder="Số điện thoại" required>
+                                        <input type="text" class="form-control" id="Contact_Mobile" name="Contact_Mobile" placeholder="Số điện thoại" required>
                                     </div>
-                                    
-
                                     <div class="col">
-                                        <input type="text" class="form-control" id="User_Email" name="User_Email" placeholder="Email" required>
+                                        <input type="text" class="form-control" id="Contact_Email" name="Contact_Email" placeholder="Email">
                                     </div>    
                                 </div>
                                 <div class="form-group form-row">
                                     <div class="col">
-                                        <input type="text" class="form-control" id="User_Address" name="User_Address" placeholder="Địa chỉ" required>
+                                        <input type="text" class="form-control" id="Contact_Address" name="Contact_Address" placeholder="Địa chỉ">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <textarea class="form-control" id="User_Message" name="User_Message" placeholder="Lời nhắn" rows="8"></textarea>
+                                    <textarea class="form-control" id="Contact_Message" name="Contact_Message" placeholder="Lời nhắn" rows="8"></textarea>
                                 </div>
 
                                 <div class="form-group text-center">
@@ -122,7 +119,10 @@
                     </div>
                 </form>
             </div>
-            
+
+            <!-- <div class="col-md-12">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15674.255798612008!2d106.7314589!3d10.8446438!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x572a08c4496d4e11!2zQ8O0bmcgVHkgQ-G7lSBQaOG6p24gVGFtIE7DtG5n!5e0!3m2!1svi!2s!4v1662614552646!5m2!1svi!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div> -->
 
         </div>
     </div>
@@ -140,7 +140,7 @@
         <?php endif ?>
 
         $(document).ready(function() {
-            $('#contact-form').validate({
+            $('#form-contact').validate({
                 errorPlacement: function(error, element) {
                     var place = element.closest('.input-group');
                     if (!place.get(0)) {
@@ -196,10 +196,14 @@
                         type: "POST",             
                         data: $(form).serialize(),
                         cache: false,             
-                        processData: false,      
+                        processData: false,
+                        dataType: "json",    
                         success: function(data) {
-                            form.reset();
-                            alert(data);
+                            console.log(data.status);
+                            if(data.status == 'success'){
+                                window.location.replace("<?=$atz->site_url['main']?>lien-he-thanh-cong.html");
+                                form.reset();
+                            }
                         }
                     });
                     

@@ -1,6 +1,6 @@
-<?php require_once('agent_c/agent_c.php');?>
+<?php // require_once('contact_c/contact_c.php');?>
 <?php 
-    $atz = new agent_controller();
+   // $atz = new contact_controller();
 ?>
 
 <!doctype html>
@@ -17,7 +17,7 @@
     <meta name="description" content="<?=$page_content['Setting_Page_Description_vi']?>">
     <meta name="keywords" content="<?=SETTING['Setting_Keywords']?>">
 
-    <title>Đăng ký đại lý thành công | <?=SETTING['Setting_Title']?></title>
+    <title>Đặt hàng thành công | <?=SETTING['Setting_Title']?></title>
 
 </head>
 
@@ -41,13 +41,13 @@
             <div class="col-md-12 mb-3">
                 <div class="content-main w-clear block">
                     <div class="block-title text-center">
-                        <h1>ĐĂNG KÝ ĐẠI LÝ</h1>
+                        <h1>ĐẶT HÀNG THÀNH CÔNG</h1>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-12 text-center">
-                <p class="font-weight-bold">Đăng ký đại lý thành công. Chúng tôi sẽ liên hệ trong thời gian sớm nhất</p>
+                <p class="font-weight-bold">Đặt hàng thành công. Chúng tôi sẽ liên hệ trong thời gian sớm nhất.</p>
             </div>
 
         </div>

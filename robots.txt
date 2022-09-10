@@ -5,3 +5,6 @@ Disallow: /admin/
 Disallow: /lib/
 Disallow: /PHPMailer/
 Disallow: /cart.php
+Disallow: /email.php
+Disallow: /email_contact.php
+Disallow: /email_agent.php
