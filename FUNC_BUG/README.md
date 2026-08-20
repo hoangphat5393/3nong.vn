@@ -22,7 +22,8 @@ Tài liệu này lưu trữ danh mục các lỗi đã từng xảy ra, phân t�
 | Mã Lỗi | Tên Lỗi & Hiện Tượng | Nguyên Nhân Chính | Tài Liệu Chi Tiết |
 | :--- | :--- | :--- | :--- |
 | **SRC-01** | **CKFinder: Mã 109 ("Invalid request") & HTTP 500 Internal Server Error** | Xung đột token CSRF riêng của CKFinder trong Iframe và Service Binding sai phương thức trong `CKFinderServiceProvider`. | [Xem chi tiết](file:///e:/web/vattunongnghiep58/FUNC_BUG/02_BUG_CKFINDER_109_500.md) |
-| **SRC-02** | **Cú pháp Blade: ParseError `unexpected token ","` tại `single.blade.php`** | Thiếu thẻ đóng `@endphp` trước khi gọi `@include('backend.partials.quote')` khiến mã Blade bị lồng vào khối PHP thuần. | [Xem chi tiết](file:///e:/web/vattunongnghiep58/FUNC_BUG/03_BUG_BLADE_SYNTAX_PARSE_ERROR.md) |
+| **CODE-02** | **Lỗi cú pháp Blade Parse Error do nhúng `@include` sai bên trong thẻ `@script`** | Thẻ `@script` của Livewire/Blade xử lý nội dung như Javascript thuần, nhúng `@include` vào bên trong gây lỗi cú pháp PHP/Blade khi compile view. | [Xem chi tiết](file:///e:/web/vattunongnghiep58/FUNC_BUG/03_BUG_BLADE_SYNTAX_PARSE_ERROR.md) |
+| **CODE-03** | **Lỗi "Hệ thống phát hiện hành vi bất thường" khi gửi Form liên hệ trên Local/Dev** | Google reCAPTCHA v3 trả về `false` do domain `.test` không nằm trong whitelist, dẫn đến biểu thức `false < 0.3` đánh giá thành `true`. | [Xem chi tiết](file:///e:/web/vattunongnghiep58/FUNC_BUG/05_BUG_RECAPTCHA_BLOCK_ON_LOCAL_ENVIRONMENT.md) |
 
 ---
 
