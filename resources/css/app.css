@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+/* Khoảng cách cho sidebar sticky (product): = chiều cao header sticky + nav. Chỉnh nếu đổi logo/menu. */
+@layer base {
+    :root {
+        --site-header-sticky-height: 11rem;
+    }
+}
+
+@theme {
+    --font-sans: "Nunito", "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    --color-leaf-50: #f4fbe9;
+    --color-leaf-100: #e5f4c7;
+    --color-leaf-200: #d3eea2;
+    --color-leaf-300: #bee778;
+    --color-leaf-400: #a3dd52;
+    --color-leaf-500: #7cc72f;
+    --color-leaf-600: #5ca91d;
+    --color-leaf-700: #3c7c16;
+    --color-leaf-800: #275514;
+    --color-leaf-900: #16350b;
+}
+
+@layer utilities {
+    .curved-bottom {
+        border-bottom-left-radius: 50% 20px;
+        border-bottom-right-radius: 50% 20px;
+    }
+
+    /* Sidebar danh mục sản phẩm: chiều cao cuộn tối đa khi menu dài */
+    .max-h-product-sidebar-scroll {
+        max-height: calc(100vh - var(--site-header-sticky-height) - 1rem);
+    }
+
+    /* Đăng nhập / đăng ký — width cố định (max-w-md chưa luôn có trong build) */
+    .auth-form-shell {
+        width: 100%;
+        max-width: 26rem;
+        margin-inline: auto;
+    }
+}
+
+/*
+ * Mobile off-canvas (header.blade.php): stacking must not depend only on Tailwind z-[…] classes.
+ * If those utilities are missing from a build, z-index stays auto and <main> (later in the DOM)
+ * paints above fixed overlay/panel — menu appears "behind" the page.
+ */
+#mobile-menu-overlay {
+    z-index: 99998 !important;
+}
+
+#mobile-menu {
+    z-index: 99999 !important;
+    font-family: var(--font-sans);
+    border-right: 1px solid #e5e7eb;
+}
+
+#mobile-menu a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Desktop menu cấp 2: định vị + hiện/ẩn dùng utility Tailwind trên header (group / group-hover / group-[.is-open]). */
+
+@layer components {
+    .nav-mobile-details[open] .nav-mobile-details-chevron {
+        transform: rotate(180deg);
+    }
+}
