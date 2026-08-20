@@ -12,6 +12,7 @@ Tài liệu này lưu trữ danh mục các lỗi đã từng xảy ra, phân t�
 | Mã Lỗi | Tên Lỗi & Hiện Tượng | Nguyên Nhân Chính | Tài Liệu Chi Tiết |
 | :--- | :--- | :--- | :--- |
 | **ENV-01** | **Truy cập domain ảo (`.test`) bị tự động tải file `index.php` (1.892 B) về máy** | File cấu hình Virtual Host của Laragon đặt sai `DocumentRoot` (trỏ vào thư mục cha thay vì `/public`) kết hợp xung đột `AddHandler` của cPanel. | [Xem chi tiết](file:///e:/web/vattunongnghiep58/FUNC_BUG/01_BUG_VIRTUALHOST_AUTO_DOWNLOAD_FILE.md) |
+| **ENV-02** | **Lỗi `InvalidArgumentException: Please provide a valid cache path` khi chạy composer trên server** | Hàm `realpath(storage_path('framework/views'))` trả về `false` do thư mục chưa được tạo khi git clone/pull lên server. | [Xem chi tiết](file:///e:/web/vattunongnghiep58/FUNC_BUG/04_BUG_INVALID_CACHE_PATH_STORAGE_VIEWS.md) |
 
 ---
 
