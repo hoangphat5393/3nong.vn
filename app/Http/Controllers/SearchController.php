@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Frontend\Category;
 use App\Models\Frontend\Product;
 use App\Traits\FrontendDataTransform;
 use App\Traits\LocalizeController;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Str;
 
 class SearchController extends Controller
 {
@@ -20,29 +22,50 @@ class SearchController extends Controller
         $this->localized();
         $lc = app()->getLocale();
 
-        $this->data['keyword'] = $request->input('keyword', '');
+        // Lấy từ khóa tìm kiếm (hỗ trợ cả 'q', 'keyword', 's')
+        $keyword = trim($request->input('q') ?? $request->input('keyword') ?? $request->input('s') ?? '');
+        $this->data['keyword'] = $keyword;
 
-        if ($request->filled('keyword')) {
-            $keyword = '%'.$request->input('keyword').'%';
+        $nameCol = ($lc === 'vi') ? 'name' : 'name_'.$lc;
 
+        if (! empty($keyword)) {
             $query = Product::query()->where('status', 1);
 
-            if ($lc === 'vi') {
-                $query->where('name', 'like', $keyword);
-            } else {
-                $query->where('name_'.$lc, 'like', $keyword);
-            }
+            $query->where(function ($q) use ($keyword, $nameCol) {
+                // Khớp trọn cụm từ khóa hoặc slug
+                $q->where($nameCol, 'like', '%'.$keyword.'%')
+                    ->orWhere('slug', 'like', '%'.Str::slug($keyword).'%');
+
+                // Khớp từng từ đơn nếu nhập nhiều từ
+                $words = array_filter(explode(' ', $keyword));
+                if (count($words) > 1) {
+                    $q->orWhere(function ($subQ) use ($nameCol, $words) {
+                        foreach ($words as $w) {
+                            $subQ->where($nameCol, 'like', '%'.$w.'%');
+                        }
+                    });
+                }
+            });
 
             $products = $query
-                ->select('id', 'name', 'slug', 'image', 'price', 'price_type')
-                ->paginate(6);
+                ->select('id', 'name', 'slug', 'image', 'price', 'sale_price', 'price_type', 'unit', 'sort')
+                ->orderByDesc('sort')
+                ->orderByDesc('id')
+                ->paginate(12)
+                ->appends(['q' => $keyword]);
 
             $products->through(fn (Product $product) => $this->transformProductCard($product));
 
             $this->data['products'] = $products;
         } else {
-            $this->data['products'] = new LengthAwarePaginator([], 0, 6);
+            $this->data['products'] = new LengthAwarePaginator([], 0, 12);
         }
+
+        // Lấy danh mục sản phẩm cho Sidebar
+        $this->data['categories'] = Category::where(['status' => 1, 'parent' => 0])
+            ->with(['children' => fn ($q) => $q->where('status', 1)->orderBy('sort', 'asc')])
+            ->orderBy('sort', 'asc')
+            ->get(['id', 'name', 'slug', 'image', 'parent', 'sort']);
 
         return view('frontend.search', $this->data);
     }

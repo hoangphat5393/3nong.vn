@@ -91,6 +91,13 @@ class FrontendPagesTest extends TestCase
         $this->get(route('search'))->assertOk();
     }
 
+    public function test_search_page_with_query_param_finds_products(): void
+    {
+        $response = $this->get(route('search', ['q' => 'Bình']));
+        $response->assertOk();
+        $response->assertSee('KẾT QUẢ TÌM KIẾM');
+    }
+
     public function test_error_404_view_renders_with_tailwind_layout(): void
     {
         $html = view('errors.404')->render();
