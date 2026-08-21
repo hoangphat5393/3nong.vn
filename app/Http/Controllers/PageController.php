@@ -145,7 +145,7 @@ class PageController extends Controller
                 return $html;
             }
         } else {
-            return view('errors.404');
+            abort(404);
         }
     }
 

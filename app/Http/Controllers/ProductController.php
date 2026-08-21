@@ -133,7 +133,7 @@ class ProductController extends Controller
             // }
             return view('frontend.product.category', $this->data);
         } else {
-            return view('errors.404');
+            abort(404);
         }
         // return $this->productDetail($slug);
     }

@@ -103,6 +103,10 @@ class FrontendPagesTest extends TestCase
         $this->get(route('404.v1'))->assertStatus(404);
         $this->get(route('404.v2'))->assertStatus(404);
         $this->get(route('404.v3'))->assertStatus(404);
+
+        $response = $this->get('/aefawe');
+        $response->assertStatus(404);
+        $response->assertSee('Liên kết không tồn tại');
     }
 
     public function test_frontend_pages_use_tailwind_v4_canonical_grow_class(): void
