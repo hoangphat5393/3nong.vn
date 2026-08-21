@@ -76,12 +76,17 @@ class ContactController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        // Xác định loại liên hệ
+        $contactType = ! empty($detail['type']) ? $detail['type'] : $request->input('type', 'contact');
+        $contactType = in_array($contactType, ['agent', 'contact', 'consultation']) ? $contactType : 'contact';
+
         // Recaptcha Verification (if available)
         $score = 1.0;
         $recaptchaToken = $request->get('g-recaptcha-response');
         if (! empty($recaptchaToken) && class_exists('Lunaweb\RecaptchaV3\Facades\RecaptchaV3')) {
             try {
-                $score = RecaptchaV3::verify($recaptchaToken, 'contact');
+                $recaptchaAction = $contactType === 'agent' ? 'agent' : 'contact';
+                $score = RecaptchaV3::verify($recaptchaToken, $recaptchaAction);
             } catch (\Throwable $e) {
                 $score = 1.0;
             }
@@ -100,9 +105,6 @@ class ContactController extends Controller
         }
 
         // Lưu thông tin liên hệ vào Database
-        $contactType = ! empty($detail['type']) ? $detail['type'] : $request->input('type', 'contact');
-        $contactType = in_array($contactType, ['agent', 'contact', 'consultation']) ? $contactType : 'contact';
-
         $data = [
             'name' => trim($detail['name'] ?? ''),
             'email' => trim($detail['email'] ?? ''),
