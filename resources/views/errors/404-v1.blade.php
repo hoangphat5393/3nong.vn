@@ -32,7 +32,7 @@
 
         {{-- Main Glassmorphism Card --}}
         <div class="row justify-content-center py-3 py-md-4">
-            <div class="col-12 col-md-10 col-lg-8">
+            <div class="col-12 col-lg-10">
                 <div class="bg-dark bg-opacity-50 rounded-4 border border-secondary border-opacity-25 p-4 p-md-5 text-center shadow-lg position-relative overflow-hidden" style="backdrop-filter: blur(10px);">
                     
                     {{-- Decorative background glow --}}
@@ -47,39 +47,43 @@
 
                     {{-- Badge --}}
                     <div class="mb-3">
-                        <span class="badge bg-warning bg-opacity-25 text-warning px-3 py-2 rounded-pill fw-bold text-uppercase" style="letter-spacing: 1px; font-size: 13px;">
+                        <span class="badge bg-warning bg-opacity-25 text-warning px-3 py-2 rounded-pill fw-bold text-uppercase d-inline-flex align-items-center gap-1" style="letter-spacing: 1px; font-size: 13px;">
                             <i class="fa-solid fa-seedling me-1"></i> Trang Không Tồn Tại
                         </span>
                     </div>
 
                     {{-- Title & Subtitle --}}
-                    <h1 class="h3 fw-bold text-white mb-3">
-                        Ối! Trang này đã chuyển đi đâu mất rồi
+                    <h1 class="h2 fw-bold text-white mb-3">
+                        Liên kết không tồn tại
                     </h1>
-                    <p class="text-white-50 mb-4 mx-auto" style="max-width: 520px; font-size: 15px; line-height: 1.6;">
+                    <p class="text-white-50 mb-4 mx-auto" style="max-width: 600px; font-size: 15px; line-height: 1.6;">
                         Đường dẫn bạn truy cập có thể đã đổi hoặc tạm thời gián đoạn. Đừng lo, Tam Nông luôn có nguồn thực phẩm sạch & vật tư tươi mới đang chờ bạn khám phá!
                     </p>
 
                     {{-- Quick Search Form --}}
-                    <div class="mb-4 mx-auto" style="max-width: 440px;">
-                        <form action="{{ route('search') }}" method="GET" class="d-flex shadow-sm rounded-pill overflow-hidden bg-white p-1">
+                    <div class="mb-4 mx-auto" style="max-width: 480px;">
+                        <form action="{{ route('search') }}" method="GET" class="d-flex align-items-center shadow-sm rounded-pill overflow-hidden bg-white p-1">
                             <input type="search" name="q" class="form-control border-0 px-3 shadow-none text-dark" placeholder="Tìm sản phẩm bạn cần..." aria-label="Tìm kiếm">
-                            <button class="btn btn-success rounded-pill px-4 fw-bold" type="submit">
-                                <i class="fa-solid fa-magnifying-glass me-1"></i> Tìm
+                            <button class="btn btn-success rounded-pill px-4 py-2 fw-bold d-inline-flex align-items-center justify-content-center text-nowrap gap-2 flex-shrink-0" type="submit">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <span>Tìm kiếm</span>
                             </button>
                         </form>
                     </div>
 
                     {{-- Call to Actions --}}
                     <div class="d-flex justify-content-center gap-3 flex-wrap pt-2">
-                        <a href="{{ route('home') }}" class="btn btn-gold btn-lg rounded-pill px-4 py-2 fs-6 fw-bold shadow">
-                            <i class="fa-solid fa-house me-1"></i> Về Trang Chủ
+                        <a href="{{ route('home') }}" class="btn btn-gold btn-lg rounded-pill px-4 py-2 fs-6 fw-bold shadow d-inline-flex align-items-center justify-content-center gap-2 text-nowrap">
+                            <i class="fa-solid fa-house"></i>
+                            <span>Về Trang Chủ</span>
                         </a>
-                        <a href="{{ route('product') }}" class="btn btn-outline-light btn-lg rounded-pill px-4 py-2 fs-6 fw-bold">
-                            <i class="fa-solid fa-basket-shopping me-1"></i> Xem Sản Phẩm
+                        <a href="{{ route('product') }}" class="btn btn-outline-light btn-lg rounded-pill px-4 py-2 fs-6 fw-bold d-inline-flex align-items-center justify-content-center gap-2 text-nowrap">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                            <span>Xem Sản Phẩm</span>
                         </a>
-                        <a href="tel:{{ str_replace(' ', '', setting_option('phone', '0932 009 180')) }}" class="btn btn-outline-warning btn-lg rounded-pill px-4 py-2 fs-6 fw-bold">
-                            <i class="fa-solid fa-phone me-1"></i> Hotline: {{ setting_option('phone', '0932 009 180') }}
+                        <a href="tel:{{ str_replace(' ', '', setting_option('phone', '0932 009 180')) }}" class="btn btn-outline-warning btn-lg rounded-pill px-4 py-2 fs-6 fw-bold d-inline-flex align-items-center justify-content-center gap-2 text-nowrap">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>Hotline: {{ setting_option('phone', '0932 009 180') }}</span>
                         </a>
                     </div>
 
