@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    <div class="contact-page py-4">
+    <div class="contact-page-2 py-4">
         <div class="container">
             {{-- Breadcrumb --}}
             <div class="post-breadcrumb mb-4">
