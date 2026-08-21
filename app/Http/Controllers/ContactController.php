@@ -135,19 +135,19 @@ class ContactController extends Controller
                 $mail_content = preg_replace($dataFind, $data, $mail_content);
             } else {
                 $typeLabel = $contactType === 'agent' ? 'Đại lý' : 'Liên hệ';
-                $mail_content = 'Loại: '.$typeLabel.'<br>'
-                    .'Họ tên: '.e($data['name']).'<br>'
-                    .'Email: '.e($data['email']).'<br>'
-                    .'SĐT: '.e($data['phone']).'<br>'
-                    .'Địa chỉ: '.e($data['address']).'<br>'
-                    .'Nội dung: '.nl2br(e($data['content']));
+                $mail_content = 'Loại: ' . $typeLabel . '<br>'
+                    . 'Họ tên: ' . e($data['name']) . '<br>'
+                    . 'Email: ' . e($data['email']) . '<br>'
+                    . 'SĐT: ' . e($data['phone']) . '<br>'
+                    . 'Địa chỉ: ' . e($data['address']) . '<br>'
+                    . 'Nội dung: ' . nl2br(e($data['content']));
             }
 
             $sub = setting_option('webtitle', '3 NÔNG');
             $adminEmail = setting_option('email_admin', config('mail.from.address', 'tamnong.corp@gmail.com'));
             $from_mail = [$adminEmail ?: 'tamnong.corp@gmail.com', setting_option('webtitle', '3 NÔNG')];
             $typeTitle = $contactType === 'agent' ? 'Đăng ký làm đại lý' : 'Đăng ký tư vấn';
-            $subject = $sub.' - '.$typeTitle.' ('.date('Y-m-d H:i:s').')';
+            $subject = $sub . ' - ' . $typeTitle . ' (' . date('Y-m-d H:i:s') . ')';
 
             if (! empty($data['email'])) {
                 Mail::send([], [], function ($message) use ($data, $from_mail, $subject, $mail_content) {
@@ -167,7 +167,7 @@ class ContactController extends Controller
                 });
             }
         } catch (\Throwable $e) {
-            Log::error('Contact mail send error: '.$e->getMessage());
+            Log::error('Contact mail send error: ' . $e->getMessage());
         }
 
         $redirectUrl = route('contact_completed');

@@ -13,7 +13,7 @@
         "laravel-vite-plugin": "^2.1.0",
         "lodash": "^4.18.1",
         "postcss": "^8.5.26",
-        "sass": "^1.102.0",
+        "sass": "^1.103.1",
         "vite": "^7.3.6",
         "waypoints": "^4.0.1",
         "zod": "^4.4.3"
