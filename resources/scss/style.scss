@@ -1244,3 +1244,12 @@ header .btn-call:hover {
         color: #4bac4d;
     }
 }
+
+/* ==========================================================================
+   Page and Component Modules
+   ========================================================================== */
+@import 'components/shared';
+@import 'pages/contact';
+@import 'pages/agent';
+@import 'pages/about';
+@import 'pages/news';

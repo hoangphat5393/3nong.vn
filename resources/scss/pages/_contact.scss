@@ -1,0 +1,196 @@
+/* Contact Pages Styles (contact, contact-new, contact-2) */
+
+.contact-page {
+    background-color: #f8faf9;
+}
+
+.contact-page-container {
+    padding: 20px 0 40px;
+}
+
+.contact-breadcrumb {
+    color: #d1d5db;
+    font-size: 14px;
+
+    a {
+        color: #d1d5db;
+        text-decoration: none;
+        transition: color 0.2s;
+
+        &:hover {
+            color: #f5a623;
+        }
+    }
+}
+
+.contact-card-block {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 28px;
+}
+
+.contact-hero-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f4fbf5 100%);
+    padding: 32px 32px 24px;
+    border-bottom: 1px solid #edf2f0;
+}
+
+.contact-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(30, 126, 52, 0.1);
+    color: #1e7e34;
+    border: 1px solid rgba(30, 126, 52, 0.25);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.contact-hero-title {
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: #1e7e34;
+    line-height: 1.35;
+    margin-bottom: 8px;
+
+    .text-gold {
+        color: #f5a623;
+    }
+}
+
+.contact-hero-desc {
+    color: #4a5568;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.contact-info-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.contact-info-item {
+    background: #f8faf7;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    border: 1px solid #e6ede6;
+    margin-bottom: 14px;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+
+    &:hover {
+        transform: translateX(4px);
+        border-color: #1e7e34;
+        box-shadow: 0 4px 14px rgba(30, 126, 52, 0.1);
+        background: #ffffff;
+
+        .contact-icon-box {
+            background-color: #f5a623;
+            color: #ffffff;
+        }
+    }
+}
+
+.contact-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.contact-icon-box {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-color: rgba(30, 126, 52, 0.12);
+    color: #1e7e34;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.contact-info-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #718096;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.contact-info-value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0;
+}
+
+.fast-action-card {
+    background: linear-gradient(135deg, #1e7e34 0%, #155724 100%);
+    border-radius: 12px;
+    padding: 20px;
+    color: #ffffff;
+    margin-top: 18px;
+}
+
+.contact-form-box {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    border: 1px solid #eef2f0;
+}
+
+.contact-form-wrapper {
+    padding: 10px 0;
+}
+
+.form-label-custom {
+    font-size: 13px;
+    font-weight: 700;
+    color: #4a5568;
+    margin-bottom: 6px;
+}
+
+.form-control-custom {
+    background-color: #f8faf7;
+    border: 1px solid #cbd5e0;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #2d3748;
+    transition: all 0.2s ease;
+
+    &:focus {
+        background-color: #ffffff;
+        border-color: #1e7e34;
+        box-shadow: 0 0 0 0.2rem rgba(30, 126, 52, 0.18);
+        outline: none;
+    }
+}
+
+.form-contact .form-control:focus,
+.contact-page .form-control:focus {
+    border-color: #2e7d32;
+    box-shadow: 0 0 0 0.2rem rgba(46, 125, 50, 0.2);
+}

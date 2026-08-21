@@ -9,47 +9,6 @@
     ])
 @endsection
 
-@push('head-style')
-    <style>
-        .agent-wrapper-2 {
-            background-color: #f8faf9;
-            color: #2b2b2b;
-        }
-
-        .package-card-2 {
-            background: #ffffff;
-            border-radius: 14px;
-            padding: 24px;
-            border: 1px solid #eef2f0;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-            margin-bottom: 20px;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .package-card-2:hover {
-            border-color: #2e7d32;
-            transform: translateY(-2px);
-        }
-
-        .sticky-form-box-2 {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 32px 28px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
-            border: 2px solid #e8f5e9;
-            position: sticky;
-            top: 90px;
-        }
-
-        .error-feedback {
-            color: #dc3545;
-            font-size: 12px;
-            margin-top: 4px;
-            display: block;
-        }
-    </style>
-@endpush
-
 @section('content')
     <!-- THANH ĐIỀU HƯỚNG XEM THỬ MẪU -->
     <div class="bg-warning text-dark py-2 px-3 text-center fw-bold border-bottom shadow-sm">

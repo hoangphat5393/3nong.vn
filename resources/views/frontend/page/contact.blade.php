@@ -11,36 +11,6 @@
     ])
 @endsection
 
-@push('head-style')
-    <style>
-        .contact-icon-wrapper {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background-color: #e8f5e9;
-            color: #2e7d32;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-
-        .error-feedback {
-            color: #dc3545;
-            font-size: 12px;
-            margin-top: 4px;
-            display: block;
-            font-weight: 500;
-        }
-
-        .form-contact .form-control:focus {
-            border-color: #2e7d32;
-            box-shadow: 0 0 0 0.2rem rgba(46, 125, 50, 0.2);
-        }
-    </style>
-@endpush
-
 @section('content')
     <div class="container py-4 contact-page">
         {{-- Breadcrumb --}}

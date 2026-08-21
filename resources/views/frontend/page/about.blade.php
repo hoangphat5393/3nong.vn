@@ -9,47 +9,6 @@
     ])
 @endsection
 
-@push('head-style')
-    <style>
-        .about-basic-page {
-            color: #2d3748;
-            line-height: 1.8;
-        }
-
-        .about-basic-page h2 {
-            color: #1e7e34;
-            font-weight: 700;
-            font-size: 1.35rem;
-            margin-top: 24px;
-            margin-bottom: 12px;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 6px;
-        }
-
-        .about-basic-page p {
-            margin-bottom: 16px;
-            text-align: justify;
-        }
-
-        .about-basic-page ul {
-            padding-left: 20px;
-            margin-bottom: 16px;
-        }
-
-        .about-basic-page li {
-            margin-bottom: 8px;
-        }
-
-        .about-feature-box {
-            background-color: #f8faf7;
-            border-left: 4px solid #1e7e34;
-            padding: 16px 20px;
-            border-radius: 6px;
-            margin: 20px 0;
-        }
-    </style>
-@endpush
-
 @section('content')
     <div class="container py-4">
         {{-- Breadcrumb --}}

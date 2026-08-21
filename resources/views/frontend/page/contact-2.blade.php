@@ -9,54 +9,6 @@
     ])
 @endsection
 
-@push('head-style')
-    <style>
-        .contact-page {
-            background-color: #f8faf9;
-        }
-
-        .contact-info-card {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-
-        .contact-icon-wrapper {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background-color: #e8f5e9;
-            color: #2e7d32;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        .contact-form-box {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 32px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-            border: 1px solid #eef2f0;
-        }
-
-        .form-control:focus {
-            border-color: #2e7d32;
-            box-shadow: 0 0 0 0.2rem rgba(46, 125, 50, 0.2);
-        }
-
-        .error-feedback {
-            color: #dc3545;
-            font-size: 12px;
-            margin-top: 4px;
-            display: block;
-        }
-    </style>
-@endpush
-
 @section('content')
     <div class="contact-page py-4">
         <div class="container">
