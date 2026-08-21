@@ -237,5 +237,10 @@ Route::get('contact-completed', 'ContactController@completed')->name('contact_co
 // Search
 Route::get('search', 'SearchController@index')->name('search');
 
+// 404 Preview Routes
+Route::get('404-v1', fn () => response()->view('errors.404-v1', [], 404))->name('404.v1');
+Route::get('404-v2', fn () => response()->view('errors.404-v2', [], 404))->name('404.v2');
+Route::get('404-v3', fn () => response()->view('errors.404-v3', [], 404))->name('404.v3');
+
 // Generic Static Page
 Route::get('{slug}', 'PageController@page')->name('page');

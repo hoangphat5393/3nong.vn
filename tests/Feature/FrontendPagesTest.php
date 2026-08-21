@@ -98,12 +98,11 @@ class FrontendPagesTest extends TestCase
         $response->assertSee('KẾT QUẢ TÌM KIẾM');
     }
 
-    public function test_error_404_view_renders_with_tailwind_layout(): void
+    public function test_404_preview_pages_are_accessible(): void
     {
-        $html = view('errors.404')->render();
-
-        $this->assertStringContainsString('grow', $html);
-        $this->assertStringNotContainsString('flex-grow', $html);
+        $this->get(route('404.v1'))->assertStatus(404);
+        $this->get(route('404.v2'))->assertStatus(404);
+        $this->get(route('404.v3'))->assertStatus(404);
     }
 
     public function test_frontend_pages_use_tailwind_v4_canonical_grow_class(): void
