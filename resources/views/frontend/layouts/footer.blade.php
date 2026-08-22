@@ -22,7 +22,7 @@
 </div>
 
 <footer class="footer-area pb-0 mb-0">
-    <div class="footer-cat pt-3">
+    <div class="footer-cat">
         <div class="container">
             <div class="row py-3">
                 <div class="col-md-4">
