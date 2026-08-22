@@ -26,22 +26,22 @@ class SearchController extends Controller
         $keyword = trim($request->input('q') ?? $request->input('keyword') ?? $request->input('s') ?? '');
         $this->data['keyword'] = $keyword;
 
-        $nameCol = ($lc === 'vi') ? 'name' : 'name_'.$lc;
+        $nameCol = ($lc === 'vi') ? 'name' : 'name_' . $lc;
 
         if (! empty($keyword)) {
             $query = Product::query()->where('status', 1);
 
             $query->where(function ($q) use ($keyword, $nameCol) {
                 // Khớp trọn cụm từ khóa hoặc slug
-                $q->where($nameCol, 'like', '%'.$keyword.'%')
-                    ->orWhere('slug', 'like', '%'.Str::slug($keyword).'%');
+                $q->where($nameCol, 'like', '%' . $keyword . '%')
+                    ->orWhere('slug', 'like', '%' . Str::slug($keyword) . '%');
 
                 // Khớp từng từ đơn nếu nhập nhiều từ
                 $words = array_filter(explode(' ', $keyword));
                 if (count($words) > 1) {
                     $q->orWhere(function ($subQ) use ($nameCol, $words) {
                         foreach ($words as $w) {
-                            $subQ->where($nameCol, 'like', '%'.$w.'%');
+                            $subQ->where($nameCol, 'like', '%' . $w . '%');
                         }
                     });
                 }
@@ -54,7 +54,7 @@ class SearchController extends Controller
                 ->paginate(12)
                 ->appends(['q' => $keyword]);
 
-            $products->through(fn (Product $product) => $this->transformProductCard($product));
+            $products->through(fn(Product $product) => $this->transformProductCard($product));
 
             $this->data['products'] = $products;
         } else {
@@ -63,7 +63,7 @@ class SearchController extends Controller
 
         // Lấy danh mục sản phẩm cho Sidebar
         $this->data['categories'] = Category::where(['status' => 1, 'parent' => 0])
-            ->with(['children' => fn ($q) => $q->where('status', 1)->orderBy('sort', 'asc')])
+            ->with(['children' => fn($q) => $q->where('status', 1)->orderBy('sort', 'asc')])
             ->orderBy('sort', 'asc')
             ->get(['id', 'name', 'slug', 'image', 'parent', 'sort']);
 
@@ -78,11 +78,11 @@ class SearchController extends Controller
 
             $db = self::select('*');
             foreach ($ex as $v) {
-                $v = '%'.addslashes($v).'%';
+                $v = '%' . addslashes($v) . '%';
                 if ($lc == 'vi') {
                     $db->orwhere('name', 'like', $v);
                 } else {
-                    $db->orwhere('name_'.$lc, 'like', $v);
+                    $db->orwhere('name_' . $lc, 'like', $v);
                 }
             }
             foreach ($ex as $v) {
@@ -92,7 +92,7 @@ class SearchController extends Controller
         if ($lc == 'vi') {
             $db->orderby('name', 'asc');
         } else {
-            $db->orderby('name_'.$lc, 'asc');
+            $db->orderby('name_' . $lc, 'asc');
         }
         $result = $db->paginate(20)->appends('keyword', $keyword);
 
