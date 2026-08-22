@@ -43,7 +43,7 @@ class FrontendPagesTest extends TestCase
 
     public function test_footer_renders_tax_code_when_configured(): void
     {
-        \Illuminate\Support\Facades\DB::table('settings')->updateOrInsert(
+        DB::table('settings')->updateOrInsert(
             ['name' => 'tax_code'],
             ['content' => '0305162238', 'type' => 'line']
         );

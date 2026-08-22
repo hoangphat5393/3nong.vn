@@ -502,22 +502,22 @@
                             <i class="fa fa-sort"></i>
                         </div>
                         <div class="left_item_theme left_genate">
-                            <input type="text" class="form-control" value="" placeholder="Please enter Name Field" name="header_option[line][name][]" />
+                            <input type="text" class="form-control" value="" placeholder="@lang('admin.please_enter_name_field')" name="header_option[line][name][]" />
                         </div>
                         <div class="right_item_theme right_genate">
-                            <input type="text" class="form-control regular-text" placeholder="Please enter Value Field" name="header_option[line][value][]" value="" />
-                            <input type="button" class="btn btn-danger button button-secondary tbl_button_delete_clean" value="Delete" name="delete_tbl">
+                            <input type="text" class="form-control regular-text" placeholder="@lang('admin.please_enter_value_field')" name="header_option[line][value][]" value="" />
+                            <input type="button" class="btn btn-danger button button-secondary tbl_button_delete_clean" value="@lang('admin.delete')" name="delete_tbl">
                         </div>
                     </div>`;
                 var content = `<div class="group_item_theme">
                     <div class="icon_change_postion"><i class="fa fa-sort"></i></div>
-                    <div class="left_item_theme left_genate"><input type="text" class="form-control" value="" placeholder="Please enter Name Field"  name="header_option[text][name][]" /></div>
-                    <div class="right_item_theme right_genate"><textarea class="form-control regular-area" name="header_option[text][value][]" cols="5" rows="5" placeholder="Please enter Value Field"></textarea><input type="button" class="btn btn-danger button button-secondary tbl_button_delete_clean" value="Delete" name="delete_tbl"></div>
+                    <div class="left_item_theme left_genate"><input type="text" class="form-control" value="" placeholder="@lang('admin.please_enter_name_field')"  name="header_option[text][name][]" /></div>
+                    <div class="right_item_theme right_genate"><textarea class="form-control regular-area" name="header_option[text][value][]" cols="5" rows="5" placeholder="@lang('admin.please_enter_value_field')"></textarea><input type="button" class="btn btn-danger button button-secondary tbl_button_delete_clean" value="@lang('admin.delete')" name="delete_tbl"></div>
                     </div>`;
                 var content_editor = `<div class="group_item_theme">
                     <div class="icon_change_postion"><i class="fa fa-sort"></i></div>
-                    <div class="left_item_theme left_genate"><input type="text" class="form-control" value="" placeholder="Please enter Name Field" name="header_option[editor][name][]" /></div>
-                    <div class="right_item_theme right_genate"><textarea class="form-control regular-area" name="header_option[editor][value][]" cols="5" rows="5" placeholder="Please enter Value Field"></textarea><input type="button" class="btn btn-danger button button-secondary tbl_button_delete_clean" value="Delete" name="delete_tbl"></div>
+                    <div class="left_item_theme left_genate"><input type="text" class="form-control" value="" placeholder="@lang('admin.please_enter_name_field')" name="header_option[editor][name][]" /></div>
+                    <div class="right_item_theme right_genate"><textarea class="form-control regular-area" name="header_option[editor][value][]" cols="5" rows="5" placeholder="@lang('admin.please_enter_value_field')"></textarea><input type="button" class="btn btn-danger button button-secondary tbl_button_delete_clean" value="@lang('admin.delete')" name="delete_tbl"></div>
                 </div>`;
 
                 var image_input = $('.inlcude-image').find('.group_item_theme').clone();
@@ -562,7 +562,7 @@
                             toast: true,
                             position: 'top-end',
                             icon: 'warning',
-                            title: 'Vui lòng chọn loại trường khởi tạo!',
+                            title: "@lang('admin.choose_field_create')",
                             showConfirmButton: false,
                             timer: 3000,
                             timerProgressBar: true
@@ -574,16 +574,16 @@
                 event.preventDefault();
                 var elem = $(this).parent().parent();
                 $.confirm({
-                    'title': 'Delete Confirmation',
-                    'message': 'You are about to delete this option. <br />It cannot be restored at a later time! Continue?',
+                    'title': "@lang('admin.delete_confirmation')",
+                    'message': "@lang('admin.confirm_delete_option')",
                     'buttons': {
-                        'Yes': {
+                        "@lang('admin.btn_yes')": {
                             'class': 'blue',
                             'action': function() {
                                 elem.remove();
                             }
                         },
-                        'No': {
+                        "@lang('admin.btn_no')": {
                             'class': 'gray',
                             'action': function() {} // Nothing to do in this case. You can as well omit the action property.
                         }

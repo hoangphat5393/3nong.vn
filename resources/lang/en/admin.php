@@ -591,8 +591,19 @@ return [
     'Add image' => 'Add image',
     'Close' => 'Close',
     'Update' => 'Update',
-    'Search' => 'Search',
-
     'Total' => 'Total',
-
+    'delete' => 'Delete',
+    'Delete' => 'Delete',
+    'upload' => 'Upload',
+    'Upload' => 'Upload',
+    'please_enter_name_field' => 'Please enter Name Field',
+    'please_enter_value_field' => 'Please enter Value Field',
+    'choose_field_create' => 'Choose field type to create',
+    'create_field' => 'Create field',
+    'save_changes' => 'Save changes',
+    'delete_confirmation' => 'Delete Confirmation',
+    'confirm_delete_option' => 'You are about to delete this option. <br />It cannot be restored at a later time! Continue?',
+    'btn_yes' => 'Yes',
+    'btn_no' => 'No',
+    'usage_guide' => 'Usage:',
 ];
