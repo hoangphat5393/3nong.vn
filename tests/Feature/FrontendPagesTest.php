@@ -41,6 +41,19 @@ class FrontendPagesTest extends TestCase
         $this->assertStringContainsString('main-menu-offcanvas', $html);
     }
 
+    public function test_footer_renders_tax_code_when_configured(): void
+    {
+        \Illuminate\Support\Facades\DB::table('settings')->updateOrInsert(
+            ['name' => 'tax_code'],
+            ['content' => '0305162238', 'type' => 'line']
+        );
+
+        $response = $this->get('/');
+        $response->assertStatus(200);
+        $response->assertSee('Mã số thuế:');
+        $response->assertSee('0305162238');
+    }
+
     public function test_product_list_page_is_accessible()
     {
         $response = $this->get(route('product'));

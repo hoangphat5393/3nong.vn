@@ -35,6 +35,12 @@
                     </div>
 
                     <ul class="list-unstyled links">
+                        @if (setting_option('tax_code'))
+                            <li class="d-flex">
+                                <i class="fa-solid fa-id-card fa-fw mt-1"></i>
+                                Mã số thuế:&nbsp;{{ setting_option('tax_code') }}
+                            </li>
+                        @endif
                         <li class="d-flex">
                             <i class="fa-solid fa-location-dot fa-fw mt-2"></i> Địa chỉ: {{ setting_option('address', 'C15, Đường N3, KDC Bình Nhâm, Phường Bình Nhâm, TP. Thuận An, Tỉnh Bình Dương') }}
                         </li>
