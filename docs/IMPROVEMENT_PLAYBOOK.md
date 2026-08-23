@@ -1,4 +1,4 @@
-# Improvement Playbook — Vật Tư Nông Nghiệp 58
+# Improvement Playbook — 3 Nông
 
 > **File theo dõi chính** cho mọi hạng mục cải thiện dự án.  
 > Cập nhật lần cuối: **2026-07-10**  

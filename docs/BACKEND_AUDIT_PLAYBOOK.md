@@ -1,4 +1,4 @@
-# Backend Audit Playbook — Vật Tư Nông Nghiệp 58
+# Backend Audit Playbook — 3 Nông
 
 > **Theo dõi rà soát backend** (routes, middleware, Admin controllers, models, tests).  
 > **Trạng thái:** ✅ **BACK-001 … BACK-018 hoàn tất** (2026-07-07)  

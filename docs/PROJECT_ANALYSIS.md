@@ -1,15 +1,15 @@
-# Phân tích dự án — Vật Tư Nông Nghiệp 58
+# Phân tích dự án — 3 Nông
 
 Tài liệu này tổng hợp kiến trúc, cơ sở dữ liệu, luồng dữ liệu, vấn đề và kế hoạch cải thiện.  
 **Phạm vi:** mã nguồn ứng dụng (`app/`, `routes/`, `config/`, `resources/`, `database/migrations/`), không liệt kê từng file trong `node_modules/` hay `public/assets/plugin/`.
 
-**Cập nhật lần cuối:** 2026-07-10 — DB cleanup 35 bảng; Phase 4 orphan; [REFACTOR_3NONG_PLAYBOOK.md](REFACTOR_3NONG_PLAYBOOK.md).
+**Cập nhật lần cuối:** 2026-07-10 — DB cleanup 35 bảng; Phase 4 dọn code mồ côi.
 
 **Theo dõi tiến độ:** [IMPROVEMENT_PLAYBOOK.md](IMPROVEMENT_PLAYBOOK.md) · [BACKEND_AUDIT_PLAYBOOK.md](BACKEND_AUDIT_PLAYBOOK.md) · [CHANGE_LOG.md](CHANGE_LOG.md) · [REFACTOR_3NONG_PLAYBOOK.md](REFACTOR_3NONG_PLAYBOOK.md)
 
 ## 1. Tổng quan dự án (Project Overview)
 
-- **Mục đích:** Website thương mại điện tử / giới thiệu sản phẩm nông nghiệp (thương hiệu giao diện: _Vật Tư 58_, _Nông Nghiệp Sạch_), hỗ trợ **danh mục sản phẩm**, **giỏ hàng**, **đặt hàng / thanh toán**, **tin bài / trang tĩnh**, **tìm kiếm**, **liên hệ**, và **khu vực quản trị** (CMS + đơn hàng + phân quyền).
+- **Mục đích:** Website thương mại điện tử / giới thiệu sản phẩm nông nghiệp (thương hiệu giao diện: _3 Nông_, _Nông Nghiệp Sạch_), hỗ trợ **danh mục sản phẩm**, **giỏ hàng**, **đặt hàng / thanh toán**, **tin bài / trang tĩnh**, **tìm kiếm**, **liên hệ**, và **khu vực quản trị** (CMS + đơn hàng + phân quyền).
 - **Công nghệ lõi:**
     - **Backend:** PHP **8.4+**, **Laravel 12**, Eloquent ORM.
     - **Auth:** Guard `web` (khách hàng) và guard `admin` (quản trị — model dùng bảng `users`).
@@ -63,10 +63,10 @@ Tài liệu này tổng hợp kiến trúc, cơ sở dữ liệu, luồng dữ l
 
 ### 3.1. Môi trường đã introspect (MySQL)
 
-- Kết nối ứng dụng trỏ tới database **`vattunnongnghiep58`** (MySQL 8.x).
-- **Lư ý:** Server MySQL có thể chứa **nhiều schema** (ví dụ các bảng thuộc project khác); số bảng “tổng” trên server không đồng nghĩa chỉ có bảng của shop này.
+- Kết nối ứng dụng trỏ tới database **`3nong`** (MySQL 8.x).
+- **Lưu ý:** Server MySQL có thể chứa **nhiều schema** (ví dụ các bảng thuộc project khác); số bảng “tổng” trên server không đồng nghĩa chỉ có bảng của shop này.
 
-### 3.2. Bảng thuộc ứng dụng (schema `vattunnongnghiep58`)
+### 3.2. Bảng thuộc ứng dụng (schema `3nong`)
 
 Danh sách bảng thực tế (**35 bảng**, sau cleanup 2026-07-10):
 
@@ -261,7 +261,7 @@ pnpm run build                                # sau đổi frontend
     ↓
 [Models Eloquent + Cart + Helpers]
     ↓
-[MySQL: vattunnongnghiep58]
+[MySQL: 3nong]
     ↓
 [Blade + Vite assets]
 ```

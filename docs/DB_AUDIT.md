@@ -1,7 +1,7 @@
 # DB_AUDIT — Rà soát bảng thừa / mồ côi
 
 > **Mục đích:** Xác định bảng nào thừa, bảng nào chỉ còn code mồ côi, và thứ tự dọn an toàn.  
-> **Cập nhật:** 2026-07-10 · DB `vattunnongnghiep58` (MySQL) · Laravel **13**  
+> **Cập nhật:** 2026-07-10 · DB `3nong` (MySQL) · Laravel **13**  
 > **Nguồn:** `database-schema`, `database-query` (read-only), Grep model/controller.
 
 **Liên quan:** [TABLE_GLOSSARY.md](TABLE_GLOSSARY.md) · [MASTER.md](../MASTER.md) · [CHANGE_LOG.md](CHANGE_LOG.md)
@@ -114,7 +114,7 @@ flowchart TD
 
 ## 7. Cách thực thi (khi được duyệt)
 
-- **Backup:** `mysqldump vattunnongnghiep58 > backup_YYYYMMDD.sql`
+- **Backup:** `mysqldump 3nong > backup_YYYYMMDD.sql`
 - **Drop:** tạo **migration mới** `php artisan make:migration drop_legacy_tables_phase1` — dùng `Schema::dropIfExists()`, kèm `down()` tạo lại cấu trúc.
 - **Không** sửa migration cũ. **Không** drop trực tiếp bằng SQL tay.
 - Sau mỗi phase: `php artisan test --compact` + smoke các route liên quan.

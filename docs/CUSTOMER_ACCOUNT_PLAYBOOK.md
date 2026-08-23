@@ -1,4 +1,4 @@
-# Customer Account Playbook — Vật Tư Nông Nghiệp 58
+# Customer Account Playbook — 3 Nông
 
 > **Theo dõi chuẩn hóa tài khoản khách hàng** (đăng nhập, đăng ký, khu vực account, lịch sử đơn).  
 > **Trạng thái:** ✅ **CUST-001…004 `done` (P0 xong)** · CUST-005…008 `todo`  
@@ -346,8 +346,8 @@ php artisan test --compact tests/Feature/CustomerAccount*.php
 php artisan route:list --name=customer
 
 # Smoke HTTP local
-curl -k -o NUL -w "%{http_code}" https://vattunongnghiep58.test/auth/login
-curl -k -o NUL -w "%{http_code}" https://vattunongnghiep58.test/account/orders
+curl -k -o NUL -w "%{http_code}" https://3nong.test/auth/login
+curl -k -o NUL -w "%{http_code}" https://3nong.test/account/orders
 ```
 
 ---

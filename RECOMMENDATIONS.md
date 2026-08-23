@@ -1,4 +1,4 @@
-# Đề xuất cải thiện — Vật Tư Nông Nghiệp 58
+# Đề xuất cải thiện — 3 Nông
 
 > **Cập nhật:** 2026-07-10  
 > **IMP-001 … IMP-015:** hoàn tất (trừ IMP-011 `deferred`).  
@@ -16,7 +16,6 @@
 | [MASTER.md](MASTER.md)                                                     | **Tài liệu master** — nghiệp vụ, luồng, schema, tính năng |
 | [docs/TABLE_GLOSSARY.md](docs/TABLE_GLOSSARY.md)                           | Bảng ↔ model ↔ legacy (tra cứu DB)                        |
 | [docs/ROUTE_GLOSSARY.md](docs/ROUTE_GLOSSARY.md)                           | Route ↔ URL ↔ controller (tra cứu routing)                |
-| [docs/REFACTOR_3NONG_PLAYBOOK.md](docs/REFACTOR_3NONG_PLAYBOOK.md)         | Kế hoạch port `3nong` theo chuẩn này                      |
 | [docs/DB_AUDIT.md](docs/DB_AUDIT.md)                                       | Rà soát bảng thừa / code mồ côi + kế hoạch dọn            |
 
 ## Kiểm chứng

@@ -1,4 +1,4 @@
-# Laravel 13 Upgrade Playbook — Vật Tư Nông Nghiệp 58
+# Laravel 13 Upgrade Playbook — 3 Nông
 
 > **Kế hoạch nâng cấp framework** Laravel 12 → 13 trên **một môi trường duy nhất** (local = production).  
 > **Trạng thái:** `done` — nâng cấp hoàn tất 2026-07-09  

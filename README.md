@@ -1,4 +1,4 @@
-# Vật Tư Nông Nghiệp 58
+# 3 Nông
 
 Website thương mại điện tử / CMS — **Laravel 13**, **PHP 8.3+**, **Vite 7**, **Tailwind CSS 4**.
 
@@ -26,7 +26,6 @@ php artisan serve
 | [docs/LARAVEL_13_UPGRADE_PLAYBOOK.md](docs/LARAVEL_13_UPGRADE_PLAYBOOK.md) | Kế hoạch nâng cấp Laravel 13                              |
 | [docs/TABLE_GLOSSARY.md](docs/TABLE_GLOSSARY.md)                           | Bảng ↔ model ↔ nghiệp vụ / legacy                         |
 | [docs/ROUTE_GLOSSARY.md](docs/ROUTE_GLOSSARY.md)                           | Route name ↔ URL ↔ controller                             |
-| [docs/REFACTOR_3NONG_PLAYBOOK.md](docs/REFACTOR_3NONG_PLAYBOOK.md)         | Kế hoạch port `3nong` theo chuẩn này                      |
 | [docs/DB_AUDIT.md](docs/DB_AUDIT.md)                                       | Rà soát bảng thừa / code mồ côi + kế hoạch dọn            |
 
 ## Kiểm thử
