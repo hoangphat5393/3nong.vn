@@ -183,6 +183,12 @@ Route::get('dai-ly.html', function () {
 });
 
 Route::get('demo-giao-dien-2', '\App\Http\Controllers\PageController@demoOption2')->name('demo.option2');
+Route::get('demo/mau-1', '\App\Http\Controllers\PageController@demoConcept1')->name('demo.concept1');
+Route::get('demo/mau-2', '\App\Http\Controllers\PageController@demoConcept2')->name('demo.concept2');
+Route::get('demo/mau-3', '\App\Http\Controllers\PageController@demoConcept3')->name('demo.concept3');
+Route::get('demo/mau-4', '\App\Http\Controllers\PageController@demoConcept4')->name('demo.concept4');
+Route::get('demo/mau-5', '\App\Http\Controllers\PageController@demoConcept5')->name('demo.concept5');
+Route::get('demo/mau-6', '\App\Http\Controllers\PageController@demoConcept6')->name('demo.concept6');
 
 Route::get('gioi-thieu', function () {
     $page = Page::pages()->whereIn('slug', ['about', 'gioi-thieu'])->first();

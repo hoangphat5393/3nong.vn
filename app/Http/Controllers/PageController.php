@@ -246,4 +246,127 @@ class PageController extends Controller
 
         return view('frontend.demo-home-2', compact('page', 'products_hot', 'cat_product', 'post_list', 'slides', 'seo'));
     }
+
+    private function getDemoData(string $title, string $description): array
+    {
+        $this->localized();
+        $page = Page::where('slug', 'home')->first();
+
+        $products_hot = Product::where('status', 1)
+            ->where('hot', 1)
+            ->orderBy('sort', 'asc')
+            ->limit(8)
+            ->get();
+        if ($products_hot->isEmpty()) {
+            $products_hot = Product::where('status', 1)
+                ->orderBy('sort', 'asc')
+                ->limit(8)
+                ->get();
+        }
+
+        $all_products = Product::where('status', 1)
+            ->orderBy('id', 'desc')
+            ->limit(12)
+            ->get();
+
+        $cat_product = Category::where('status', 1)
+            ->where('parent', 0)
+            ->orderBy('sort', 'asc')
+            ->with(['products' => function ($query) {
+                $query->where('status', 1)->orderBy('sort', 'asc')->limit(8);
+            }])
+            ->get();
+
+        $post_list = Page::posts()
+            ->where('status', 1)
+            ->orderBy('sort', 'asc')
+            ->limit(6)
+            ->get();
+
+        $slides = [
+            [
+                'title' => 'Nông Nghiệp Sạch - Nâng Tầm Nông Sản Việt',
+                'subtitle' => 'Cung cấp trọn gói hạt giống, phân bón hữu cơ và giải pháp kỹ thuật nông nghiệp công nghệ cao',
+                'image' => 'upload/images/slide/1659941826_843601.jpg',
+                'badge' => 'TIÊU CHUẨN GLOBALGAP',
+                'link' => route('home'),
+            ],
+            [
+                'title' => 'Giải Pháp Dinh Dưỡng Cây Trồng Toàn Diện',
+                'subtitle' => 'Tăng năng suất 35%, bảo vệ đất canh tác và nguồn nước bền vững',
+                'image' => 'upload/images/slide/1659942234_632056.jpg',
+                'badge' => '100% ORGANIC CERTIFIED',
+                'link' => route('home'),
+            ],
+        ];
+
+        $seo = [
+            'seo_title' => $title,
+            'seo_keyword' => '3 nong, nong nghiep sach, vat tu nong nghiep, tam nong',
+            'seo_description' => $description,
+            'seo_image' => get_image(setting_option('logo')),
+        ];
+
+        return compact('page', 'products_hot', 'all_products', 'cat_product', 'post_list', 'slides', 'seo');
+    }
+
+    public function demoConcept1()
+    {
+        $data = $this->getDemoData(
+            'Mẫu 1: Green & Sun Vitality — Giao Diện Nông Nghiệp Hiện Đại Chuẩn Brand (3 Nông)',
+            'Bản xem thử giao diện Mẫu 1 tone màu Cam & Xanh Lá chuẩn thương hiệu Tam Nông'
+        );
+
+        return view('frontend.demo.concept_1', $data);
+    }
+
+    public function demoConcept2()
+    {
+        $data = $this->getDemoData(
+            'Mẫu 2: Eco Clean & High-Tech Minimalist — Nông Nghiệp Công Nghệ Cao Chuẩn Quốc Tế',
+            'Bản xem thử giao diện Mẫu 2 phong cách tối giản, sang trọng, công nghệ cao'
+        );
+
+        return view('frontend.demo.concept_2', $data);
+    }
+
+    public function demoConcept3()
+    {
+        $data = $this->getDemoData(
+            'Mẫu 3: Dynamic Modern Retail E-Commerce — Sàn Bán Lẻ Nông Nghiệp Đa Năng & Flash Sale',
+            'Bản xem thử giao diện Mẫu 3 tối ưu chuyển đổi bán lẻ, kích thích săn deal và Flash Sale'
+        );
+
+        return view('frontend.demo.concept_3', $data);
+    }
+
+    public function demoConcept4()
+    {
+        $data = $this->getDemoData(
+            'Mẫu 4: NextGen Bento Grid & Glassmorphism — Cổng Nông Nghiệp Tương Lai',
+            'Bản xem thử giao diện Mẫu 4 phong cách Bento Grid hiện đại đẳng cấp quốc tế'
+        );
+
+        return view('frontend.demo.concept_4', $data);
+    }
+
+    public function demoConcept5()
+    {
+        $data = $this->getDemoData(
+            'Mẫu 5: Nordic Minimalist Luxury Organic — Nông Nghiệp Hữu Cơ Sang Trọng Chuẩn Bắc Âu',
+            'Bản xem thử giao diện Mẫu 5 phong cách Bắc Âu tối giản, thanh lịch và tôn vinh nông sản cao cấp'
+        );
+
+        return view('frontend.demo.concept_5', $data);
+    }
+
+    public function demoConcept6()
+    {
+        $data = $this->getDemoData(
+            'Mẫu 6: Ultra-Fast Mobile-First App Experience — Sàn Nông Nghiệp Tốc Độ Cao & Stories',
+            'Bản xem thử giao diện Mẫu 6 thiết kế dạng App di động siêu mượt, Story nhà vườn và Live Flash Drop'
+        );
+
+        return view('frontend.demo.concept_6', $data);
+    }
 }
