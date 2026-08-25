@@ -1,0 +1,388 @@
+
+@use 'demo-switcher';
+
+:root {
+    --mart-navy: #0F172A;
+    --mart-slate: #1E293B;
+    --mart-coral: #FF5722;
+    --mart-coral-dark: #E64A19;
+    --mart-emerald: #059669;
+    --mart-emerald-dark: #047857;
+    --mart-amber: #F59E0B;
+    --mart-bg: #F1F5F9;
+}
+
+body {
+    background-color: var(--mart-bg);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #334155;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.top-bar-mart {
+    background: #0B1120;
+    color: #94A3B8;
+    font-size: 0.8rem;
+    padding: 6px 0;
+    font-weight: 500;
+}
+
+.mart-header {
+    background: #FFFFFF;
+    border-bottom: 2px solid #E2E8F0;
+    padding: 16px 0;
+
+    .mart-search {
+        position: relative;
+        max-width: 520px;
+        width: 100%;
+
+        input {
+            width: 100%;
+            height: 48px;
+            padding: 0 54px 0 20px;
+            border-radius: 12px;
+            border: 2px solid #E2E8F0;
+            background: #F8FAFC;
+            font-size: 0.92rem;
+            transition: all 0.2s ease;
+
+            &:focus {
+                outline: none;
+                border-color: var(--mart-coral);
+                background: #FFFFFF;
+                box-shadow: 0 0 0 4px rgba(255, 87, 34, 0.12);
+            }
+        }
+
+        button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: var(--mart-coral);
+            color: #fff;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            &:hover { background: var(--mart-coral-dark); }
+        }
+    }
+}
+
+.mart-nav {
+    background: var(--mart-navy);
+    padding: 0;
+
+    .cat-btn-orange {
+        background: var(--mart-coral);
+        color: #fff;
+        font-weight: 700;
+        padding: 14px 22px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        transition: background 0.2s ease;
+        &:hover { background: var(--mart-coral-dark); color: #fff; }
+    }
+
+    .mart-nav-link {
+        color: rgba(255,255,255,0.85);
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 14px 18px;
+        display: inline-block;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        &:hover, &.active {
+            color: #FFFFFF;
+            background: rgba(255,255,255,0.1);
+        }
+    }
+}
+
+/* Hero Section 3-Banner Grid */
+.mart-hero-main {
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border-radius: 24px;
+    padding: 45px 36px;
+    color: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
+
+    .mart-hero-badge {
+        background: rgba(255, 87, 34, 0.2);
+        color: #FF7043;
+        border: 1px solid rgba(255, 87, 34, 0.4);
+        padding: 5px 14px;
+        border-radius: 99px;
+        font-size: 0.78rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        width: fit-content;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .mart-hero-title {
+        font-size: 2.3rem;
+        font-weight: 900;
+        line-height: 1.2;
+        margin: 16px 0;
+    }
+
+    .btn-mart-yellow {
+        background: #FBBF24;
+        color: #0F172A;
+        font-weight: 800;
+        padding: 12px 28px;
+        border-radius: 99px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 6px 20px rgba(251, 191, 36, 0.35);
+        transition: all 0.25s ease;
+        width: fit-content;
+        &:hover {
+            background: #F59E0B;
+            transform: translateY(-2px);
+        }
+    }
+}
+
+.mart-sub-banner {
+    border-radius: 20px;
+    padding: 24px;
+    color: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+    text-decoration: none;
+
+    &:hover {
+        transform: translateY(-4px);
+        color: #fff;
+    }
+
+    &.sub-green {
+        background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        box-shadow: 0 10px 20px rgba(5, 150, 105, 0.2);
+    }
+
+    &.sub-amber {
+        background: linear-gradient(135deg, #D97706 0%, #B45309 100%);
+        box-shadow: 0 10px 20px rgba(217, 119, 6, 0.2);
+    }
+}
+
+/* Flash Sale */
+.mart-flash-box {
+    background: linear-gradient(135deg, #FF5722 0%, #E64A19 100%);
+    border-radius: 24px;
+    padding: 24px 30px;
+    color: #fff;
+    box-shadow: 0 12px 30px rgba(255, 87, 34, 0.25);
+    margin-bottom: 40px;
+
+    .mart-timer-num {
+        background: #000;
+        color: #fff;
+        font-weight: 800;
+        padding: 5px 10px;
+        border-radius: 8px;
+        font-size: 1rem;
+        display: inline-block;
+    }
+}
+
+/* Product Card */
+.mart-prod-card {
+    background: #FFFFFF;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #E2E8F0;
+    transition: all 0.25s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+        transform: translateY(-4px);
+        border-color: var(--mart-coral);
+        box-shadow: 0 15px 30px rgba(255, 87, 34, 0.15);
+    }
+
+    .mart-prod-thumb {
+        position: relative;
+        padding-top: 80%;
+        background: #F8FAFC;
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .badge-discount-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--mart-coral);
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 8px;
+        }
+    }
+
+    .mart-prod-body {
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+
+        .mart-stock-bar {
+            height: 6px;
+            background: #E2E8F0;
+            border-radius: 99px;
+            overflow: hidden;
+            margin: 8px 0;
+        }
+
+        .mart-stock-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FF5722, #F59E0B);
+            border-radius: 99px;
+        }
+
+        .btn-mart-cart {
+            background: var(--mart-emerald);
+            color: #fff;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            text-decoration: none;
+            margin-top: auto;
+            transition: all 0.2s ease;
+            &:hover {
+                background: #047857;
+                color: #fff;
+            }
+        }
+    }
+}
+
+/* Video / Chef Reviews */
+.review-card {
+    background: #FFFFFF;
+    border-radius: 22px;
+    border: 1px solid #E2E8F0;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    transition: all 0.3s ease;
+    height: 100%;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 35px rgba(15, 23, 42, 0.1);
+        border-color: var(--mart-coral);
+    }
+
+    .review-video-thumb {
+        position: relative;
+        padding-top: 56.25%;
+        background: #1E293B;
+        overflow: hidden;
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85;
+        }
+
+        .play-btn-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: rgba(255, 87, 34, 0.9);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 0 0 8px rgba(255, 87, 34, 0.3);
+            transition: all 0.25s ease;
+        }
+
+        &:hover .play-btn-circle {
+            transform: translate(-50%, -50%) scale(1.12);
+            background: #FF5722;
+        }
+    }
+
+    .review-body {
+        padding: 20px;
+
+        .review-title {
+            font-weight: 800;
+            font-size: 1rem;
+            color: var(--mart-slate);
+            line-height: 1.4;
+            margin-bottom: 6px;
+        }
+
+        .review-desc {
+            font-size: 0.85rem;
+            color: #64748B;
+            margin: 0;
+        }
+    }
+}
+
+.mart-footer {
+    background: var(--mart-navy);
+    color: #FFFFFF;
+    padding: 60px 0 20px;
+    margin-top: 60px;
+
+    a {
+        color: rgba(255,255,255,0.75);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.2s ease;
+        &:hover { color: var(--mart-coral); }
+    }
+}

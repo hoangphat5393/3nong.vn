@@ -1,284 +1,125 @@
-@extends('frontend.layouts.master')
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ $seo['seo_title'] ?? 'Mẫu 5: Nordic Minimalist Luxury Organic — Tam Nông Thực Phẩm Sạch' }}</title>
+    <meta name="description" content="{{ $seo['seo_description'] ?? '' }}">
+    <meta name="keywords" content="{{ $seo['seo_keyword'] ?? '' }}">
+    <link rel="shortcut icon" href="{{ get_image(setting_option('favicon', setting_option('favicon_32'))) }}" type="image/x-icon">
 
-@section('seo')
-    @include('frontend.layouts.seo', [
-        'title' => $seo['seo_title'] ?? 'Mẫu 5: Nordic Minimalist Luxury Organic — 3 Nông',
-        'keywords' => $seo['seo_keyword'] ?? '',
-        'description' => $seo['seo_description'] ?? '',
-        'image' => $seo['seo_image'] ?? get_image(setting_option('logo')),
-    ])
-@endsection
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/fontawesome_pro/css/all.min.css') }}">
 
-@push('head-style')
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+        <!-- Compiled Demo SCSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/demo/demo-5.css') }}?v={{ time() }}">
 
-<style>
-    :root {
-        --nordic-bg: #FAFAF9;
-        --nordic-white: #FFFFFF;
-        --nordic-olive: #2D4739;
-        --nordic-gold: #D4AF37;
-        --nordic-charcoal: #1C1917;
-        --nordic-stone: #78716C;
-        --nordic-sand: #F5F5F4;
-    }
+</head>
+<body>
+    <!-- TOP DEMO SWITCHER BAR (5 MẪU) -->
+    <div class="demo-nav-top py-2 px-3 sticky-top shadow-lg" style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); z-index: 999999; border-bottom: 2px solid #EAB308; font-family: 'Plus Jakarta Sans', sans-serif;">
+        <div class="container-fluid d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <div class="d-flex align-items-center gap-2">
+                <span class="badge bg-warning text-dark px-2.5 py-1 fw-bold text-uppercase rounded-pill">
+                    <i class="fa-solid fa-layer-group me-1"></i> BẢN XEM THỬ GIAO DIỆN (5 MẪU)
+                </span>
+                <span class="text-white small d-none d-lg-inline">
+                    Đang xem: <strong>Mẫu 5</strong>
+                </span>
+            </div>
+            <div class="d-flex flex-wrap gap-1.5 align-items-center">
+                <a href="{{ route('demo.concept1') }}" class="btn btn-sm rounded-pill fw-bold btn-outline-light" style="font-size: 0.8rem;">Mẫu 1 (Trắng Sứ)</a>
+                <a href="{{ route('demo.concept2') }}" class="btn btn-sm rounded-pill fw-bold btn-outline-light" style="font-size: 0.8rem;">Mẫu 2 (Soft Mint)</a>
+                <a href="{{ route('demo.concept3') }}" class="btn btn-sm rounded-pill fw-bold btn-outline-light" style="font-size: 0.8rem;">Mẫu 3 (Food Hall)</a>
+                <a href="{{ route('demo.concept4') }}" class="btn btn-sm rounded-pill fw-bold btn-outline-light" style="font-size: 0.8rem; border-color: #4ade80; color: #4ade80;"><i class="fa-solid fa-wand-magic-sparkles me-1"></i> Mẫu 4 (Bento)</a>
+                <a href="{{ route('demo.concept5') }}" class="btn btn-sm rounded-pill fw-bold shadow" style="background-color: #D4AF37; border-color: #D4AF37; color: #000 !important;"><i class="fa-solid fa-crown me-1"></i> Mẫu 5 (Bắc Âu)</a>
+                <a href="{{ route('home') }}" class="btn btn-sm btn-outline-secondary text-light rounded-pill ms-2" style="font-size: 0.8rem;"><i class="fa-solid fa-arrow-rotate-left"></i> Gốc</a>
+            </div>
+        </div>
+    </div>
 
-    body, .wrap {
-        background-color: var(--nordic-bg) !important;
-        font-family: 'Plus Jakarta Sans', sans-serif !important;
-        color: var(--nordic-charcoal);
-    }
+    <!-- NORDIC TOP BAR -->
+    <div class="nordic-topbar text-center py-2 border-bottom">
+        <span class="small text-muted fw-semibold">Tam Nông Organic — Tinh hoa ẩm thực nông trại thuần khiết cho gia đình bạn</span>
+    </div>
 
-    /* Minimalist Luxury Header */
-    header {
-        background-color: var(--nordic-white) !important;
-        border-bottom: 1px solid #E7E5E4;
-        padding: 24px 0 !important;
-    }
-    .main-menu {
-        background-color: var(--nordic-olive) !important;
-        box-shadow: none !important;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    .main-menu .nav-link {
-        font-weight: 500 !important;
-        letter-spacing: 0.5px;
-        text-transform: uppercase !important;
-        font-size: 0.88rem !important;
-    }
+    <!-- NORDIC HEADER -->
+    <header class="nordic-header">
+        <div class="container text-center">
+            <a href="{{ route('home') }}" class="nordic-brand mb-3 d-inline-block">
+                <img src="{{ get_image(setting_option('logo')) }}" alt="Tam Nông Nordic Organic" style="max-height: 58px;">
+            </a>
+            <div class="d-flex justify-content-center gap-4 border-top pt-3">
+                <a href="{{ route('home') }}" class="text-dark fw-bold text-decoration-none small text-uppercase letter-spacing-1">Trang Chủ</a>
+                <a href="{{ route('product') }}" class="text-muted fw-semibold text-decoration-none small text-uppercase letter-spacing-1">Thịt Bê Tươi</a>
+                <a href="{{ route('product') }}" class="text-muted fw-semibold text-decoration-none small text-uppercase letter-spacing-1">Heo Rừng F1</a>
+                <a href="{{ route('product') }}" class="text-muted fw-semibold text-decoration-none small text-uppercase letter-spacing-1">Gà Đồi & Chim Trĩ</a>
+                <a href="{{ route('contact') }}" class="text-muted fw-semibold text-decoration-none small text-uppercase letter-spacing-1">Liên Hệ</a>
+            </div>
+        </div>
+    </header>
 
-    /* Editorial Hero Section */
-    .nordic-hero {
-        background-color: var(--nordic-sand);
-        border-radius: 32px;
-        padding: 70px 60px;
-        margin-bottom: 60px;
-        border: 1px solid #E7E5E4;
-    }
-    @media (max-width: 767.98px) {
-        .nordic-hero {
-            padding: 40px 20px;
-        }
-    }
-    .nordic-editorial-subtitle {
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        color: var(--nordic-stone);
-        font-weight: 700;
-        margin-bottom: 16px;
-        display: block;
-    }
-    .nordic-editorial-title {
-        font-family: 'Playfair Display', serif;
-        font-size: 3.2rem;
-        font-weight: 700;
-        line-height: 1.15;
-        color: var(--nordic-olive);
-        margin-bottom: 24px;
-    }
-    .nordic-btn-primary {
-        background-color: var(--nordic-olive);
-        color: #FFFFFF;
-        padding: 14px 36px;
-        border-radius: 99px;
-        font-weight: 600;
-        font-size: 0.95rem;
-        letter-spacing: 0.5px;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        transition: all 0.3s ease;
-    }
-    .nordic-btn-primary:hover {
-        background-color: #1B2D24;
-        color: #FFFFFF;
-        transform: translateY(-2px);
-    }
-
-    /* Storytelling 3 Columns */
-    .nordic-story-card {
-        background: var(--nordic-white);
-        border-radius: 20px;
-        padding: 35px 30px;
-        border: 1px solid #E7E5E4;
-        height: 100%;
-        transition: all 0.3s ease;
-    }
-    .nordic-story-card:hover {
-        border-color: var(--nordic-olive);
-        transform: translateY(-4px);
-    }
-    .nordic-story-num {
-        font-family: 'Playfair Display', serif;
-        font-size: 2.2rem;
-        color: var(--nordic-gold);
-        margin-bottom: 12px;
-        font-style: italic;
-    }
-
-    /* Clean Curated Product Cards */
-    .nordic-product-card {
-        background: var(--nordic-white);
-        border-radius: 24px;
-        padding: 18px;
-        border: 1px solid #E7E5E4;
-        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
-    .nordic-product-card:hover {
-        border-color: var(--nordic-olive);
-        box-shadow: 0 20px 40px -15px rgba(45, 71, 57, 0.1);
-        transform: translateY(-5px);
-    }
-    .nordic-product-thumb {
-        position: relative;
-        padding-top: 85%;
-        border-radius: 18px;
-        background: #F5F5F4;
-        overflow: hidden;
-        margin-bottom: 18px;
-    }
-    .nordic-product-thumb img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    .nordic-product-name {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 0.98rem;
-        font-weight: 600;
-        color: var(--nordic-charcoal);
-        line-height: 1.4;
-        margin-bottom: 10px;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        height: 2.8em;
-    }
-    .nordic-product-price {
-        font-size: 1.15rem;
-        font-weight: 700;
-        color: var(--nordic-olive);
-    }
-    .nordic-btn-outline {
-        border: 1.5px solid var(--nordic-olive);
-        color: var(--nordic-olive);
-        background: transparent;
-        padding: 10px;
-        border-radius: 12px;
-        font-weight: 600;
-        font-size: 0.88rem;
-        text-align: center;
-        text-decoration: none;
-        display: block;
-        margin-top: auto;
-        transition: all 0.2s ease;
-    }
-    .nordic-product-card:hover .nordic-btn-outline {
-        background-color: var(--nordic-olive);
-        color: #FFFFFF;
-    }
-</style>
-@endpush
-
-@section('content')
-    <!-- Demo Switcher Top Bar -->
-    @include('frontend.demo.includes.demo_switcher', ['activeConcept' => 5])
-
-    <div class="container my-4">
-        <!-- 1. EDITORIAL SCANDINAVIAN HERO -->
+    <!-- MAIN CONTENT -->
+    <main class="container my-5">
+        <!-- NORDIC HERO SECTION -->
         <div class="nordic-hero">
-            <div class="row align-items-center g-5">
-                <div class="col-lg-7">
-                    <span class="nordic-editorial-subtitle">Gieo Mầm Thuần Khiết • Vụ Mùa Bền Vững</span>
-                    <h1 class="nordic-editorial-title">
-                        Nghệ Thuật Canh Tác<br>
-                        <em>Nông Nghiệp Hữu Cơ</em>
-                    </h1>
-                    <p class="lead text-muted fs-6 mb-4 pe-lg-4" style="line-height: 1.7;">
-                        Tam Nông tôn vinh giá trị tự nhiên với nguồn hạt giống thuần chủng, phân bón hữu cơ sinh học đạt chuẩn kiểm định khắt khe nhất, bảo vệ nguồn đất màu mỡ cho thế hệ tương lai.
-                    </p>
-                    <div>
-                        <a href="{{ route('product') }}" class="nordic-btn-primary">
-                            <span>Khám Phá Bộ Sưu Tập</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="rounded-4 overflow-hidden shadow-sm" style="height: 380px;">
-                        <img src="{{ asset('upload/images/slide/1659941826_843601.jpg') }}" alt="Organic Farming" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                </div>
+            <span class="nordic-tag mb-3 d-inline-block">THUẦN KHIẾT TỪ THIÊN NHIÊN</span>
+            <h1 class="display-4 fw-light text-dark mb-4">Vị Ngọt Tự Nhiên<br><strong class="fw-bold">Chuẩn Vị Bếp Gia Đình</strong></h1>
+            <p class="text-muted lead max-w-700 mx-auto mb-4 fs-6">Được nuôi thả tự nhiên trong môi trường sinh thái trong lành, thực phẩm Tam Nông mang đến trải nghiệm ẩm thực tinh tế, ngọt lành và an tâm trọn vẹn.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#san-pham" class="nordic-btn-primary"><i class="fa-solid fa-leaf me-1"></i> Khám Phá Thực Phẩm</a>
+                <a href="tel:0938133830" class="nordic-btn-secondary"><i class="fa-solid fa-phone me-1"></i> 0938.133.830</a>
             </div>
         </div>
 
-        <!-- 2. THREE STORY PILLARS -->
-        <div class="row g-4 mb-5">
-            <div class="col-md-4">
-                <div class="nordic-story-card">
-                    <div class="nordic-story-num">01.</div>
-                    <h3 class="fw-bold fs-5 mb-2">Hạt Giống Thuần Chủng</h3>
-                    <p class="text-muted small mb-0">Tỷ lệ nảy mầm đạt trên 92%, được kiểm định tại viện nông học trước khi đến tay bà con.</p>
-                </div>
+        <!-- 12 PRODUCTS MINIMAL GRID -->
+        <div id="san-pham" class="mb-5 pt-4">
+            <div class="text-center mb-5">
+                <span class="nordic-tag mb-2 d-inline-block">BỘ SƯU TẬP ĐẶC SẢN</span>
+                <h2 class="fw-bold fs-3 text-dark">Thực Phẩm Tươi Sạch Thượng Hạng</h2>
+                <div style="width: 40px; height: 2px; background: var(--nordic-gold); margin: 16px auto 0;"></div>
             </div>
-            <div class="col-md-4">
-                <div class="nordic-story-card">
-                    <div class="nordic-story-num">02.</div>
-                    <h3 class="fw-bold fs-5 mb-2">Dinh Dưỡng Vi Sinh Đất</h3>
-                    <p class="text-muted small mb-0">Phục hồi cấu trúc mùn hữu cơ, bổ sung hàng tỷ lợi khuẩn bản địa giúp rễ cây phát triển tự nhiên.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="nordic-story-card">
-                    <div class="nordic-story-num">03.</div>
-                    <h3 class="fw-bold fs-5 mb-2">Bảo Vệ Môi Trường Xanh</h3>
-                    <p class="text-muted small mb-0">Nói không với hóa chất tồn dư, đồng hành cùng chứng nhận nông sản sạch xuất khẩu Châu Âu.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 3. CURATED PRODUCT COLLECTION -->
-        <div class="mb-5">
-            <div class="text-center max-w-700 mx-auto mb-5">
-                <span class="nordic-editorial-subtitle">Tuyển Chọn Cho Vụ Mùa Này</span>
-                <h2 class="font-serif fw-bold fs-2" style="font-family: 'Playfair Display', serif;">Danh Mục Vật Tư Tiêu Biểu</h2>
-            </div>
-
-            <div class="row g-4">
-                @foreach($products_hot as $prod)
+            <div class="row g-4 g-lg-5">
+                @foreach($all_products as $p)
                     <div class="col-6 col-md-4 col-lg-3">
-                        <div class="nordic-product-card">
-                            <div class="nordic-product-thumb">
-                                <a href="{{ route('product.detail', ['slug' => $prod->slug, 'id' => $prod->id]) }}">
-                                    <img src="{{ get_image($prod->image) }}" alt="{{ $prod->name }}" loading="lazy">
-                                </a>
+                        <div class="nordic-card">
+                            <div class="nordic-thumb">
+                                <img src="{{ get_image($p->image) }}" alt="{{ $p->name }}">
                             </div>
-                            <h3 class="nordic-product-name">
-                                <a href="{{ route('product.detail', ['slug' => $prod->slug, 'id' => $prod->id]) }}" class="text-decoration-none text-dark">
-                                    {{ $prod->name }}
-                                </a>
-                            </h3>
-                            <div class="mb-3">
-                                <span class="nordic-product-price">{{ number_format($prod->price ?? 0) }}đ</span>
+                            <div class="nordic-body">
+                                <span class="nordic-meta">Nông Trại Chuẩn Sạch</span>
+                                <h3 class="nordic-title">{{ $p->name }}</h3>
+                                <div class="nordic-price">{{ number_format($p->price) }}đ</div>
+                                <a href="tel:0938133830" class="nordic-buy-btn"><i class="fa-solid fa-basket-shopping me-1"></i> Đặt Mua</a>
                             </div>
-                            <a href="{{ route('product.detail', ['slug' => $prod->slug, 'id' => $prod->id]) }}" class="nordic-btn-outline">
-                                Chi Tiết Vật Tư
-                            </a>
                         </div>
                     </div>
                 @endforeach
             </div>
         </div>
-    </div>
-@endsection
+    </main>
+
+    <!-- NORDIC FOOTER -->
+    <footer class="nordic-footer">
+        <div class="container text-center">
+            <img src="{{ get_image(setting_option('logo')) }}" alt="Tam Nông" style="max-height: 50px;" class="mb-4">
+            <p class="text-muted small max-w-600 mx-auto mb-4">Tam Nông — Tôn vinh giá trị thực phẩm sạch tự nhiên từ nông trại đến từng bữa cơm đầm ấm của mỗi gia đình Việt.</p>
+            <div class="d-flex justify-content-center gap-4 mb-4 small">
+                <a href="{{ route('about') }}" class="text-muted text-decoration-none">Về Chúng Tôi</a>
+                <a href="{{ route('product') }}" class="text-muted text-decoration-none">Danh Mục Sản Phẩm</a>
+                <a href="{{ route('contact') }}" class="text-muted text-decoration-none">Chính Sách Giao Hàng</a>
+                <a href="{{ route('contact') }}" class="text-muted text-decoration-none">Hotline: 0938.133.830</a>
+            </div>
+            <div class="text-muted small border-top pt-3 opacity-75">
+                © {{ date('Y') }} Tam Nông Nordic Organic • Mẫu 5
+            </div>
+        </div>
+    </footer>
+    <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>

@@ -285,24 +285,24 @@ class PageController extends Controller
 
         $slides = [
             [
-                'title' => 'Nông Nghiệp Sạch - Nâng Tầm Nông Sản Việt',
-                'subtitle' => 'Cung cấp trọn gói hạt giống, phân bón hữu cơ và giải pháp kỹ thuật nông nghiệp công nghệ cao',
+                'title' => 'Thực Phẩm Sạch Từ Nông Trại - Tươi Ngon Mỗi Ngày',
+                'subtitle' => 'Chuyên cung cấp thịt bê tươi, heo rừng, gà đồi, chim trĩ và các món đặc sản sơ chế chuẩn an toàn vệ sinh thực phẩm',
                 'image' => 'upload/images/slide/1659941826_843601.jpg',
-                'badge' => 'TIÊU CHUẨN GLOBALGAP',
+                'badge' => '100% NGUỒN GỐC AN TOÀN',
                 'link' => route('home'),
             ],
             [
-                'title' => 'Giải Pháp Dinh Dưỡng Cây Trồng Toàn Diện',
-                'subtitle' => 'Tăng năng suất 35%, bảo vệ đất canh tác và nguồn nước bền vững',
+                'title' => 'Đặc Sản Thịt Tươi Thượng Hạng Giao Tận Bếp 2H',
+                'subtitle' => 'Đóng gói hút chân không sạch sẽ, bảo quản chuỗi lạnh giữ trọn độ tươi ngọt tự nhiên',
                 'image' => 'upload/images/slide/1659942234_632056.jpg',
-                'badge' => '100% ORGANIC CERTIFIED',
+                'badge' => 'KIỂM DỊCH CHẶT CHẼ',
                 'link' => route('home'),
             ],
         ];
 
         $seo = [
             'seo_title' => $title,
-            'seo_keyword' => '3 nong, nong nghiep sach, vat tu nong nghiep, tam nong',
+            'seo_keyword' => '3 nong, tam nong, thuc pham sach, thit be, thit chim, heo rung, ga doi, ga ac tiem, dac san nong trai',
             'seo_description' => $description,
             'seo_image' => get_image(setting_option('logo')),
         ];
@@ -313,8 +313,8 @@ class PageController extends Controller
     public function demoConcept1()
     {
         $data = $this->getDemoData(
-            'Mẫu 1: Green & Sun Vitality — Giao Diện Nông Nghiệp Hiện Đại Chuẩn Brand (3 Nông)',
-            'Bản xem thử giao diện Mẫu 1 tone màu Cam & Xanh Lá chuẩn thương hiệu Tam Nông'
+            'Mẫu 1: Green & Sun Vitality — Thực Phẩm & Thịt Tươi Sạch Chuẩn Brand (3 Nông)',
+            'Bản xem thử giao diện Mẫu 1 tone màu Cam & Xanh Lá chuẩn thương hiệu Tam Nông Thực Phẩm Sạch'
         );
 
         return view('frontend.demo.concept_1', $data);
@@ -323,8 +323,8 @@ class PageController extends Controller
     public function demoConcept2()
     {
         $data = $this->getDemoData(
-            'Mẫu 2: Eco Clean & High-Tech Minimalist — Nông Nghiệp Công Nghệ Cao Chuẩn Quốc Tế',
-            'Bản xem thử giao diện Mẫu 2 phong cách tối giản, sang trọng, công nghệ cao'
+            'Mẫu 2: Eco Clean & Farm-to-Table — Chuỗi Cung Ứng Thực Phẩm Nông Trại Khép Kín',
+            'Bản xem thử giao diện Mẫu 2 phong cách tối giản, sang trọng, chuỗi cung ứng thực phẩm tươi sạch'
         );
 
         return view('frontend.demo.concept_2', $data);
@@ -333,8 +333,8 @@ class PageController extends Controller
     public function demoConcept3()
     {
         $data = $this->getDemoData(
-            'Mẫu 3: Dynamic Modern Retail E-Commerce — Sàn Bán Lẻ Nông Nghiệp Đa Năng & Flash Sale',
-            'Bản xem thử giao diện Mẫu 3 tối ưu chuyển đổi bán lẻ, kích thích săn deal và Flash Sale'
+            'Mẫu 3: Dynamic Modern Food Mart — Sàn Thực Phẩm Tươi & Flash Sale Giờ Vàng',
+            'Bản xem thử giao diện Mẫu 3 tối ưu chuyển đổi bán lẻ thực phẩm gia đình, combo lẩu nướng và Flash Sale'
         );
 
         return view('frontend.demo.concept_3', $data);
@@ -343,8 +343,8 @@ class PageController extends Controller
     public function demoConcept4()
     {
         $data = $this->getDemoData(
-            'Mẫu 4: NextGen Bento Grid & Glassmorphism — Cổng Nông Nghiệp Tương Lai',
-            'Bản xem thử giao diện Mẫu 4 phong cách Bento Grid hiện đại đẳng cấp quốc tế'
+            'Mẫu 4: NextGen Bento Food & Chef Picks — Đặc Sản Nông Trại & Gợi Ý Bếp Trưởng',
+            'Bản xem thử giao diện Mẫu 4 phong cách Bento Grid hiện đại, thực phẩm sạch thượng hạng'
         );
 
         return view('frontend.demo.concept_4', $data);
@@ -353,20 +353,10 @@ class PageController extends Controller
     public function demoConcept5()
     {
         $data = $this->getDemoData(
-            'Mẫu 5: Nordic Minimalist Luxury Organic — Nông Nghiệp Hữu Cơ Sang Trọng Chuẩn Bắc Âu',
-            'Bản xem thử giao diện Mẫu 5 phong cách Bắc Âu tối giản, thanh lịch và tôn vinh nông sản cao cấp'
+            'Mẫu 5: Nordic Minimalist Luxury Organic — Bữa Ăn Hữu Cơ Thượng Hạng Chuẩn Bắc Âu',
+            'Bản xem thử giao diện Mẫu 5 phong cách Bắc Âu tinh tế, tôn vinh nguồn thực phẩm sạch tự nhiên'
         );
 
         return view('frontend.demo.concept_5', $data);
-    }
-
-    public function demoConcept6()
-    {
-        $data = $this->getDemoData(
-            'Mẫu 6: Ultra-Fast Mobile-First App Experience — Sàn Nông Nghiệp Tốc Độ Cao & Stories',
-            'Bản xem thử giao diện Mẫu 6 thiết kế dạng App di động siêu mượt, Story nhà vườn và Live Flash Drop'
-        );
-
-        return view('frontend.demo.concept_6', $data);
     }
 }

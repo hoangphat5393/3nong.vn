@@ -1,0 +1,26 @@
+
+/* Demo Switcher Shared Header */
+.demo-nav-top {
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 0.82rem;
+    position: sticky;
+    top: 0;
+    z-index: 999999;
+    border-bottom: 2px solid #EAB308;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+
+    .btn-concept {
+        font-size: 0.78rem;
+        font-weight: 700;
+        border-radius: 99px;
+        padding: 4px 12px;
+        text-decoration: none;
+        transition: all 0.2s ease;
+
+        &.active {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+    }
+}

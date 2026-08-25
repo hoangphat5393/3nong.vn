@@ -188,7 +188,10 @@ Route::get('demo/mau-2', '\App\Http\Controllers\PageController@demoConcept2')->n
 Route::get('demo/mau-3', '\App\Http\Controllers\PageController@demoConcept3')->name('demo.concept3');
 Route::get('demo/mau-4', '\App\Http\Controllers\PageController@demoConcept4')->name('demo.concept4');
 Route::get('demo/mau-5', '\App\Http\Controllers\PageController@demoConcept5')->name('demo.concept5');
-Route::get('demo/mau-6', '\App\Http\Controllers\PageController@demoConcept6')->name('demo.concept6');
+
+Route::redirect('new-concepts/mau-1', '/demo/mau-1', 301);
+Route::redirect('new-concepts/mau-2', '/demo/mau-2', 301);
+Route::redirect('new-concepts/mau-3', '/demo/mau-3', 301);
 
 Route::get('gioi-thieu', function () {
     $page = Page::pages()->whereIn('slug', ['about', 'gioi-thieu'])->first();

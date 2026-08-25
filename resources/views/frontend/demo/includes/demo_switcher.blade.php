@@ -1,13 +1,13 @@
 @props(['activeConcept' => 1])
 
-<!-- STICKY DEMO CONTROLLER BAR (ALL 6 CONCEPTS) -->
+<!-- STICKY DEMO CONTROLLER BAR (5 SELECTED CONCEPTS) -->
 <div id="demo-controller-bar" class="py-2 px-3 sticky-top shadow-lg" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); z-index: 999999; border-bottom: 2px solid #eab308; font-family: 'Nunito', sans-serif;">
     <div class="container-fluid">
         <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
             <!-- Left Info -->
             <div class="d-flex align-items-center gap-2">
                 <span class="badge bg-warning text-dark px-2.5 py-1 fs-7 fw-bold text-uppercase rounded-pill">
-                    <i class="fa-solid fa-layer-group me-1"></i> BẢN XEM THỬ GIAO DIỆN (6 MẪU)
+                    <i class="fa-solid fa-layer-group me-1"></i> BẢN XEM THỬ GIAO DIỆN (5 MẪU)
                 </span>
                 <span class="text-white small d-none d-xl-inline fw-semibold">
                     Đang xem: 
@@ -21,8 +21,6 @@
                         <strong style="color: #4ade80;">Mẫu 4: Bento Grid & Glassmorphism (Layout Tương Lai)</strong>
                     @elseif($activeConcept === 5)
                         <strong style="color: #fde047;">Mẫu 5: Nordic Minimalist Luxury (Bắc Âu Tối Giản)</strong>
-                    @elseif($activeConcept === 6)
-                        <strong style="color: #38bdf8;">Mẫu 6: Mobile-First App Experience (Siêu Mượt & Stories)</strong>
                     @endif
                 </span>
             </div>
@@ -62,13 +60,6 @@
                    style="{{ $activeConcept === 5 ? 'background-color: #D4AF37; border-color: #D4AF37; color: #000 !important;' : 'font-size: 0.8rem; border-color: #fde047; color: #fde047;' }}"
                    title="Mẫu 5: Bắc Âu Tối Giản Sang Trọng">
                     <i class="fa-solid fa-crown me-1"></i> Mẫu 5 (Bắc Âu)
-                </a>
-
-                <a href="{{ route('demo.concept6') }}" 
-                   class="btn btn-sm rounded-pill fw-bold transition-all {{ $activeConcept === 6 ? 'shadow' : 'btn-outline-light' }}"
-                   style="{{ $activeConcept === 6 ? 'background-color: #00A86B; border-color: #00A86B; color: #fff !important;' : 'font-size: 0.8rem; border-color: #38bdf8; color: #38bdf8;' }}"
-                   title="Mẫu 6: App Di Động Tốc Độ Cao & Stories">
-                    <i class="fa-solid fa-mobile-screen me-1"></i> Mẫu 6 (App UI)
                 </a>
 
                 <a href="{{ route('home') }}" class="btn btn-sm btn-outline-secondary text-light rounded-pill ms-md-2" title="Quay lại giao diện cũ">
