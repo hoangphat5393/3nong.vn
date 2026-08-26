@@ -433,3 +433,128 @@ body {
         }
     }
 }
+
+
+/* ----------------------------------------------------
+   CONCEPT 2: FLOATING CONTACT ECO SOFT MINT
+---------------------------------------------------- */
+.floating-contact-eco {
+    position: fixed;
+    bottom: 30px;
+    right: 26px;
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    .eco-fly-btn {
+        position: relative;
+        width: 56px;
+        height: 56px;
+        border-radius: 18px; /* Organic squircle */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 10px 24px rgba(16, 185, 129, 0.22);
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border: 2px solid rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(8px);
+        cursor: pointer;
+        outline: none;
+
+        &:hover {
+            transform: scale(1.1) translateY(-4px);
+
+            .eco-tooltip {
+                opacity: 1;
+                visibility: visible;
+                transform: translateX(0);
+            }
+        }
+
+        .zalo-label {
+            font-size: 1.15rem;
+            font-weight: 900;
+            color: #FFFFFF;
+            letter-spacing: -0.5px;
+        }
+
+        i {
+            font-size: 1.35rem;
+            color: #FFFFFF;
+        }
+
+        .eco-pulse {
+            position: absolute;
+            inset: -4px;
+            border-radius: 20px;
+            border: 2px solid rgba(16, 185, 129, 0.6);
+            animation: ecoPulseRing 2.2s infinite;
+            pointer-events: none;
+        }
+
+        .eco-tooltip {
+            position: absolute;
+            right: 68px;
+            white-space: nowrap;
+            background: #064E3B;
+            border: 1px solid #10B981;
+            color: #FFFFFF;
+            font-size: 0.84rem;
+            font-weight: 700;
+            padding: 7px 14px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(8px);
+            transition: all 0.25s ease;
+            pointer-events: none;
+        }
+
+        &.eco-btn-zalo {
+            background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%);
+            .eco-pulse { border-color: rgba(2, 132, 199, 0.65); }
+        }
+
+        &.eco-btn-phone {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            .eco-pulse { border-color: rgba(16, 185, 129, 0.7); animation-delay: 0.6s; }
+            i { animation: ecoPhoneRing 2s infinite ease-in-out; }
+        }
+
+        &.eco-btn-top {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            background: #FFFFFF;
+            border: 1.5px solid #A7F3D0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+
+            i {
+                color: #059669;
+                font-size: 0.95rem;
+            }
+
+            &:hover {
+                background: #10B981;
+                i { color: #FFFFFF; }
+            }
+        }
+    }
+}
+
+@keyframes ecoPulseRing {
+    0% { transform: scale(0.96); opacity: 0.8; }
+    50% { transform: scale(1.28); opacity: 0; }
+    100% { transform: scale(0.96); opacity: 0; }
+}
+
+@keyframes ecoPhoneRing {
+    0%, 100% { transform: rotate(0deg); }
+    15%, 45% { transform: rotate(-14deg); }
+    30%, 60% { transform: rotate(14deg); }
+    75% { transform: rotate(0deg); }
+}

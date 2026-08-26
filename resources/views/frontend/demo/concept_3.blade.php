@@ -18,13 +18,11 @@
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fontawesome_pro/css/all.min.css') }}">
 
-        <!-- Compiled Demo SCSS -->
+    <!-- Compiled Demo SCSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/demo/demo-3.css') }}?v={{ time() }}">
-
 </head>
 <body>
-
-            <!-- TOP DEMO SWITCHER BAR (5 MẪU) -->
+    <!-- TOP DEMO SWITCHER BAR (5 MẪU) -->
     <div class="demo-nav-top py-2 px-3 sticky-top shadow-lg" style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); z-index: 999999; border-bottom: 2px solid #EAB308; font-family: 'Plus Jakarta Sans', sans-serif;">
         <div class="container-fluid d-flex flex-wrap justify-content-between align-items-center gap-2">
             <div class="d-flex align-items-center gap-2">
@@ -32,7 +30,7 @@
                     <i class="fa-solid fa-layer-group me-1"></i> BẢN XEM THỬ GIAO DIỆN (5 MẪU)
                 </span>
                 <span class="text-white small d-none d-lg-inline">
-                    Đang xem: <strong>Mẫu 3</strong>
+                    Đang xem: <strong>Mẫu 3: Modern Gourmet Food Hall</strong>
                 </span>
             </div>
             <div class="d-flex flex-wrap gap-1.5 align-items-center">
@@ -45,29 +43,25 @@
             </div>
         </div>
     </div>
-    </div>
-    </div>
 
     <!-- MAIN HEADER -->
     <header class="mart-header">
-        <div class="container">
-            <div class="d-flex align-items-center justify-content-between gap-3">
-                <a href="{{ route('home') }}">
-                    <img src="{{ get_image(setting_option('logo')) }}" alt="Tam Nông Food Mart" style="max-height: 60px;">
+        <div class="container d-flex align-items-center justify-content-between gap-3">
+            <a href="{{ route('home') }}">
+                <img src="{{ get_image(setting_option('logo')) }}" alt="Tam Nông Food Mart" style="max-height: 54px;">
+            </a>
+
+            <div class="mart-search d-none d-lg-block">
+                <form action="{{ route('search') }}" method="GET">
+                    <input type="text" name="q" placeholder="Tìm kiếm nhanh thực phẩm, thịt tươi, đặc sản...">
+                    <button type="submit" aria-label="Tìm kiếm"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+                <a href="tel:0938133830" class="btn btn-warning rounded-pill px-3 py-2 fw-bold text-dark d-flex align-items-center gap-2">
+                    <i class="fa-solid fa-phone-volume"></i> 0938.133.830
                 </a>
-
-                <div class="mart-search d-none d-lg-block">
-                    <form action="{{ route('search') }}" method="GET">
-                        <input type="text" name="q" placeholder="Tìm kiếm nhanh thực phẩm, thịt tươi, đặc sản...">
-                        <button type="submit" aria-label="Tìm kiếm"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </form>
-                </div>
-
-                <div class="d-flex align-items-center gap-3">
-                    <a href="tel:0938133830" class="btn btn-warning rounded-pill px-3 py-2 fw-bold text-dark d-flex align-items-center gap-2">
-                        <i class="fa-solid fa-phone-volume"></i> 0938.133.830
-                    </a>
-                </div>
             </div>
         </div>
     </header>
@@ -76,13 +70,14 @@
     <nav class="mart-nav">
         <div class="container d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
-                <a href="{{ route('home') }}" class="mart-nav-link active"><i class="fa-solid fa-house me-1"></i> Trang Chủ</a>
+                <a href="{{ route('demo.concept3') }}" class="mart-nav-link active"><i class="fa-solid fa-house me-1"></i> Trang Chủ</a>
                 <a href="{{ route('product') }}" class="mart-nav-link">Thịt Bê Tươi</a>
                 <a href="{{ route('product') }}" class="mart-nav-link">Thịt Chim Trĩ & Cút</a>
                 <a href="{{ route('product') }}" class="mart-nav-link">Heo Rừng F1</a>
                 <a href="{{ route('product') }}" class="mart-nav-link">Gà Đồi & Gà Ác</a>
                 <a href="#flash-sale" class="mart-nav-link text-warning"><i class="fa-solid fa-bolt me-1"></i> Flash Sale Giờ Vàng</a>
-                <a href="{{ route('contact') }}" class="mart-nav-link">Báo Giá Sỉ</a>
+                <a href="#combos" class="mart-nav-link">Combo Tiết Kiệm</a>
+                <a href="#tin-tuc" class="mart-nav-link">Bản Tin Nông Sản</a>
             </div>
         </div>
     </nav>
@@ -136,7 +131,7 @@
                 <div class="d-flex align-items-center gap-3">
                     <h2 class="fs-4 fw-bold mb-0 text-white"><i class="fa-solid fa-bolt text-warning me-2"></i> GIỜ VÀNG THỊT TƯƠI</h2>
                     <div class="d-flex align-items-center gap-2">
-                        <span class="small fw-semibold opacity-90">Kết thúc trong:</span>
+                        <span class="small fw-semibold opacity-90 text-white">Kết thúc trong:</span>
                         <span class="mart-timer-num">03</span> :
                         <span class="mart-timer-num">14</span> :
                         <span class="mart-timer-num">55</span>
@@ -146,7 +141,7 @@
             </div>
 
             <div class="row g-3">
-                @foreach($products_hot->take(4) as $prod)
+                @foreach($all_products->take(4) as $prod)
                     <div class="col-6 col-md-3">
                         <div class="mart-prod-card">
                             <div class="mart-prod-thumb">
@@ -156,7 +151,7 @@
                                 </a>
                             </div>
                             <div class="mart-prod-body">
-                                <h3 class="fw-bold fs-6 text-dark mb-1" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 2.6em;">
+                                <h3 class="fw-bold fs-6 text-dark mb-1 text-truncate">
                                     <a href="{{ route('product.detail', ['slug' => $prod->slug, 'id' => $prod->id]) }}" class="text-dark text-decoration-none">
                                         {{ $prod->name }}
                                     </a>
@@ -181,15 +176,67 @@
             </div>
         </div>
 
-        <!-- 3. ALL PRODUCTS GRID -->
-        <div class="mb-5">
+        <!-- 3. SECTION: 4 ĐẶC QUYỀN MUA SẮM TẠI FOOD MART TAM NÔNG -->
+        <div class="mart-perks-box">
+            <div class="row g-4">
+                <div class="col-6 col-lg-3">
+                    <div class="perk-item">
+                        <div class="perk-icon"><i class="fa-solid fa-shield-heart"></i></div>
+                        <div>
+                            <h4 class="perk-title">Bảo Hành Tươi Ngon</h4>
+                            <p class="perk-desc">Đổi mới 100% nếu không tươi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="perk-item">
+                        <div class="perk-icon" style="background: #ECFDF5; color: #10B981;"><i class="fa-solid fa-knife-kitchen"></i></div>
+                        <div>
+                            <h4 class="perk-title">Miễn Phí Sơ Chế</h4>
+                            <p class="perk-desc">Chặt miếng, lọc xương & ướp sẵn</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="perk-item">
+                        <div class="perk-icon" style="background: #EFF6FF; color: #3B82F6;"><i class="fa-solid fa-truck-bolt"></i></div>
+                        <div>
+                            <h4 class="perk-title">Giao Nhanh 2 Giờ</h4>
+                            <p class="perk-desc">Đóng thùng xốp + đá gel mát</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="perk-item">
+                        <div class="perk-icon" style="background: #FEF3C7; color: #D97706;"><i class="fa-solid fa-credit-card"></i></div>
+                        <div>
+                            <h4 class="perk-title">Thanh Toán Linh Hoạt</h4>
+                            <p class="perk-desc">COD, Chuyển khoản & QR Code</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. ALL 12 PRODUCTS GRID -->
+        <div id="thuc-don" class="mb-5">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="fs-4 fw-bold text-dark mb-0">Thực Đơn Thịt Tươi Hôm Nay</h2>
-                <a href="{{ route('product') }}" class="btn btn-outline-dark btn-sm rounded-pill px-3">Xem Tất Cả</a>
+                <div>
+                    <span class="badge bg-danger-subtle text-danger fw-bold px-3 py-1.5 rounded-pill mb-1">THỰC ĐƠN BÁN CHẠY</span>
+                    <h2 class="fs-3 fw-bold text-dark mb-0">Tất Cả 12 Sản Phẩm Thịt Tươi Sạch</h2>
+                </div>
             </div>
 
             <div class="row g-3 g-md-4">
-                @foreach($products_hot as $prod)
+                @foreach($all_products as $prod)
+
+@php
+    $salePrice = (!empty($prod->sale_price) && $prod->sale_price > 0 && $prod->sale_price < $prod->price) ? $prod->sale_price : $prod->price;
+    $originalPrice = (!empty($prod->sale_price) && $prod->sale_price > 0 && $prod->sale_price < $prod->price) ? $prod->price : ($prod->price > 0 ? round($prod->price * 1.18, -3) : 120000);
+    $discountPercent = $originalPrice > $salePrice ? round((($originalPrice - $salePrice) / $originalPrice) * 100) : 15;
+    $unitLabel = !empty($prod->unit) ? $prod->unit : '500g';
+@endphp
+
                     <div class="col-6 col-md-4 col-lg-3">
                         <div class="mart-prod-card">
                             <div class="mart-prod-thumb">
@@ -198,16 +245,22 @@
                                 </a>
                             </div>
                             <div class="mart-prod-body">
-                                <h3 class="fw-bold fs-6 text-dark mb-2" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 2.6em;">
+                                <span class="badge bg-light text-dark fw-bold small align-self-start mb-1">Tươi Sạch</span>
+                                <h3 class="fw-bold fs-6 text-dark mb-1 text-truncate">
                                     <a href="{{ route('product.detail', ['slug' => $prod->slug, 'id' => $prod->id]) }}" class="text-dark text-decoration-none">
                                         {{ $prod->name }}
                                     </a>
                                 </h3>
-                                <div class="mb-3">
-                                    <span class="fw-bold text-dark fs-6">{{ number_format($prod->price ?? 0) }}đ</span>
-                                </div>
+                                
+<div class="d-flex align-items-baseline gap-2 mb-1">
+    <span class="fw-bold text-danger fs-5">{{ number_format($salePrice) }}đ</span>
+    <span class="text-muted small text-decoration-line-through">{{ number_format($originalPrice) }}đ</span>
+    <span class="badge bg-danger text-white small fw-bold px-1.5 py-0.5 rounded">-{{ $discountPercent }}%</span>
+</div>
+<div class="text-muted small mb-2">Đơn vị: {{ $unitLabel }}</div>
+
                                 <a href="{{ route('product.detail', ['slug' => $prod->slug, 'id' => $prod->id]) }}" class="btn-mart-cart">
-                                    <i class="fa-solid fa-cart-plus"></i> Thêm Giỏ Hàng
+                                    <i class="fa-solid fa-cart-shopping"></i> Mua Ngay
                                 </a>
                             </div>
                         </div>
@@ -215,50 +268,183 @@
                 @endforeach
             </div>
         </div>
+
+        <!-- 5. TOP COMBO TIỆC & DEAL TIẾT KIỆM TUẦN -->
+        <div id="combos" class="mb-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <span class="badge bg-danger-subtle text-danger fw-bold px-3 py-1 rounded-pill mb-1">TIẾT KIỆM LÊN TỚI 80.000Đ</span>
+                    <h2 class="fw-bold fs-3 text-dark mb-0">Combo Tiệc & Set Thực Phẩm Tiện Lợi</h2>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="mart-combo-card">
+                        <span class="combo-save-badge">TIẾT KIỆM 65K</span>
+                        <div>
+                            <span class="badge bg-success-subtle text-success fw-bold small mb-2 px-2.5 py-1 rounded-pill">Set 4 - 6 Người</span>
+                            <h3 class="fw-bold fs-5 text-dark mb-1">Combo Tiệc Lẩu Gia Đình</h3>
+                            <p class="text-muted small mb-2">Thực đơn lẩu bê & gà đồi trọn vị ấm cúng cuối tuần.</p>
+                            <ul class="combo-items-list">
+                                <li><i class="fa-solid fa-circle-check"></i> 1kg Thịt Bê Rút Xương Tươi</li>
+                                <li><i class="fa-solid fa-circle-check"></i> 1 Con Gà Ta Thả Vườn (1.4kg)</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Tặng 1 gói Cốt Lẩu Nấm Thảo Mộc</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="d-flex align-items-baseline gap-2 mb-3">
+                                <span class="fw-bold fs-4 text-danger">385.000đ</span>
+                                <span class="text-muted small text-decoration-line-through">450.000đ</span>
+                            </div>
+                            <a href="tel:0938133830" class="btn-combo-buy"><i class="fa-solid fa-basket-shopping me-1"></i> Chọn Mua Combo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="mart-combo-card" style="border-color: #FED7AA;">
+                        <span class="combo-save-badge">TIẾT KIỆM 50K</span>
+                        <div>
+                            <span class="badge bg-warning-subtle text-warning-emphasis fw-bold small mb-2 px-2.5 py-1 rounded-pill">Bán Chạy Nhất</span>
+                            <h3 class="fw-bold fs-5 text-dark mb-1">Combo Nướng BBQ Sân Vườn</h3>
+                            <p class="text-muted small mb-2">Đặc sản nướng than hoa thơm lừng giòn bì.</p>
+                            <ul class="combo-items-list">
+                                <li><i class="fa-solid fa-circle-check"></i> 1kg Ba Rọi Heo Rừng F1 Giòn Bì</li>
+                                <li><i class="fa-solid fa-circle-check"></i> 500g Bê Xối Xả Ướp Sẵn Gia Vị</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Tặng 1 Chai Sốt Nướng BBQ Tam Nông</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="d-flex align-items-baseline gap-2 mb-3">
+                                <span class="fw-bold fs-4 text-danger">320.000đ</span>
+                                <span class="text-muted small text-decoration-line-through">370.000đ</span>
+                            </div>
+                            <a href="tel:0938133830" class="btn-combo-buy" style="background: #FF5722;"><i class="fa-solid fa-basket-shopping me-1"></i> Chọn Mua Combo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="mart-combo-card">
+                        <span class="combo-save-badge">TIẾT KIỆM 80K</span>
+                        <div>
+                            <span class="badge bg-info-subtle text-info-emphasis fw-bold small mb-2 px-2.5 py-1 rounded-pill">Bồi Bổ Dưỡng Sinh</span>
+                            <h3 class="fw-bold fs-5 text-dark mb-1">Combo Dinh Dưỡng Thượng Hạng</h3>
+                            <p class="text-muted small mb-2">Món tiềm hầm phục hồi sinh lực cho cả nhà.</p>
+                            <ul class="combo-items-list">
+                                <li><i class="fa-solid fa-circle-check"></i> 1 Con Gà Đen H'Mông Quý Hiếm</li>
+                                <li><i class="fa-solid fa-circle-check"></i> 2 Con Chim Trĩ Đỏ Nuôi Thả Đồi</li>
+                                <li><i class="fa-solid fa-circle-check"></i> Tặng Set Thuốc Bắc Đảng Sâm Kỷ Tử</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="d-flex align-items-baseline gap-2 mb-3">
+                                <span class="fw-bold fs-4 text-danger">410.000đ</span>
+                                <span class="text-muted small text-decoration-line-through">490.000đ</span>
+                            </div>
+                            <a href="tel:0938133830" class="btn-combo-buy"><i class="fa-solid fa-basket-shopping me-1"></i> Chọn Mua Combo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. BẢN TIN NÔNG SẢN & MẸO MUA SẮM THÔNG MINH -->
+        <div id="tin-tuc" class="mb-5">
+            <div class="d-flex flex-wrap justify-content-between align-items-end mb-4 gap-3">
+                <div>
+                    <span class="badge bg-warning text-dark fw-bold px-3 py-1 rounded-pill mb-1">CẬP NHẬT MỖI NGÀY</span>
+                    <h2 class="fw-bold fs-3 text-dark mb-0">Bản Tin Nông Sản & Mẹo Mua Sắm</h2>
+                </div>
+                <a href="{{ route('news') }}" class="btn btn-outline-dark btn-sm rounded-pill px-3 py-1.5 fw-bold text-decoration-none">
+                    Xem tất cả bài viết <i class="fa-solid fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+
+            <div class="row g-4">
+                @if(isset($post_list) && count($post_list) > 0)
+                    @foreach($post_list->take(3) as $post)
+                        <div class="col-md-4">
+                            <a href="{{ route('news.detail', ['slug' => $post->slug, 'id' => $post->id]) }}" class="mart-news-card">
+                                <div class="mart-news-thumb">
+                                    <img src="{{ get_image($post->image) }}" alt="{{ $post->title ?? $post->name }}">
+                                </div>
+                                <div class="mart-news-body">
+                                    <span class="mart-news-tag">Thị Trường Hôm Nay</span>
+                                    <h3 class="mart-news-title">{{ $post->title ?? $post->name }}</h3>
+                                    <p class="mart-news-desc">{{ Str::limit(strip_tags($post->description ?? $post->content), 90) }}</p>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
     </main>
 
-    <!-- MART FOOTER -->
+    <!-- FOOTER -->
     <footer class="mart-footer">
         <div class="container">
             <div class="row g-4 mb-4">
                 <div class="col-lg-4">
-                    <img src="{{ get_image(setting_option('logo')) }}" alt="Tam Nông" class="img-fluid mb-3" style="max-height: 52px; filter: brightness(0) invert(1);">
-                    <p class="text-white opacity-75 small">
-                        Tam Nông Food Mart — Sàn thực phẩm tươi sống, đặc sản thịt sạch giao nhanh 2h tại TP.HCM.
-                    </p>
+                    <img src="{{ get_image(setting_option('logo')) }}" alt="Tam Nông" style="max-height: 48px; filter: brightness(0) invert(1);" class="mb-3">
+                    <p class="small opacity-75 pe-lg-3">Tam Nông Food Mart — Chuỗi siêu thị thực phẩm tươi sống chuẩn VietGAP, phục vụ bữa ăn an lành mỗi ngày.</p>
                 </div>
                 <div class="col-6 col-lg-2">
-                    <h5 class="fw-bold mb-3 text-white">Danh Mục</h5>
-                    <ul class="list-unstyled small">
-                        <li class="mb-2"><a href="{{ route('product') }}">Thịt Bê Tươi</a></li>
-                        <li class="mb-2"><a href="{{ route('product') }}">Heo Rừng Sạch</a></li>
-                        <li class="mb-2"><a href="{{ route('product') }}">Gà Đồi & Chim Cút</a></li>
-                        <li class="mb-2"><a href="{{ route('product') }}">Món Ướp Sẵn</a></li>
+                    <h5 class="fw-bold fs-6 mb-3 text-white">Danh Mục</h5>
+                    <ul class="list-unstyled small opacity-75">
+                        <li class="mb-2"><a href="{{ route('product') }}" class="text-white text-decoration-none">Thịt Bê Tươi</a></li>
+                        <li class="mb-2"><a href="{{ route('product') }}" class="text-white text-decoration-none">Heo Rừng F1</a></li>
+                        <li class="mb-2"><a href="{{ route('product') }}" class="text-white text-decoration-none">Gà Đồi & Chim Trĩ</a></li>
                     </ul>
                 </div>
-                <div class="col-6 col-lg-2">
-                    <h5 class="fw-bold mb-3 text-white">Hỗ Trợ</h5>
-                    <ul class="list-unstyled small">
-                        <li class="mb-2"><a href="{{ route('about') }}">Về Tam Nông</a></li>
-                        <li class="mb-2"><a href="{{ route('contact') }}">Chính Sách Giao Hàng</a></li>
-                        <li class="mb-2"><a href="{{ route('contact') }}">Bảo Mật Thông Tin</a></li>
-                        <li class="mb-2"><a href="{{ route('contact') }}">Liên Hệ Hotline</a></li>
+                <div class="col-6 col-lg-3">
+                    <h5 class="fw-bold fs-6 mb-3 text-white">Chính Sách</h5>
+                    <ul class="list-unstyled small opacity-75">
+                        <li class="mb-2"><a href="{{ route('about') }}" class="text-white text-decoration-none">Chính Sách Giao Hàng 2H</a></li>
+                        <li class="mb-2"><a href="{{ route('contact') }}" class="text-white text-decoration-none">Đổi Trả & Hoàn Tiền</a></li>
+                        <li class="mb-2"><a href="{{ route('contact') }}" class="text-white text-decoration-none">Kiểm Dịch Nông Trại</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-4">
-                    <h5 class="fw-bold mb-3 text-white">Tổng Đài Đặt Hàng</h5>
-                    <p class="text-white opacity-75 small mb-1"><i class="fa-solid fa-phone me-2"></i> Hotline: <strong class="text-warning">0938.133.830</strong></p>
-                    <p class="text-white opacity-75 small mb-1"><i class="fa-solid fa-location-dot me-2"></i> 59 đường số 3, Thăng Long Home Hưng Phú, Tam Bình, Thủ Đức, TP.HCM</p>
-                    <p class="text-white opacity-75 small"><i class="fa-solid fa-envelope me-2"></i> tamnong.corp@gmail.com</p>
+                <div class="col-lg-3">
+                    <h5 class="fw-bold fs-6 mb-3 text-white">Hotline Mua Hàng</h5>
+                    <div class="fs-4 fw-bold text-warning mb-1">0938.133.830</div>
+                    <p class="small opacity-75 mb-0">59 đường số 3, Thăng Long Home Hưng Phú, Thủ Đức, TP.HCM</p>
                 </div>
             </div>
-            <div class="border-top border-secondary pt-3 text-center text-white opacity-50 small">
-                © {{ date('Y') }} Tam Nông Food Mart. Đảm bảo vệ sinh an toàn thực phẩm.
+            <div class="text-center pt-3 border-top border-secondary-subtle small opacity-50">
+                © {{ date('Y') }} Tam Nông Food Mart • Mẫu 3
             </div>
         </div>
     </footer>
-
-    <!-- Bootstrap 5.3 JS -->
     <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- FLOATING CONTACT WIDGET - CONCEPT 3: FOOD HALL & FLASH MART -->
+    <div class="floating-contact-foodhall">
+        <!-- Live Open Badge -->
+        <div class="foodhall-status-pill">
+            <span class="live-dot"></span> Đang phục vụ 2H
+        </div>
+
+        <!-- Zalo Button -->
+        <a href="https://zalo.me/0938133830" target="_blank" rel="noopener" class="foodhall-fly-btn btn-zalo" title="Chat Zalo Đặt Tiệc">
+            <span class="foodhall-tooltip">Chat Zalo: 0938.133.830</span>
+            <div class="btn-glow-ring"></div>
+            <span class="zalo-bold">Zalo</span>
+        </a>
+
+        <!-- Hotline Button (Fire Gradient) -->
+        <a href="tel:0938133830" class="foodhall-fly-btn btn-hotline" title="Hotline Báo Giá Sỉ">
+            <span class="foodhall-tooltip">Hotline: 0938.133.830</span>
+            <div class="btn-glow-ring"></div>
+            <i class="fa-solid fa-phone-volume"></i>
+        </a>
+
+        <!-- Back to Top -->
+        <button type="button" class="foodhall-fly-btn btn-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Lên đầu trang">
+            <i class="fa-solid fa-angles-up"></i>
+        </button>
+    </div>
+
 </body>
 </html>

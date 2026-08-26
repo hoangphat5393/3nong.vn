@@ -18,9 +18,8 @@
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fontawesome_pro/css/all.min.css') }}">
 
-        <!-- Compiled Demo SCSS -->
+    <!-- Compiled Demo SCSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/demo/demo-2.css') }}?v={{ time() }}">
-
 </head>
 <body>
     <!-- TOP DEMO SWITCHER BAR (5 MẪU) -->
@@ -49,53 +48,49 @@
     <header class="eco-header">
         <div class="container d-flex align-items-center justify-content-between gap-3">
             <a href="{{ route('home') }}" class="header-logo">
-                <img src="{{ get_image(setting_option('logo')) }}" alt="Tam Nông Eco Food">
+                <img src="{{ get_image(setting_option('logo')) }}" alt="Tam Nông Eco Fresh" style="max-height: 52px;">
             </a>
-            <div class="search-pill-box d-none d-lg-block">
+            <div class="search-pill-box d-none d-md-block">
                 <form action="{{ route('search') }}" method="GET">
                     <input type="text" name="q" placeholder="Tìm kiếm thịt bê, heo rừng, gà đồi, chim trĩ...">
                     <button type="submit" aria-label="Tìm kiếm"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
-            <div class="d-flex align-items-center gap-2">
-                <div class="rounded-circle p-2 d-flex align-items-center justify-content-center text-white" style="background: var(--eco-emerald); width: 42px; height: 42px;">
-                    <i class="fa-solid fa-phone fs-5"></i>
-                </div>
-                <div>
-                    <div class="text-muted small" style="font-size: 0.75rem;">Hotline Nông Trại:</div>
-                    <strong class="fs-6 text-dark">0938.133.830</strong>
-                </div>
+            <div class="d-flex align-items-center gap-3">
+                <a href="tel:0938133830" class="btn btn-outline-success rounded-pill px-3 py-2 fw-bold text-dark d-flex align-items-center gap-2" style="border-color: var(--eco-forest);">
+                    <i class="fa-solid fa-phone" style="color: var(--eco-forest);"></i> 0938.133.830
+                </a>
             </div>
         </div>
     </header>
 
-    <!-- NAV -->
+    <!-- NAVIGATION -->
     <nav class="eco-nav">
         <div class="container d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
                 <a href="{{ route('demo.concept2') }}" class="eco-nav-link active"><i class="fa-solid fa-house me-1"></i> Trang Chủ</a>
-                <a href="{{ route('product') }}" class="eco-nav-link">Thịt Bê Nông Trại</a>
-                <a href="{{ route('product') }}" class="eco-nav-link">Heo Rừng Thả Vườn</a>
-                <a href="{{ route('product') }}" class="eco-nav-link">Gà Đồi & Chim Trĩ</a>
+                <a href="{{ route('product') }}" class="eco-nav-link">Thịt Bê Tơ</a>
+                <a href="{{ route('product') }}" class="eco-nav-link">Heo Rừng F1</a>
+                <a href="{{ route('product') }}" class="eco-nav-link">Gà Đồi & Gà Ác</a>
+                <a href="{{ route('product') }}" class="eco-nav-link">Chim Trĩ Đỏ</a>
                 <a href="#quy-trinh" class="eco-nav-link">Quy Trình 4 Bước</a>
-                <a href="#cam-nang" class="eco-nav-link">Cẩm Nang Bếp Sạch</a>
-                <a href="{{ route('contact') }}" class="eco-nav-link">Báo Giá Sỉ Nhà Hàng</a>
+                <a href="#b2b" class="eco-nav-link text-warning fw-bold"><i class="fa-solid fa-store me-1"></i> Báo Giá Sỉ Nhà Hàng</a>
             </div>
         </div>
     </nav>
 
-    <!-- MAIN CONTENT -->
+    <!-- MAIN BODY -->
     <main class="container my-4">
-        <!-- 1. HERO BOX -->
+        <!-- 1. HERO BANNER -->
         <div class="eco-hero-box">
-            <div class="row align-items-center g-5">
+            <div class="row align-items-center g-4">
                 <div class="col-lg-6">
-                    <span class="eco-badge"><i class="fa-solid fa-shield-halved text-success"></i> CHUỖI CUNG ỨNG NÔNG TRẠI KHÉP KÍN</span>
-                    <h1 class="eco-hero-title">Thịt Tươi Tự Nhiên<br>Đậm Đà Bữa Cơm Sạch</h1>
-                    <p class="text-muted lead fs-6 mb-4 pe-lg-3">Gia súc gia cầm được chăn thả bán hoang dã tại nông trại Tam Nông. Quy trình sơ chế hút chân không vô trùng, bảo quản nhiệt độ mát -2°C đến 4°C giữ trọn vẹn vị tươi ngọt tự nhiên.</p>
+                    <div class="eco-badge"><i class="fa-solid fa-leaf"></i> NGUYÊN BẢN TỪ TRANG TRẠI HỮU CƠ</div>
+                    <h1 class="eco-hero-title">Thực Phẩm Tươi Sạch<br><span style="color: var(--eco-emerald);">Chuẩn Farm-To-Table</span></h1>
+                    <p class="text-muted mb-4 pe-lg-4">Mang nguồn thịt sạch chăn thả tự nhiên từ các nông trang xanh trực tiếp tới bàn ăn gia đình bạn. Sơ chế sạch sẽ, đóng gói hút chân không, bảo quản lạnh khép kín giữ trọn vị ngọt tươi thuần khiết.</p>
                     <div class="d-flex flex-wrap gap-3">
-                        <a href="#san-pham" class="btn-eco-primary"><i class="fa-solid fa-drumstick-bite"></i> Đặt Mua Thực Phẩm</a>
-                        <a href="#quy-trinh" class="btn btn-outline-success rounded-pill px-4 py-2.5 fw-bold" style="border-color: var(--eco-forest); color: var(--eco-forest);">Tìm Hiểu Quy Trình</a>
+                        <a href="#thuc-don" class="btn-eco-primary"><i class="fa-solid fa-basket-shopping"></i> Khám Phá Thực Đơn</a>
+                        <a href="{{ route('contact') }}" class="btn btn-outline-secondary rounded-pill px-4 py-3 fw-bold"><i class="fa-solid fa-phone me-1"></i> 0938.133.830</a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -119,27 +114,44 @@
             </div>
         </div>
 
-        <!-- 3. ALL PRODUCTS -->
+        <!-- 3. ALL 12 PRODUCTS GRID -->
         <div id="san-pham" class="mb-5">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div>
                     <span class="badge bg-success-subtle text-success fw-bold px-3 py-1 rounded-pill mb-1">THỰC ĐƠN TƯƠI SẠCH</span>
-                    <h2 class="fw-bold fs-3 text-dark mb-0">Đặc Sản Thịt Tươi Bán Chạy Nhất</h2>
+                    <h2 class="fw-bold fs-3 text-dark mb-0">Tất Cả 12 Sản Phẩm Thịt Tươi Bán Chạy Nhất</h2>
                 </div>
             </div>
             <div class="row g-3 g-md-4">
-                @foreach($all_products as $p)
+                @foreach($all_products as $prod)
+                    @php
+                        $currentPrice = (float)($prod->price ?? 100000);
+                        $originalPrice = (!empty($prod->sale_price) && (float)$prod->sale_price > $currentPrice) ? (float)$prod->sale_price : round($currentPrice * 1.2, -3);
+                        $discountPercent = round((($originalPrice - $currentPrice) / $originalPrice) * 100);
+                        $unitText = !empty($prod->unit) ? $prod->unit : 'khay 500g';
+                    @endphp
                     <div class="col-6 col-md-4 col-lg-3">
                         <div class="eco-prod-card">
                             <div class="eco-prod-thumb">
-                                <img src="{{ get_image($p->image) }}" alt="{{ $p->name }}">
+                                <a href="{{ route('product.detail', ['slug' => $prod->slug, 'id' => $prod->id]) }}">
+                                    <img src="{{ get_image($prod->image) }}" alt="{{ $prod->name }}">
+                                </a>
                             </div>
-                            <span class="badge bg-success-subtle text-success fw-bold small align-self-start mb-2 px-2.5 py-1 rounded-pill">Tươi Sạch</span>
-                            <h3 class="fw-bold fs-6 text-dark mb-1">{{ $p->name }}</h3>
-                            <div class="mb-3">
-                                <span class="fw-bold fs-5" style="color: var(--eco-forest);">{{ number_format($p->price) }}đ</span>
+                            <div class="d-flex flex-column flex-grow-1">
+                                <span class="badge bg-success-subtle text-success fw-bold small align-self-start mb-1 px-2.5 py-1 rounded-pill">Tươi Sạch</span>
+                                <h3 class="fw-bold fs-6 text-dark mb-1 text-truncate">
+                                    <a href="{{ route('product.detail', ['slug' => $prod->slug, 'id' => $prod->id]) }}" class="text-dark text-decoration-none">
+                                        {{ $prod->name }}
+                                    </a>
+                                </h3>
+                                <div class="d-flex align-items-baseline gap-2 mb-1">
+                                    <span class="fw-bold text-dark fs-5" style="color: var(--eco-forest);">{{ number_format($currentPrice) }}đ</span>
+                                    <span class="text-muted small text-decoration-line-through">{{ number_format($originalPrice) }}đ</span>
+                                    <span class="badge bg-success-subtle text-success small fw-bold px-1.5 py-0.5 rounded">-{{ $discountPercent }}%</span>
+                                </div>
+                                <div class="text-muted small mb-3"><i class="fa-solid fa-scale-balanced me-1 text-success"></i> Quy cách: <span class="fw-semibold text-dark">{{ $unitText }}</span></div>
+                                <a href="{{ route('product.detail', ['slug' => $prod->slug, 'id' => $prod->id]) }}" class="btn-eco-buy"><i class="fa-solid fa-bag-shopping me-1"></i> Đặt Hàng Ngay</a>
                             </div>
-                            <a href="tel:0938133830" class="btn-eco-buy"><i class="fa-solid fa-bag-shopping me-1"></i> Đặt Hàng Ngay</a>
                         </div>
                     </div>
                 @endforeach
@@ -182,30 +194,42 @@
                     <div class="process-step-card">
                         <span class="step-num-badge">BƯỚC 04</span>
                         <div class="step-icon-box"><i class="fa-solid fa-truck-fast"></i></div>
-                        <h3 class="step-title">Giao Tận Bếp 2H</h3>
-                        <p class="step-desc">Thùng xốp giữ nhiệt chuyên dụng kèm đá gel, giao hỏa tốc 2 giờ nội thành TP.HCM.</p>
+                        <h3 class="step-title">Giao Nhanh 2 Giờ</h3>
+                        <p class="step-desc">Thùng xốp giữ nhiệt + đá gel giao hỏa tốc đến tận căn bếp gia đình hoặc nhà hàng.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 5. SECTION: CẨM NANG NÔNG TRẠI & MẸO BẾP SẠCH -->
-        <div id="cam-nang" class="mb-5 pt-3">
-            <div class="d-flex flex-wrap justify-content-between align-items-end mb-4 gap-3">
-                <div>
-                    <div class="d-flex align-items-center gap-2 mb-1">
-                        <span style="width: 4px; height: 22px; background: var(--eco-emerald); border-radius: 99px; display: inline-block;"></span>
-                        <h2 class="fw-bold fs-3 text-dark mb-0">Cẩm Nang Nông Trại & Mẹo Bếp Sạch</h2>
-                    </div>
-                    <p class="text-muted small mb-0 ps-3">Bí quyết chọn thịt tươi ngon và công thức nấu ăn chuẩn vị từ chuyên gia Tam Nông</p>
+        <!-- 5. SECTION: BANNER B2B BÁO GIÁ SỈ CHO NHÀ HÀNG -->
+        <div id="b2b" class="eco-b2b-box">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <span class="badge bg-warning text-dark fw-bold px-3 py-1.5 rounded-pill mb-2">DÀNH RIÊNG CHO ĐỐI TÁC</span>
+                    <h3 class="fw-bold fs-2 text-white mb-2">Bạn Là Chủ Quán Nướng, Nhà Hàng Hay Quán Nhậu?</h3>
+                    <p class="text-white-50 mb-0">Tam Nông cam kết nguồn cung thịt bê tơ, heo rừng lai, gà đồi ổn định quanh năm. Cung cấp theo quy cách riêng, xuất hóa đơn VAT đầy đủ và chính sách chiết khấu sỉ hấp dẫn nhất thị trường.</p>
                 </div>
-                <a href="{{ route('news') }}" class="btn btn-outline-success btn-sm rounded-pill px-3 py-1.5 fw-bold text-decoration-none" style="border-color: var(--eco-forest); color: var(--eco-forest);">
-                    Xem tất cả bài viết <i class="fa-solid fa-arrow-right ms-1"></i>
-                </a>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="{{ route('contact') }}" class="eco-b2b-btn">
+                        <i class="fa-solid fa-file-invoice-dollar me-2"></i> Nhận Báo Giá Sỉ Ngay
+                    </a>
+                </div>
             </div>
+        </div>
 
-            <div class="row g-4">
-                @if(isset($post_list) && count($post_list) > 0)
+        <!-- 6. SECTION: CẨM NANG ẨM THỰC NÔNG TRẠI -->
+        @if(!empty($post_list) && count($post_list) > 0)
+            <div class="mb-5">
+                <div class="d-flex flex-wrap justify-content-between align-items-end mb-4 gap-3">
+                    <div>
+                        <span class="badge bg-success-subtle text-success fw-bold px-3 py-1.5 rounded-pill mb-1">GÓC ẨM THỰC</span>
+                        <h2 class="fw-bold fs-3 text-dark mb-0">Bí Quyết Món Ngon Từ Trang Trại</h2>
+                    </div>
+                    <a href="{{ route('news') }}" class="btn btn-outline-dark btn-sm rounded-pill px-3 py-1.5 fw-bold text-decoration-none">
+                        Xem tất cả bài viết <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+                <div class="row g-4">
                     @foreach($post_list->take(3) as $post)
                         <div class="col-md-4">
                             <a href="{{ route('news.detail', ['slug' => $post->slug, 'id' => $post->id]) }}" class="eco-news-card">
@@ -213,75 +237,76 @@
                                     <img src="{{ get_image($post->image) }}" alt="{{ $post->title ?? $post->name }}">
                                 </div>
                                 <div class="eco-news-body">
-                                    <span class="eco-news-tag"><i class="fa-solid fa-leaf me-1"></i> Mẹo Ẩm Thực</span>
+                                    <span class="eco-news-tag">Món Ngon Nông Trại</span>
                                     <h3 class="eco-news-title">{{ $post->title ?? $post->name }}</h3>
                                     <p class="eco-news-desc">{{ Str::limit(strip_tags($post->description ?? $post->content), 95) }}</p>
                                 </div>
                             </a>
                         </div>
                     @endforeach
-                @endif
-            </div>
-        </div>
-
-        <!-- 6. SECTION: B2B / NHẬN BÁO GIÁ SỈ CHO NHÀ HÀNG -->
-        <div id="bao-gia-si" class="eco-b2b-box">
-            <div class="row align-items-center justify-content-between g-4">
-                <div class="col-lg-8">
-                    <span class="badge bg-success-subtle text-white border border-success fw-bold px-3 py-1.5 rounded-pill text-uppercase mb-2">
-                        <i class="fa-solid fa-handshake me-1"></i> HỢP TÁC B2B & GIÁ SỈ NHÀ HÀNG
-                    </span>
-                    <h2 class="fw-bold fs-3 text-white mb-2">Bạn Là Nhà Hàng, Quán Ăn Hay Đặt Tiệc Gia Đình?</h2>
-                    <p class="text-white opacity-85 small mb-0 pe-lg-3">Tam Nông cam kết nguồn cung thịt bê tươi, heo rừng, gia cầm ổn định số lượng lớn với chiết khấu tốt nhất, xuất hóa đơn VAT đầy đủ và giao hàng tận nơi mỗi sáng.</p>
-                </div>
-                <div class="col-lg-4 text-lg-end">
-                    <a href="tel:0938133830" class="eco-b2b-btn">
-                        <i class="fa-solid fa-phone me-1"></i> Nhận Báo Giá Sỉ Ngay
-                    </a>
                 </div>
             </div>
-        </div>
+        @endif
     </main>
 
-    <!-- RICH 4-COLUMN ECO FOOTER -->
-    <footer id="lien-he" class="eco-footer">
+    <!-- FOOTER -->
+    <footer class="eco-footer">
         <div class="container">
             <div class="row g-4 mb-4">
                 <div class="col-lg-4">
-                    <img src="{{ get_image(setting_option('logo')) }}" alt="Tam Nông Eco" style="max-height: 52px; filter: brightness(0) invert(1);" class="mb-3">
-                    <p class="small opacity-80 pe-lg-3">Tam Nông Eco Food — Hệ sinh thái thực phẩm sạch từ nông trại đến bàn ăn, gìn giữ giá trị thuần khiết tự nhiên cho mọi gia đình.</p>
+                    <img src="{{ get_image(setting_option('logo')) }}" alt="Tam Nông Eco Fresh" style="max-height: 52px; filter: brightness(0) invert(1);" class="mb-3">
+                    <p class="small opacity-75 pe-lg-3">Tam Nông Eco Fresh — Cung cấp nguồn thực phẩm sạch, thịt tươi tự nhiên chuẩn quy trình khép kín Farm-To-Table.</p>
                 </div>
                 <div class="col-6 col-lg-2">
                     <h5 class="fw-bold fs-6 mb-3 text-white">Thực Phẩm</h5>
-                    <ul class="list-unstyled small opacity-80">
-                        <li class="mb-2"><a href="{{ route('product') }}">Thịt Bê Nông Trại</a></li>
-                        <li class="mb-2"><a href="{{ route('product') }}">Thịt Chim Trĩ</a></li>
-                        <li class="mb-2"><a href="{{ route('product') }}">Ba Rọi Heo Rừng</a></li>
+                    <ul class="list-unstyled small opacity-75">
+                        <li class="mb-2"><a href="{{ route('product') }}">Thịt Bê Tơ</a></li>
+                        <li class="mb-2"><a href="{{ route('product') }}">Heo Rừng F1</a></li>
                         <li class="mb-2"><a href="{{ route('product') }}">Gà Đồi Chạy Bộ</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-lg-3">
-                    <h5 class="fw-bold fs-6 mb-3 text-white">Chính Sách & Cam Kết</h5>
-                    <ul class="list-unstyled small opacity-80">
-                        <li class="mb-2"><a href="{{ route('about') }}">Chứng Nhận VietGAP</a></li>
-                        <li class="mb-2"><a href="{{ route('contact') }}">Giao Hàng Tận Bếp 2H</a></li>
-                        <li class="mb-2"><a href="{{ route('contact') }}">Chuỗi Lạnh Khép Kín</a></li>
-                        <li class="mb-2"><a href="{{ route('contact') }}">Liên Hệ Hợp Tác</a></li>
+                    <h5 class="fw-bold fs-6 mb-3 text-white">Cam Kết</h5>
+                    <ul class="list-unstyled small opacity-75">
+                        <li class="mb-2"><a href="{{ route('about') }}">Chuẩn Kiểm Dịch 100%</a></li>
+                        <li class="mb-2"><a href="{{ route('contact') }}">Giao Nhanh 2H Thùng Xốp</a></li>
+                        <li class="mb-2"><a href="{{ route('contact') }}">Chính Sách Khách Sỉ</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
-                    <h5 class="fw-bold fs-6 mb-3 text-white">Liên Hệ Nông Trại</h5>
-                    <div class="fs-5 fw-bold text-warning mb-2">0938.133.830</div>
-                    <p class="small opacity-80 mb-0">59 đường số 3, Thăng Long Home Hưng Phú, Tam Bình, Thủ Đức, TP.HCM</p>
+                    <h5 class="fw-bold fs-6 mb-3 text-white">Hotline Nông Trại</h5>
+                    <div class="fs-4 fw-bold text-warning mb-1">0938.133.830</div>
+                    <p class="small opacity-75 mb-0">59 đường số 3, Thăng Long Home Hưng Phú, TP. Thủ Đức, TP.HCM</p>
                 </div>
             </div>
-            <div class="text-center pt-3 border-top border-success-subtle small opacity-75">
-                © {{ date('Y') }} Tam Nông Eco Food • Mẫu 2: Eco Fresh & Farm-To-Table
+            <div class="text-center pt-3 border-top border-secondary-subtle small opacity-50">
+                © {{ date('Y') }} Tam Nông Eco Fresh • Mẫu 2
             </div>
         </div>
     </footer>
-
-    <!-- Bootstrap 5.3 JS -->
     <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- FLOATING CONTACT WIDGET - CONCEPT 2: ECO SOFT MINT SQUIRCLE -->
+    <div class="floating-contact-eco">
+        <!-- Zalo Squircle -->
+        <a href="https://zalo.me/0938133830" target="_blank" rel="noopener" class="eco-fly-btn eco-btn-zalo" title="Tư Vấn Zalo Nông Trại">
+            <span class="eco-tooltip"><i class="fa-solid fa-leaf text-success me-1"></i> Zalo Nông Trại: 0938.133.830</span>
+            <div class="eco-pulse"></div>
+            <span class="zalo-label">Zalo</span>
+        </a>
+
+        <!-- Hotline Squircle -->
+        <a href="tel:0938133830" class="eco-fly-btn eco-btn-phone" title="Hotline Giao Tận Nơi">
+            <span class="eco-tooltip"><i class="fa-solid fa-truck-fast text-warning me-1"></i> Giao 2H: 0938.133.830</span>
+            <div class="eco-pulse"></div>
+            <i class="fa-solid fa-phone-volume"></i>
+        </a>
+
+        <!-- Back to Top -->
+        <button type="button" class="eco-fly-btn eco-btn-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Lên đầu trang">
+            <i class="fa-solid fa-arrow-up"></i>
+        </button>
+    </div>
+
 </body>
 </html>

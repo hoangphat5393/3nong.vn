@@ -89,10 +89,7 @@
                             <a href="tel:0938133830" class="fw-bold text-dark text-decoration-none fs-6">0938.133.830</a>
                         </div>
                     </div>
-                    <a href="{{ route('cart') }}" class="btn btn-outline-success rounded-pill px-3 py-2 fw-bold d-flex align-items-center gap-2" style="border-color: var(--tn-green); color: var(--tn-green);">
-                        <i class="fa-solid fa-basket-shopping fs-5"></i>
-                        <span class="badge bg-danger rounded-pill">0</span>
-                    </a>
+                    
                 </div>
             </div>
         </div>
@@ -122,6 +119,8 @@
 
     <!-- MAIN BODY CONTENT -->
     <main class="container my-4">
+        
+        
         <!-- 1. HERO BANNER -->
         <div class="hero-banner">
             <div class="row align-items-center">
@@ -150,6 +149,7 @@
                 </div>
             </div>
         </div>
+
 
         <!-- 2. 4 COMMITMENTS TRUST STRIP -->
         <div class="trust-strip-box">
@@ -230,7 +230,15 @@
             </div>
 
             <div class="row g-3 g-md-4">
-                @foreach($products_hot as $prod)
+                @foreach($all_products as $prod)
+
+@php
+    $salePrice = (!empty($prod->sale_price) && $prod->sale_price > 0 && $prod->sale_price < $prod->price) ? $prod->sale_price : $prod->price;
+    $originalPrice = (!empty($prod->sale_price) && $prod->sale_price > 0 && $prod->sale_price < $prod->price) ? $prod->price : ($prod->price > 0 ? round($prod->price * 1.18, -3) : 120000);
+    $discountPercent = $originalPrice > $salePrice ? round((($originalPrice - $salePrice) / $originalPrice) * 100) : 15;
+    $unitLabel = !empty($prod->unit) ? $prod->unit : '500g';
+@endphp
+
                     <div class="col-6 col-md-4 col-lg-3">
                         <div class="food-product-card">
                             <div class="food-product-thumb">
@@ -253,13 +261,19 @@
                                         {{ $prod->name }}
                                     </a>
                                 </h3>
-                                <div class="d-flex align-items-baseline mb-3">
-                                    <span class="food-price">{{ number_format($prod->price ?? 0) }}đ</span>
-                                    @if(!empty($prod->sale_price) && $prod->sale_price > $prod->price)
-                                        <span class="text-muted small text-decoration-line-through ms-2">{{ number_format($prod->sale_price) }}đ</span>
-                                    @endif
-                                </div>
-                                <a href="{{ route('product.detail', ['slug' => $prod->slug, 'id' => $prod->id]) }}" class="btn-order-food">
+                                @php
+    $currentPrice = (float)($prod->price ?? 100000);
+    $originalPrice = (!empty($prod->sale_price) && (float)$prod->sale_price > $currentPrice) ? (float)$prod->sale_price : round($currentPrice * 1.2, -3);
+    $discountPercent = round((($originalPrice - $currentPrice) / $originalPrice) * 100);
+    $unitText = !empty($prod->unit) ? $prod->unit : '500g';
+@endphp
+<div class="d-flex align-items-baseline gap-2 mb-1">
+    <span class="food-price text-danger fw-bold fs-5">{{ number_format($currentPrice) }}đ</span>
+    <span class="text-muted small text-decoration-line-through">{{ number_format($originalPrice) }}đ</span>
+    <span class="badge bg-danger-subtle text-danger small fw-bold px-1.5 py-0.5 rounded">-{{ $discountPercent }}%</span>
+</div>
+<div class="text-muted small mb-3"><i class="fa-solid fa-box-open me-1 text-success"></i> Quy cách: <span class="fw-semibold text-dark">{{ $unitText }}</span></div>
+<a href="{{ route('product.detail', ['slug' => $prod->slug, 'id' => $prod->id]) }}" class="btn-order-food">
                                     <i class="fa-solid fa-basket-shopping"></i> Đặt Mua Ngay
                                 </a>
                             </div>
@@ -268,6 +282,35 @@
                 @endforeach
             </div>
         </div>
+
+        
+        <!-- BANNER ƯU ĐÃI HOTLINE TĨNH -->
+        <div class="static-promo-banner my-5">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <span class="badge bg-warning text-dark px-3 py-1.5 rounded-pill fw-bold mb-3 d-inline-flex align-items-center gap-1.5">
+                        <i class="fa-solid fa-gift text-danger"></i> ƯU ĐÃI ĐẶT THỊT TƯƠI HÔM NAY
+                    </span>
+                    <h3 class="fw-bold fs-2 text-white mb-2">
+                        Tặng Ngay Gói Sốt Ướp Thảo Mộc Độc Quyền
+                    </h3>
+                    <p class="text-white-50 fs-6 mb-0 pe-lg-3">
+                        Áp dụng tự động cho mọi đơn hàng thịt bê tơ, heo rừng hoặc gà đồi từ <strong>500.000đ</strong> khi liên hệ đặt qua Hotline hoặc Zalo. Hỗ trợ sơ chế chặt miếng & hút chân không vô trùng miễn phí!
+                    </p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <div class="d-flex flex-column gap-3 justify-content-lg-end">
+                        <a href="tel:0938133830" class="btn btn-warning btn-lg rounded-pill fw-bold text-dark px-4 py-3 shadow-sm d-inline-flex align-items-center justify-content-center gap-2">
+                            <i class="fa-solid fa-phone-volume fs-5 me-1"></i> 0938.133.830
+                        </a>
+                        <a href="https://zalo.me/0938133830" target="_blank" rel="noopener" class="btn btn-outline-light btn-lg rounded-pill fw-bold px-4 py-3 shadow-sm d-inline-flex align-items-center justify-content-center gap-2">
+                            <i class="fa-solid fa-comment-dots fs-5 me-1"></i> Chat Zalo Tư Vấn
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <!-- 5. CHEF'S RECIPES / NEWS -->
         @if(!empty($post_list) && count($post_list) > 0)
@@ -303,76 +346,318 @@
                 </div>
             </div>
         @endif
-    </main>
+    
+        {{-- [TẠM ẨN: MÃ ƯU ĐÃI]
+<!-- 5. SECTION: MÃ ƯU ĐÃI CHO BỮA ĂN ĐẦU TIÊN -->
+        <div class="mb-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <span class="badge bg-warning-subtle text-warning-emphasis fw-bold px-3 py-1 rounded-pill mb-1">TIẾT KIỆM HÔM NAY</span>
+                    <h2 class="fw-bold fs-3 text-dark mb-0">Mã Ưu Đãi Đặt Hàng Trực Tuyến</h2>
+                </div>
+            </div>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="voucher-card">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge bg-danger text-white fw-bold px-2.5 py-1 rounded-pill small">ĐƠN ĐẦU TIÊN</span>
+                                <span class="text-muted small"><i class="fa-solid fa-clock me-1"></i> Hạn: Còn 50 lượt</span>
+                            </div>
+                            <h3 class="fw-bold fs-5 text-dark mb-1">Giảm Ngay 50.000đ</h3>
+                            <p class="text-muted small mb-3">Áp dụng cho mọi đơn thực phẩm tươi từ 300.000đ khi đặt qua Hotline hoặc Web.</p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                            <span class="voucher-code-badge">TAMNONG50</span>
+                            <a href="tel:0938133830" class="btn btn-sm btn-outline-warning rounded-pill fw-bold text-dark px-3">Dùng Mã</a>
+                        </div>
+                    </div>
+                </div>
+--}}
 
-    <!-- MODERN 4-COLUMN FOOTER -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="row g-4">
-                <!-- Col 1: Brand Info -->
-                <div class="col-lg-4">
-                    <img src="{{ get_image(setting_option('logo')) }}" alt="Tam Nông" class="img-fluid mb-3" style="max-height: 54px;">
-                    <p class="text-muted small pe-lg-3">
-                        Tam Nông — Thương hiệu thực phẩm sạch hàng đầu, cung ứng thịt bê tươi, heo rừng, gà đồi và các món đặc sản nông trại chuẩn an toàn vệ sinh thực phẩm.
-                    </p>
-                    <div class="d-flex gap-2 mt-3">
-                        <a href="#" class="btn btn-sm btn-outline-success rounded-circle" style="width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="btn btn-sm btn-outline-danger rounded-circle" style="width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="#" class="btn btn-sm btn-outline-info rounded-circle" style="width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;"><i class="fa-brands fa-tiktok"></i></a>
+                <div class="col-md-4">
+                    <div class="voucher-card">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge bg-success text-white fw-bold px-2.5 py-1 rounded-pill small">FREESHIP 2H</span>
+                                <span class="text-muted small"><i class="fa-solid fa-truck-fast me-1"></i> Toàn TP.HCM</span>
+                            </div>
+                            <h3 class="fw-bold fs-5 text-dark mb-1">Miễn Phí Vận Chuyển</h3>
+                            <p class="text-muted small mb-3">Giao hỏa tốc 2 giờ kèm thùng giữ nhiệt và đá gel cho đơn hàng từ 500.000đ.</p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                            <span class="voucher-code-badge">FREESHIP</span>
+                            <a href="tel:0938133830" class="btn btn-sm btn-outline-warning rounded-pill fw-bold text-dark px-3">Dùng Mã</a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Col 2: Categories -->
+                <div class="col-md-4">
+                    <div class="voucher-card">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge bg-warning text-dark fw-bold px-2.5 py-1 rounded-pill small">QUÀ TẶNG BẾP</span>
+                                <span class="text-muted small"><i class="fa-solid fa-gift me-1"></i> Trị giá 35.000đ</span>
+                            </div>
+                            <h3 class="fw-bold fs-5 text-dark mb-1">Tặng Sốt Ướp Thảo Mộc</h3>
+                            <p class="text-muted small mb-3">Tặng ngay 1 chai sốt ướp nướng/xào thảo mộc độc quyền Tam Nông khi mua thịt bê hoặc heo rừng.</p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                            <span class="voucher-code-badge">QUATANG</span>
+                            <a href="tel:0938133830" class="btn btn-sm btn-outline-warning rounded-pill fw-bold text-dark px-3">Dùng Mã</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. SECTION: KHÁCH HÀNG & ĐẦU BẾP NÓI GÌ VỀ TAM NÔNG -->
+        <div class="mb-5">
+            <div class="text-center max-w-700 mx-auto mb-5">
+                <span class="badge bg-success-subtle text-success fw-bold px-3 py-1.5 rounded-pill mb-2">TRẢI NGHIỆM THỰC TẾ</span>
+                <h2 class="fw-bold fs-3 text-dark mb-2">Đánh Giá Từ Khách Hàng & Đầu Bếp</h2>
+                <p class="text-muted small mb-0">Hơn 5.000+ gia đình và nhà hàng đã tin tưởng lựa chọn nguồn thịt tươi sạch từ nông trại Tam Nông</p>
+            </div>
+            <div class="row g-4">
+                <!-- Review 1 -->
+                <div class="col-md-4">
+                    <div class="review-card">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="text-warning small">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="badge bg-success-subtle text-success small fw-bold px-2 py-0.5 rounded-pill"><i class="fa-solid fa-check me-1"></i> Đã Mua Hàng</span>
+                        </div>
+                        <p class="review-text">"Thịt bê tơ cuộn bó giò ăn giòn sần sật, chấm tương gừng rất chuẩn vị. Đóng gói hút chân không sạch sẽ, giao đúng 11h kịp giờ mình nấu bữa trưa cho cả nhà."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">NL</div>
+                            <div>
+                                <h4 class="fw-bold fs-6 text-dark mb-0">Chị Ngọc Lan</h4>
+                                <span class="text-muted small">Nội trợ • Thảo Điền, TP. Thủ Đức</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="col-md-4">
+                    <div class="review-card">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="text-warning small">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="badge bg-warning-subtle text-warning-emphasis small fw-bold px-2 py-0.5 rounded-pill"><i class="fa-solid fa-store me-1"></i> Đối Tác Sỉ</span>
+                        </div>
+                        <p class="review-text">"Nguồn ba rọi heo rừng và gà đồi của Tam Nông rất ổn định, bì giòn chuẩn thịt nuôi thả tự nhiên chứ không bị mỡ nhiều như chợ. Khách quán mình khen thịt rất ngọt."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar" style="background: #FEF3C7; color: #B45309;">QT</div>
+                            <div>
+                                <h4 class="fw-bold fs-6 text-dark mb-0">Anh Quốc Tuấn</h4>
+                                <span class="text-muted small">Chủ Quán Nướng Ngói BBQ • Q. Bình Thạnh</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="col-md-4">
+                    <div class="review-card">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="text-warning small">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="badge bg-primary-subtle text-primary small fw-bold px-2 py-0.5 rounded-pill"><i class="fa-solid fa-hat-chef me-1"></i> Bếp Trưởng</span>
+                        </div>
+                        <p class="review-text">"Gà đen H'Mông và chim trĩ đạt chuẩn kiểm dịch nghiêm ngặt. Thịt săn chắc, sơ chế kỹ không còn lông tơ. Gia vị tẩm ướp sẵn rất thơm và giữ được vị tự nhiên."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar" style="background: #DBEAFE; color: #1E40AF;">HN</div>
+                            <div>
+                                <h4 class="fw-bold fs-6 text-dark mb-0">Chef Hoàng Nam</h4>
+                                <span class="text-muted small">Bếp Trưởng • Nhà Hàng Đặc Sản Đồng Quê</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. SECTION: CÂU HỎI THƯỜNG GẶP (FAQ) -->
+        <div class="mb-5">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-4">
+                    <span class="badge bg-success-subtle text-success fw-bold px-3 py-1.5 rounded-pill mb-2">HỖ TRỢ TƯ VẤN</span>
+                    <h2 class="fw-bold fs-3 text-dark mb-3">Câu Hỏi Thường Gặp Về Thực Phẩm Tam Nông</h2>
+                    <p class="text-muted small mb-4">Bạn có thắc mắc về cách đóng gói, quy trình giao nhận hoặc chính sách đổi trả? Chúng tôi luôn sẵn sàng hỗ trợ 24/7.</p>
+                    <a href="tel:0938133830" class="btn btn-outline-success rounded-pill px-4 py-2.5 fw-bold" style="border-color: var(--tn-green); color: var(--tn-green);">
+                        <i class="fa-solid fa-phone me-1"></i> Hotline: 0938.133.830
+                    </a>
+                </div>
+
+                <div class="col-lg-8">
+                    <div class="faq-box">
+                        <div class="accordion" id="faqAccordion">
+                            <!-- Q1 -->
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <i class="fa-solid fa-truck-snowflake text-success me-2"></i> 1. Thực phẩm được bảo quản và giao hàng như thế nào?
+                                    </button>
+                                </h3>
+                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Toàn bộ thịt được đóng gói hút chân không vô trùng, bảo quản trong thùng xốp chuyên dụng kèm đá gel giữ nhiệt ở nhiệt độ mát -2°C đến 4°C trong suốt quá trình vận chuyển, đảm bảo giao tới bếp vẫn tươi ngon 100%.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Q2 -->
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <i class="fa-solid fa-knife-kitchen text-warning me-2"></i> 2. Tôi có thể yêu cầu chặt khúc hoặc tẩm ướp sẵn theo ý muốn không?
+                                    </button>
+                                </h3>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Hoàn toàn được và <strong>MIỄN PHÍ 100%</strong>. Quý khách chỉ cần ghi chú hoặc dặn dò nhân viên khi đặt hàng: chặt miếng vừa ăn, thái mỏng nhúng lẩu, lọc rút xương hay ướp sẵn sả ớt, sốt BBQ... Tam Nông đều phục vụ chu đáo.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Q3 -->
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        <i class="fa-solid fa-rotate-left text-danger me-2"></i> 3. Chính sách đổi trả nếu thực phẩm không đạt chất lượng cam kết?
+                                    </button>
+                                </h3>
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Tam Nông cam kết bảo hành chất lượng: nếu thịt không tươi, bị rách túi hút chân không hoặc không đúng quy cách cam kết, quý khách được <strong>ĐỔI MỚI MIỄN PHÍ hoặc HOÀN TIỀN 100%</strong> trong vòng 24 giờ.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- MODERN 4-COLUMN FOOTER -->
+    
+    <!-- FOOTER -->
+    
+    <!-- FOOTER -->
+    <footer class="footer-vitality">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <!-- Cột 1: Logo & Giới thiệu & Mạng xã hội -->
+                <div class="col-lg-4 pe-lg-4">
+                    <a href="{{ route('home') }}" class="d-inline-block mb-3">
+                        <img src="{{ get_image(setting_option('logo')) }}" alt="Tam Nông Thực Phẩm Sạch" class="footer-logo">
+                    </a>
+                    <p class="footer-desc mb-3">
+                        Tam Nông — Thương hiệu thực phẩm sạch hàng đầu, cung ứng thịt bê tươi, heo rừng, gà đồi và các món đặc sản nông trại chuẩn an toàn vệ sinh thực phẩm.
+                    </p>
+                    <div class="social-links-wrap">
+                        <a href="{{ setting_option('facebook', 'https://facebook.com') }}" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="{{ setting_option('youtube', 'https://youtube.com') }}" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="{{ setting_option('tiktok', 'https://tiktok.com') }}" target="_blank" rel="noopener" class="social-btn" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <!-- Cột 2: Đặc Sản -->
                 <div class="col-6 col-lg-2">
-                    <h4 class="footer-title">Đặc Sản</h4>
-                    <ul class="footer-links">
+                    <h5>Đặc Sản</h5>
+                    <ul class="footer-list">
                         <li><a href="{{ route('product') }}">Thịt Bê Tươi Sạch</a></li>
                         <li><a href="{{ route('product') }}">Bê Bó Giò Thượng Hạng</a></li>
                         <li><a href="{{ route('product') }}">Ba Rọi Heo Rừng</a></li>
-                        <li><a href="{{ route('product') }}">Gà Đồi & Gà HMông</a></li>
+                        <li><a href="{{ route('product') }}">Gà Đồi & Gà H'Mông</a></li>
                         <li><a href="{{ route('product') }}">Chim Trĩ & Chim Cút</a></li>
                     </ul>
                 </div>
 
-                <!-- Col 3: Customer Service -->
+                <!-- Cột 3: Chính Sách -->
                 <div class="col-6 col-lg-2">
-                    <h4 class="footer-title">Chính Sách</h4>
-                    <ul class="footer-links">
+                    <h5>Chính Sách</h5>
+                    <ul class="footer-list">
                         <li><a href="{{ route('about') }}">Về Chúng Tôi</a></li>
-                        <li><a href="{{ route('contact') }}">Chính Sách Vận Chuyển</a></li>
+                        <li><a href="{{ route('about') }}">Chính Sách Vận Chuyển</a></li>
                         <li><a href="{{ route('contact') }}">Đổi Trả & Hoàn Tiền</a></li>
                         <li><a href="{{ route('contact') }}">Báo Giá Sỉ Nhà Hàng</a></li>
-                        <li><a href="{{ route('contact') }}">Kiểm Định Vệ Sinh</a></li>
+                        <li><a href="{{ route('about') }}">Kiểm Định Vệ Sinh</a></li>
                     </ul>
                 </div>
 
-                <!-- Col 4: Contact & Map -->
-                <div class="col-lg-4">
-                    <h4 class="footer-title">Thông Tin Liên Hệ</h4>
-                    <p class="text-muted small mb-2">
-                        <i class="fa-solid fa-location-dot text-danger me-2"></i> 59 đường số 3, Thăng Long Home Hưng Phú, P. Tam Bình, TP. Thủ Đức, TP.HCM
-                    </p>
-                    <p class="text-muted small mb-2">
-                        <i class="fa-solid fa-phone text-success me-2"></i> Hotline: <strong class="text-dark">0938.133.830</strong>
-                    </p>
-                    <p class="text-muted small mb-3">
-                        <i class="fa-solid fa-envelope text-primary me-2"></i> tamnong.corp@gmail.com
-                    </p>
-                    <div class="p-3 rounded-3" style="background: var(--tn-green-light); border: 1px dashed var(--tn-green);">
-                        <span class="small fw-bold text-success d-block mb-1"><i class="fa-solid fa-clock me-1"></i> Giờ Mở Cửa Phục Vụ:</span>
-                        <span class="small text-muted">06:00 - 20:00 hàng ngày (Cả Thứ 7 & CN)</span>
+                <!-- Cột 4: Thông Tin Liên Hệ & Giờ Mở Cửa -->
+                <div class="col-lg-4 ps-lg-4">
+                    <h5>Thông Tin Liên Hệ</h5>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-location-dot text-danger"></i>
+                        <span>59 đường số 3, Thăng Long Home Hưng Phú, P. Tam Bình, TP. Thủ Đức, TP.HCM</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-phone text-success"></i>
+                        <span>Hotline: <a href="tel:0938133830" class="fw-bold text-dark">0938.133.830</a></span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-envelope text-primary"></i>
+                        <span><a href="mailto:tamnong.corp@gmail.com">tamnong.corp@gmail.com</a></span>
+                    </div>
+                    
+                    <!-- Khung Giờ Mở Cửa Phục Vụ -->
+                    <div class="opening-hours-card">
+                        <div class="opening-title">
+                            <i class="fa-solid fa-circle-check text-success"></i> Giờ Mở Cửa Phục Vụ:
+                        </div>
+                        <div class="opening-time">
+                            06:00 – 20:00 hàng ngày (Cả Thứ 7 & CN)
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Footer Bottom -->
             <div class="footer-bottom text-center">
                 © {{ date('Y') }} <strong>Tam Nông (3 Nông - 3nong.vn)</strong>. Bản quyền thuộc về Công ty TNHH Thực Phẩm Tam Nông.
             </div>
         </div>
     </footer>
 
+
+
     <!-- Bootstrap 5.3 JS -->
     <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- FLOATING CONTACT BUTTONS (FLY BUTTONS: ZALO & HOTLINE) -->
+    <div class="floating-contact-wrap">
+        <!-- Zalo Button (Pure Bold Text) -->
+        <a href="https://zalo.me/0938133830" target="_blank" rel="noopener" class="fly-btn fly-btn-zalo" title="Chat Zalo Tư Vấn">
+            <span class="fly-tooltip">Chat Zalo: 0938.133.830</span>
+            <div class="fly-pulse"></div>
+            <div class="fly-icon-inner">
+                <span class="zalo-text-label">Zalo</span>
+            </div>
+        </a>
+
+        <!-- Hotline Button -->
+        <a href="tel:0938133830" class="fly-btn fly-btn-phone" title="Gọi Hotline Đặt Hàng">
+            <span class="fly-tooltip">Hotline: 0938.133.830</span>
+            <div class="fly-pulse"></div>
+            <div class="fly-icon-inner">
+                <i class="fa-solid fa-phone-volume"></i>
+            </div>
+        </a>
+
+        <!-- Back to Top Button -->
+        <button type="button" class="fly-btn fly-btn-top" id="btnBackToTop" title="Lên đầu trang" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            <div class="fly-icon-inner">
+                <i class="fa-solid fa-chevron-up"></i>
+            </div>
+        </button>
+    </div>
+
 </body>
 </html>
