@@ -48,19 +48,25 @@
                     Mẫu 3
                 </a>
 
-                <a href="{{ route('demo.concept4') }}" 
+                {{-- [TẠM ẨN LINK MẪU 4 & 5]
+{{-- [TẠM ẨN LINK MẪU 4]
+<a href="{{ route('demo.concept4') }}" 
                    class="btn btn-sm rounded-pill fw-bold transition-all {{ $activeConcept === 4 ? 'shadow' : 'btn-outline-light' }}"
                    style="{{ $activeConcept === 4 ? 'background-color: #22C55E; border-color: #22C55E; color: #000 !important;' : 'font-size: 0.8rem; border-color: #4ade80; color: #4ade80;' }}"
                    title="Mẫu 4: Bento Grid & Glassmorphism Đẳng Cấp">
                     <i class="fa-solid fa-wand-magic-sparkles me-1"></i> Mẫu 4 (Bento)
                 </a>
+--}}
 
-                <a href="{{ route('demo.concept5') }}" 
+                {{-- [TẠM ẨN LINK MẪU 5]
+<a href="{{ route('demo.concept5') }}" 
                    class="btn btn-sm rounded-pill fw-bold transition-all {{ $activeConcept === 5 ? 'shadow' : 'btn-outline-light' }}"
                    style="{{ $activeConcept === 5 ? 'background-color: #D4AF37; border-color: #D4AF37; color: #000 !important;' : 'font-size: 0.8rem; border-color: #fde047; color: #fde047;' }}"
                    title="Mẫu 5: Bắc Âu Tối Giản Sang Trọng">
                     <i class="fa-solid fa-crown me-1"></i> Mẫu 5 (Bắc Âu)
                 </a>
+--}}
+--}}
 
                 <a href="{{ route('home') }}" class="btn btn-sm btn-outline-secondary text-light rounded-pill ms-md-2" title="Quay lại giao diện cũ">
                     <i class="fa-solid fa-arrow-rotate-left"></i> Gốc

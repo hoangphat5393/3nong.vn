@@ -27,9 +27,11 @@
     <!-- 2. SITE HEADER & NAVIGATION (SYNCED HEADER & MENU) -->
     <header class="nordic-header">
         <div class="container text-center">
-            <a href="{{ route('demo.concept5') }}" class="nordic-logo d-inline-block">
+            {{-- [TẠM ẨN LINK MẪU 5]
+<a href="{{ route('demo.concept5') }}" class="nordic-logo d-inline-block">
                 <img src="{{ get_image(setting_option('logo')) }}" alt="Tam Nông Logo">
             </a>
+--}}
             <nav class="nordic-nav-links">
                 <a href="{{ route('home') }}" class="active">TRANG CHỦ</a>
                 <a href="{{ route('product') }}">THỊT BÊ TƯƠI</a>
