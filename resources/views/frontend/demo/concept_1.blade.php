@@ -316,7 +316,7 @@
         </div>
 
 
-        <!-- 5. CHEF'S RECIPES / NEWS -->
+        {{-- [TẠM ẨN: GÓC ẨM THỰC & MÃ ƯU ĐÃI]
         @if(!empty($post_list) && count($post_list) > 0)
             <div class="mb-5">
                 <div class="d-flex justify-content-between align-items-center mb-4">
@@ -351,8 +351,7 @@
             </div>
         @endif
     
-        {{-- [TẠM ẨN: MÃ ƯU ĐÃI]
-<!-- 5. SECTION: MÃ ƯU ĐÃI CHO BỮA ĂN ĐẦU TIÊN -->
+        <!-- 5. SECTION: MÃ ƯU ĐÃI CHO BỮA ĂN ĐẦU TIÊN -->
         <div class="mb-5">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div>
@@ -377,7 +376,6 @@
                         </div>
                     </div>
                 </div>
---}}
 
                 <div class="col-md-4">
                     <div class="voucher-card">
@@ -414,6 +412,7 @@
                 </div>
             </div>
         </div>
+        --}}
 
         <!-- 6. SECTION: KHÁCH HÀNG & ĐẦU BẾP NÓI GÌ VỀ TAM NÔNG -->
         <div class="mb-5">
