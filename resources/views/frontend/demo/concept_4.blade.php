@@ -20,6 +20,96 @@
     <link rel="stylesheet" href="{{ asset('assets/css/demo/demo-4.css') }}?v={{ time() }}">
 </head>
 <body>
+
+    <!-- OFFCANVAS MOBILE NAVIGATION - MẪU 4: NEXTGEN BENTO BOX (GEOMETRIC TILES THEME) -->
+    <div class="offcanvas offcanvas-start bento-offcanvas-menu" tabindex="-1" id="bentoOffcanvas" aria-labelledby="bentoOffcanvasLabel">
+        <div class="offcanvas-header">
+            <div class="d-flex align-items-center gap-2">
+                <img src="/upload/images/logo/logo.png" alt="Tam Nông Bento" class="mobile-logo">
+                <span class="bento-badge-mini">BENTO TILES</span>
+            </div>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <!-- Bento Search Tile -->
+            <div class="bento-menu-card p-2" style="background: #F1F5F9;">
+                <div class="input-group">
+                    <input type="text" class="form-control border-0 bg-transparent" placeholder="Tìm bento thịt sạch...">
+                    <button class="btn btn-dark rounded-3 px-3 py-1.5" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </div>
+
+            <!-- Bento Tile 1: Trang Chủ -->
+            <div class="bento-menu-card">
+                <a href="mau-4.html" class="bento-menu-header-link">
+                    <span><i class="fa-solid fa-house text-success me-2"></i> Trang Chủ Bento</span>
+                    <span class="bento-tag bg-light">HOME</span>
+                </a>
+            </div>
+
+            <!-- Bento Tile 2: Thịt Bê Tơ (Accordion) -->
+            <div class="bento-menu-card">
+                <a href="#collapseBentoBe" class="bento-menu-header-link" data-bs-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseBentoBe">
+                    <span>🥩 Bento Thịt Bê Tơ</span>
+                    <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                </a>
+                <div class="collapse show" id="collapseBentoBe">
+                    <ul class="bento-sub-list">
+                        <li><a href="#thuc-don">• Bê Bó Giò Thượng Hạng</a></li>
+                        <li><a href="#thuc-don">• Bê Xối Xả Ướp Sẵn</a></li>
+                        <li><a href="#thuc-don">• Bê Rút Xương Tươi Ngọt</a></li>
+                        <li><a href="#thuc-don">• Thăn Bê Cắt Lát Mỏng</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bento Tile 3: Heo Rừng Lai F1 (Accordion) -->
+            <div class="bento-menu-card">
+                <a href="#collapseBentoHeo" class="bento-menu-header-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseBentoHeo">
+                    <span>🐗 Bento Heo Rừng F1</span>
+                    <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                </a>
+                <div class="collapse" id="collapseBentoHeo">
+                    <ul class="bento-sub-list">
+                        <li><a href="#thuc-don">• Ba Rọi Heo Rừng Tự Nhiên</a></li>
+                        <li><a href="#thuc-don">• Dựng Heo Khò Vàng Rơm</a></li>
+                        <li><a href="#thuc-don">• Nạm Sữa Heo Giòn Rụm</a></li>
+                        <li><a href="#thuc-don">• Sườn Heo Rừng BBQ</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bento Tile 4: Gà Đồi & Chim Sạch (Accordion) -->
+            <div class="bento-menu-card">
+                <a href="#collapseBentoGa" class="bento-menu-header-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseBentoGa">
+                    <span>🐔 Bento Gà Đồi & Chim</span>
+                    <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                </a>
+                <div class="collapse" id="collapseBentoGa">
+                    <ul class="bento-sub-list">
+                        <li><a href="#thuc-don">• Gà Ta Thả Vườn Sạch</a></li>
+                        <li><a href="#thuc-don">• Gà Đồi Chạy Bộ Núi</a></li>
+                        <li><a href="#thuc-don">• Gà Đen H'Mông Dinh Dưỡng</a></li>
+                        <li><a href="#thuc-don">• Chim Trĩ Đỏ Thượng Hạng</a></li>
+                        <li><a href="#thuc-don">• Chim Cút Tươi Sơ Chế</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bento Quick Action Grid -->
+            <div class="bento-action-grid">
+                <a href="tel:0938133830" class="bento-quick-tile tile-call">
+                    <i class="fa-solid fa-phone mb-1 d-block fs-5"></i>
+                    0938.133.830
+                </a>
+                <a href="https://zalo.me/0938133830" target="_blank" rel="noopener" class="bento-quick-tile tile-zalo">
+                    <i class="fa-solid fa-comment-dots mb-1 d-block fs-5"></i>
+                    Chat Zalo
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- TOP DEMO SWITCHER BAR (5 MẪU) -->
     <div class="demo-nav-top py-2 px-3 sticky-top shadow-lg" style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); z-index: 999999; border-bottom: 2px solid #EAB308; font-family: 'Plus Jakarta Sans', sans-serif;">
         <div class="container-fluid d-flex flex-wrap justify-content-between align-items-center gap-2">
@@ -48,18 +138,26 @@
 
     <!-- HEADER -->
     <header class="bento-header">
-        <div class="container d-flex align-items-center justify-content-between">
-            <a href="{{ route('home') }}" class="bento-logo">
-                <img src="{{ get_image(setting_option('logo')) }}" alt="Tam Nông Bento">
-            </a>
+        <div class="container d-flex align-items-center justify-content-between gap-2">
+            <!-- Left: Hamburger (Mobile) & Logo -->
+            <div class="d-flex align-items-center gap-2">
+                <button class="btn btn-bento-menu d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#bentoOffcanvas" aria-controls="bentoOffcanvas" aria-label="Mở menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <a href="{{ route('home') }}" class="bento-logo">
+                    <img src="{{ get_image(setting_option('logo')) }}" alt="Tam Nông Bento" style="max-height: 44px;">
+                </a>
+            </div>
+
+            <!-- Right: Nav & Hotline -->
             <div class="d-flex align-items-center gap-3">
                 <nav class="d-none d-md-flex gap-4">
                     <a href="{{ route('home') }}" class="text-dark fw-bold text-decoration-none">Trang Chủ</a>
-                    <a href="{{ route('product') }}" class="text-muted fw-semibold text-decoration-none">Đặc Sản Bento</a>
+                    <a href="#thuc-don" class="text-muted fw-semibold text-decoration-none">Đặc Sản Bento</a>
                     <a href="#thuc-don" class="text-muted fw-semibold text-decoration-none">Thực Phẩm Hôm Nay</a>
                 </nav>
-                <a href="tel:0938133830" class="btn btn-dark rounded-pill px-4 py-2 fw-bold text-white shadow-sm" style="background: var(--bento-dark);">
-                    <i class="fa-solid fa-phone me-1 text-warning"></i> 0938.133.830
+                <a href="tel:0938133830" class="btn btn-dark rounded-pill px-3 py-1.5 fw-bold text-white shadow-sm d-flex align-items-center gap-1.5" style="background: var(--bento-dark); font-size: 0.88rem;">
+                    <i class="fa-solid fa-phone text-warning"></i> <span class="d-none d-sm-inline">0938.133.830</span><span class="d-sm-none">Gọi</span>
                 </a>
             </div>
         </div>

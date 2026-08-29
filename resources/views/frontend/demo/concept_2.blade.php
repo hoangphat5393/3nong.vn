@@ -22,6 +22,158 @@
     <link rel="stylesheet" href="{{ asset('assets/css/demo/demo-2.css') }}?v={{ time() }}">
 </head>
 <body>
+
+    <!-- OFFCANVAS MOBILE NAVIGATION - MẪU 2: ECO FRESH (XUẤT BÊN TRÁI - ĐỦ CÁC CẤP) -->
+    <div class="offcanvas offcanvas-start eco-offcanvas-menu" tabindex="-1" id="mobileMenuOffcanvas2" aria-labelledby="mobileMenuOffcanvasLabel2">
+        <div class="offcanvas-header">
+            <a href="mau-2.html" class="d-flex align-items-center">
+                <img src="/upload/images/logo/logo.png" alt="Tam Nông Logo" class="mobile-logo">
+            </a>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <!-- Search nhanh trong menu -->
+            <div class="eco-search-input mb-3">
+                <input type="text" placeholder="Tìm thịt bê, heo rừng, gà đồi...">
+                <button type="button" aria-label="Tìm kiếm"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+
+            <!-- Danh sách menu đa cấp -->
+            <ul class="eco-nav-list">
+                <!-- 1. Trang Chủ -->
+                <li class="eco-nav-item">
+                    <a href="mau-2.html" class="eco-nav-link active">
+                        <span><i class="fa-solid fa-house nav-icon"></i> Trang Chủ</span>
+                    </a>
+                </li>
+
+                <!-- 2. Cấp 1: THỰC ĐƠN NÔNG TRẠI HỮU CƠ (Accordion đa cấp) -->
+                <li class="eco-nav-item">
+                    <a href="#collapseEcoCategories" class="eco-nav-link" data-bs-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseEcoCategories">
+                        <span><i class="fa-solid fa-seedling nav-icon"></i> Thực Đơn Nông Trại</span>
+                        <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                    </a>
+                    
+                    <!-- Cấp 2: Các Nhóm Chuyên Mục -->
+                    <div class="collapse show" id="collapseEcoCategories">
+                        <ul class="eco-submenu-lv2">
+                            <!-- Cấp 2.1: Thịt Bê Tơ -->
+                            <li class="lv2-item">
+                                <a href="#collapseEcoBe" class="lv2-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseEcoBe">
+                                    <span>🥩 Thịt Bê Tơ Nông Trại</span>
+                                    <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                                </a>
+                                <!-- Cấp 3: Chi tiết -->
+                                <div class="collapse" id="collapseEcoBe">
+                                    <ul class="eco-submenu-lv3">
+                                        <li><a href="#thuc-don">• Bê Bó Giò Thượng Hạng</a></li>
+                                        <li><a href="#thuc-don">• Bê Xối Xả Ướp Sẵn</a></li>
+                                        <li><a href="#thuc-don">• Bê Rút Xương Lọc Sạch</a></li>
+                                        <li><a href="#thuc-don">• Bê Tơ Tươi Cắt Lát</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <!-- Cấp 2.2: Heo Rừng F1 -->
+                            <li class="lv2-item">
+                                <a href="#collapseEcoHeo" class="lv2-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseEcoHeo">
+                                    <span>🐗 Heo Rừng Lai F1</span>
+                                    <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                                </a>
+                                <!-- Cấp 3: Chi tiết -->
+                                <div class="collapse" id="collapseEcoHeo">
+                                    <ul class="eco-submenu-lv3">
+                                        <li><a href="#thuc-don">• Ba Rọi Heo Rừng Tự Nhiên</a></li>
+                                        <li><a href="#thuc-don">• Dựng Heo Khò Rơm Sạch</a></li>
+                                        <li><a href="#thuc-don">• Nạm Sữa Heo Giòn Rụm</a></li>
+                                        <li><a href="#thuc-don">• Sườn Non Heo Rừng BBQ</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <!-- Cấp 2.3: Gà Đồi & Chim Sạch -->
+                            <li class="lv2-item">
+                                <a href="#collapseEcoGa" class="lv2-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseEcoGa">
+                                    <span>🐔 Gà Đồi & Gia Cầm Thảo Mộc</span>
+                                    <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                                </a>
+                                <!-- Cấp 3: Chi tiết -->
+                                <div class="collapse" id="collapseEcoGa">
+                                    <ul class="eco-submenu-lv3">
+                                        <li><a href="#thuc-don">• Gà Ta Thả Vườn Sạch</a></li>
+                                        <li><a href="#thuc-don">• Gà Đồi Chạy Bộ Sườn Núi</a></li>
+                                        <li><a href="#thuc-don">• Gà Đen H'Mông Dinh Dưỡng</a></li>
+                                        <li><a href="#thuc-don">• Chim Trĩ Đỏ Thượng Hạng</a></li>
+                                        <li><a href="#thuc-don">• Thịt Chim Cút Tươi Đóng Khay</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <!-- Cấp 2.4: Món Ướp BBQ -->
+                            <li class="lv2-item">
+                                <a href="#collapseEcoUop" class="lv2-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseEcoUop">
+                                    <span>🍱 Món Ướp Sẵn Tiện Lợi</span>
+                                    <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                                </a>
+                                <!-- Cấp 3: Chi tiết -->
+                                <div class="collapse" id="collapseEcoUop">
+                                    <ul class="eco-submenu-lv3">
+                                        <li><a href="#thuc-don">• Gà Nòi Ướp Sả Ớt BBQ</a></li>
+                                        <li><a href="#thuc-don">• Bê Tơ Sa Tế Cay Nồng</a></li>
+                                        <li><a href="#thuc-don">• Sườn Heo Muối Ớt Rừng</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <!-- 3. Gợi ý nấu nướng -->
+                <li class="eco-nav-item">
+                    <a href="#thuc-don" class="eco-nav-link">
+                        <span><i class="fa-solid fa-fire-burner nav-icon"></i> Gợi Ý Món Ngon Gia Đình</span>
+                    </a>
+                </li>
+
+                <!-- 4. Quy trình 4 bước -->
+                <li class="eco-nav-item">
+                    <a href="#quy-trinh" class="eco-nav-link">
+                        <span><i class="fa-solid fa-arrows-spin nav-icon"></i> Quy Trình 4 Bước Khép Kín</span>
+                    </a>
+                </li>
+
+                <!-- 5. Báo Giá Sỉ Nhà Hàng -->
+                <li class="eco-nav-item">
+                    <a href="#b2b" class="eco-nav-link">
+                        <span><i class="fa-solid fa-store nav-icon text-warning"></i> Báo Giá Sỉ Nhà Hàng</span>
+                        <span class="badge bg-warning text-dark rounded-pill px-2 py-0.5 small">B2B</span>
+                    </a>
+                </li>
+
+                <!-- 6. Liên Hệ & Đặt Hàng -->
+                <li class="eco-nav-item">
+                    <a href="tel:0938133830" class="eco-nav-link">
+                        <span><i class="fa-solid fa-phone-volume nav-icon"></i> Hotline: 0938.133.830</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Footer trong Offcanvas -->
+            <div class="eco-offcanvas-footer">
+                <a href="tel:0938133830" class="eco-hotline-card">
+                    <div class="hotline-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div>
+                        <div class="hotline-text">Tư Vấn Nông Trại 24/7:</div>
+                        <div class="hotline-num">0938.133.830</div>
+                    </div>
+                </a>
+                <a href="https://zalo.me/0938133830" target="_blank" rel="noopener" class="btn btn-outline-success w-100 rounded-pill fw-bold py-2 small d-flex align-items-center justify-content-center gap-2" style="border-color: var(--eco-emerald); color: var(--eco-forest);">
+                    <span class="fw-bold">Zalo:</span> Nhắn Tin Trực Tiếp
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- TOP DEMO SWITCHER BAR (5 MẪU) -->
     <div class="demo-nav-top py-2 px-3 sticky-top shadow-lg" style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); z-index: 999999; border-bottom: 2px solid #EAB308; font-family: 'Plus Jakarta Sans', sans-serif;">
         <div class="container-fluid d-flex flex-wrap justify-content-between align-items-center gap-2">
@@ -50,26 +202,36 @@
 
     <!-- HEADER -->
     <header class="eco-header">
-        <div class="container d-flex align-items-center justify-content-between gap-3">
-            <a href="{{ route('home') }}" class="header-logo">
-                <img src="{{ get_image(setting_option('logo')) }}" alt="Tam Nông Eco Fresh" style="max-height: 52px;">
-            </a>
-            <div class="search-pill-box d-none d-md-block">
+        <div class="container d-flex align-items-center justify-content-between gap-2">
+            <!-- Left: Hamburger (Mobile) & Logo -->
+            <div class="d-flex align-items-center gap-2">
+                <button class="btn btn-mobile-menu-eco d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenuOffcanvas2" aria-controls="mobileMenuOffcanvas2" aria-label="Mở menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <a href="{{ route('home') }}" class="header-logo">
+                    <img src="{{ get_image(setting_option('logo')) }}" alt="Tam Nông Eco Fresh" style="max-height: 48px;">
+                </a>
+            </div>
+
+            <!-- Center: Search (Desktop) -->
+            <div class="search-pill-box d-none d-lg-block">
                 <form action="{{ route('search') }}" method="GET">
                     <input type="text" name="q" placeholder="Tìm kiếm thịt bê, heo rừng, gà đồi, chim trĩ...">
                     <button type="submit" aria-label="Tìm kiếm"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
-            <div class="d-flex align-items-center gap-3">
-                <a href="tel:0938133830" class="btn btn-outline-success rounded-pill px-3 py-2 fw-bold text-dark d-flex align-items-center gap-2" style="border-color: var(--eco-forest);">
-                    <i class="fa-solid fa-phone" style="color: var(--eco-forest);"></i> 0938.133.830
+
+            <!-- Right: Hotline CTA -->
+            <div class="d-flex align-items-center gap-2">
+                <a href="tel:0938133830" class="btn btn-outline-success rounded-pill px-3 py-1.5 fw-bold text-dark d-flex align-items-center gap-2" style="border-color: var(--eco-forest);">
+                    <i class="fa-solid fa-phone" style="color: var(--eco-forest);"></i> <span class="d-none d-sm-inline">0938.133.830</span><span class="d-sm-none">Gọi</span>
                 </a>
             </div>
         </div>
     </header>
 
     <!-- NAVIGATION -->
-    <nav class="eco-nav">
+    <nav class="eco-nav d-none d-lg-block">
         <div class="container d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
                 <a href="{{ route('demo.concept2') }}" class="eco-nav-link active"><i class="fa-solid fa-house me-1"></i> Trang Chủ</a>

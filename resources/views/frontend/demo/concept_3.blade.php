@@ -22,6 +22,151 @@
     <link rel="stylesheet" href="{{ asset('assets/css/demo/demo-3.css') }}?v={{ time() }}">
 </head>
 <body>
+
+    <!-- OFFCANVAS MOBILE NAVIGATION - MẪU 3: MODERN FOOD MART (FOOD HALL THEME) -->
+    <div class="offcanvas offcanvas-start mart-offcanvas-menu" tabindex="-1" id="martMobileMenuOffcanvas" aria-labelledby="martMobileMenuOffcanvasLabel">
+        <div class="offcanvas-header">
+            <div class="d-flex align-items-center gap-2">
+                <img src="/upload/images/logo/logo.png" alt="Tam Nông Food Mart" class="mobile-logo" style="filter: brightness(0) invert(1);">
+                <span class="badge bg-warning text-dark fw-bold px-2 py-0.5 rounded-pill" style="font-size: 0.72rem;">FOOD MART</span>
+            </div>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <!-- Flash sale ticker -->
+            <div class="mart-deal-ticker">
+                <i class="fa-solid fa-bolt-lightning text-warning fs-6"></i>
+                <span>FLASH SALE GIỜ VÀNG - GIẢM ĐẾN 30%</span>
+            </div>
+
+            <!-- Search input -->
+            <div class="mart-search-input mb-3">
+                <input type="text" placeholder="Tìm kiếm nhanh thực phẩm tươi...">
+                <button type="button" aria-label="Tìm kiếm"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+
+            <!-- Multi-level Quầy Hàng (Food Hall Stations) -->
+            <ul class="mart-nav-list">
+                <li class="mart-nav-item">
+                    <a href="mau-3.html" class="mart-nav-link active">
+                        <span><i class="fa-solid fa-store nav-icon"></i> Sảnh Chính Siêu Thị</span>
+                    </a>
+                </li>
+
+                <!-- Cấp 1: Các Quầy Thực Phẩm Tươi (Accordion) -->
+                <li class="mart-nav-item">
+                    <a href="#collapseFoodStations" class="mart-nav-link" data-bs-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseFoodStations">
+                        <span><i class="fa-solid fa-utensils nav-icon"></i> Quầy Thịt Tươi & Đặc Sản</span>
+                        <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                    </a>
+                    <div class="collapse show" id="collapseFoodStations">
+                        <ul class="mart-submenu-lv2">
+                            <!-- Quầy 1: Thịt Bê -->
+                            <li class="lv2-item">
+                                <a href="#collapseMartBe" class="lv2-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseMartBe">
+                                    <span>🥩 Quầy Thịt Bê Tươi Thả Cỏ</span>
+                                    <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                                </a>
+                                <div class="collapse" id="collapseMartBe">
+                                    <ul class="mart-submenu-lv3">
+                                        <li><a href="#thuc-don">• Bê Bó Giò Thượng Hạng</a></li>
+                                        <li><a href="#thuc-don">• Bê Xối Xả Ướp Sẵn</a></li>
+                                        <li><a href="#thuc-don">• Bê Rút Xương Tươi</a></li>
+                                        <li><a href="#thuc-don">• Thăn Bê Cắt Lát Lẩu / Nướng</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <!-- Quầy 2: Heo Rừng -->
+                            <li class="lv2-item">
+                                <a href="#collapseMartHeo" class="lv2-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseMartHeo">
+                                    <span>🐗 Quầy Heo Rừng Tự Nhiên F1</span>
+                                    <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                                </a>
+                                <div class="collapse" id="collapseMartHeo">
+                                    <ul class="mart-submenu-lv3">
+                                        <li><a href="#thuc-don">• Ba Rọi Heo Rừng Giòn Bì</a></li>
+                                        <li><a href="#thuc-don">• Dựng Heo Khò Vàng</a></li>
+                                        <li><a href="#thuc-don">• Nạm Sữa Giòn Giòn</a></li>
+                                        <li><a href="#thuc-don">• Sườn Heo Rừng BBQ</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <!-- Quầy 3: Gà Đồi & Chim -->
+                            <li class="lv2-item">
+                                <a href="#collapseMartGa" class="lv2-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseMartGa">
+                                    <span>🐔 Quầy Gà Đồi & Chim Đặc Sản</span>
+                                    <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                                </a>
+                                <div class="collapse" id="collapseMartGa">
+                                    <ul class="mart-submenu-lv3">
+                                        <li><a href="#thuc-don">• Gà Ta Thả Vườn</a></li>
+                                        <li><a href="#thuc-don">• Gà Đồi Chạy Bộ</a></li>
+                                        <li><a href="#thuc-don">• Gà Đen H'Mông Dinh Dưỡng</a></li>
+                                        <li><a href="#thuc-don">• Chim Trĩ Đỏ Bổ Dưỡng</a></li>
+                                        <li><a href="#thuc-don">• Thịt Chim Cút Tươi</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <!-- Quầy 4: Combo & Ướp Sẵn -->
+                            <li class="lv2-item">
+                                <a href="#collapseMartCombo" class="lv2-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseMartCombo">
+                                    <span>🥘 Combo Tiết Kiệm & Lẩu Nướng</span>
+                                    <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                                </a>
+                                <div class="collapse" id="collapseMartCombo">
+                                    <ul class="mart-submenu-lv3">
+                                        <li><a href="#combos">• Set Lẩu Bê Chua Cay Gia Đình</a></li>
+                                        <li><a href="#combos">• Set Nướng Heo Rừng BBQ</a></li>
+                                        <li><a href="#combos">• Gà Nòi Ướp Sả Ớt Cay Nồng</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <!-- 3. Flash Sale Giờ Vàng -->
+                <li class="mart-nav-item">
+                    <a href="#flash-sale" class="mart-nav-link">
+                        <span><i class="fa-solid fa-fire text-danger nav-icon"></i> Flash Sale Giờ Vàng</span>
+                        <span class="badge bg-danger text-white rounded-pill px-2 py-0.5 small">-30%</span>
+                    </a>
+                </li>
+
+                <!-- 4. Bản Tin Nông Sản -->
+                <li class="mart-nav-item">
+                    <a href="#tin-tuc" class="mart-nav-link">
+                        <span><i class="fa-solid fa-newspaper nav-icon"></i> Bản Tin Nông Sản 24H</span>
+                    </a>
+                </li>
+
+                <!-- 5. Hỗ Trợ Đặt Hàng -->
+                <li class="mart-nav-item">
+                    <a href="tel:0938133830" class="mart-nav-link">
+                        <span><i class="fa-solid fa-phone-volume nav-icon"></i> Hotline: 0938.133.830</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Footer trong Offcanvas -->
+            <div class="mart-offcanvas-footer">
+                <a href="tel:0938133830" class="mart-hotline-card">
+                    <div class="hotline-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div>
+                        <div class="hotline-text">Giao Thịt Lạnh Hỏa Tốc 2H:</div>
+                        <div class="hotline-num">0938.133.830</div>
+                    </div>
+                </a>
+                <a href="https://zalo.me/0938133830" target="_blank" rel="noopener" class="btn btn-danger w-100 rounded-pill fw-bold py-2 small d-flex align-items-center justify-content-center gap-2">
+                    <i class="fa-solid fa-comment-dots"></i> Nhắn Tin Zalo Quầy Thịt
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- TOP DEMO SWITCHER BAR (5 MẪU) -->
     <div class="demo-nav-top py-2 px-3 sticky-top shadow-lg" style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); z-index: 999999; border-bottom: 2px solid #EAB308; font-family: 'Plus Jakarta Sans', sans-serif;">
         <div class="container-fluid d-flex flex-wrap justify-content-between align-items-center gap-2">
@@ -50,28 +195,34 @@
 
     <!-- MAIN HEADER -->
     <header class="mart-header">
-        <div class="container d-flex align-items-center justify-content-between gap-3">
-            <a href="{{ route('home') }}">
-                <img src="{{ get_image(setting_option('logo')) }}" alt="Tam Nông Food Mart" style="max-height: 54px;">
-            </a>
+        <div class="container d-flex align-items-center justify-content-between gap-2">
+            <!-- Left: Hamburger (Mobile) & Logo -->
+            <div class="d-flex align-items-center gap-2">
+                <button class="btn btn-mart-mobile-menu d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#martMobileMenuOffcanvas" aria-controls="martMobileMenuOffcanvas" aria-label="Mở menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <a href="{{ route('home') }}"><img src="{{ get_image(setting_option('logo')) }}" alt="Tam Nông Food Mart" style="max-height: 44px;"></a>
+            </div>
 
+            <!-- Center: Search (Desktop) -->
             <div class="mart-search d-none d-lg-block">
                 <form action="{{ route('search') }}" method="GET">
                     <input type="text" name="q" placeholder="Tìm kiếm nhanh thực phẩm, thịt tươi, đặc sản...">
-                    <button type="submit" aria-label="Tìm kiếm"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
 
-            <div class="d-flex align-items-center gap-3">
-                <a href="tel:0938133830" class="btn btn-warning rounded-pill px-3 py-2 fw-bold text-dark d-flex align-items-center gap-2">
-                    <i class="fa-solid fa-phone-volume"></i> 0938.133.830
+            <!-- Right: Hotline CTA -->
+            <div class="d-flex align-items-center gap-2">
+                <a href="tel:0938133830" class="btn btn-warning rounded-pill px-3 py-1.5 fw-bold text-dark d-flex align-items-center gap-1.5 shadow-sm">
+                    <i class="fa-solid fa-phone-volume"></i> <span class="d-none d-sm-inline">0938.133.830</span><span class="d-sm-none">Gọi Ngay</span>
                 </a>
             </div>
         </div>
     </header>
 
     <!-- MART NAVIGATION -->
-    <nav class="mart-nav">
+    <nav class="mart-nav d-none d-lg-block">
         <div class="container d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
                 <a href="{{ route('demo.concept3') }}" class="mart-nav-link active"><i class="fa-solid fa-house me-1"></i> Trang Chủ</a>

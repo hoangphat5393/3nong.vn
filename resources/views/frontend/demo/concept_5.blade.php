@@ -17,6 +17,128 @@
 </head>
 <body>
 
+    <!-- OFFCANVAS MOBILE NAVIGATION - MẪU 5: NORDIC MINIMALIST LUXURY CONCIERGE -->
+    <div class="offcanvas offcanvas-start nordic-offcanvas-menu" tabindex="-1" id="nordicOffcanvas" aria-labelledby="nordicOffcanvasLabel">
+        <div class="offcanvas-header">
+            <div class="d-flex align-items-center gap-2">
+                <img src="/upload/images/logo/logo.png" alt="Tam Nông Nordic" class="mobile-logo">
+                <div>
+                    <div class="fw-bold small text-gold" style="letter-spacing: 1px;">TAM NÔNG</div>
+                    <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Nordic Concierge</div>
+                </div>
+            </div>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <!-- Search nhanh -->
+            <div class="nordic-menu-search mb-4">
+                <input type="text" placeholder="Tìm ẩm thực thượng hạng...">
+                <button type="button" aria-label="Tìm kiếm"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+
+            <!-- Danh sách menu đa cấp phong cách Concierge -->
+            <ul class="nordic-nav-list">
+                <li class="nordic-nav-item">
+                    <a href="mau-5.html" class="nordic-nav-link active">
+                        <span><i class="fa-solid fa-house nav-icon"></i> Trang Chủ Nordic</span>
+                    </a>
+                </li>
+
+                <!-- Bộ Sưu Tập Nông Trại (Accordion) -->
+                <li class="nordic-nav-item">
+                    <a href="#collapseNordicCats" class="nordic-nav-link" data-bs-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseNordicCats">
+                        <span><i class="fa-solid fa-feather nav-icon"></i> Đặc Sản Tuyển Chọn</span>
+                        <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                    </a>
+                    <div class="collapse show" id="collapseNordicCats">
+                        <ul class="nordic-submenu-lv2">
+                            <!-- Nhóm 1: Bê Tơ -->
+                            <li class="lv2-item">
+                                <a href="#collapseNordicBe" class="lv2-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseNordicBe">
+                                    <span>🌾 Thịt Bê Thả Cỏ Tự Nhiên</span>
+                                    <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                                </a>
+                                <div class="collapse" id="collapseNordicBe">
+                                    <ul class="nordic-submenu-lv3">
+                                        <li><a href="#san-pham">• Bê Bó Giò Thượng Hạng</a></li>
+                                        <li><a href="#san-pham">• Bê Xối Xả Ướp Sẵn</a></li>
+                                        <li><a href="#san-pham">• Bê Rút Xương Lọc Sạch</a></li>
+                                        <li><a href="#san-pham">• Thăn Bê Tơ Hảo Hạng</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <!-- Nhóm 2: Heo Rừng -->
+                            <li class="lv2-item">
+                                <a href="#collapseNordicHeo" class="lv2-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseNordicHeo">
+                                    <span>🌲 Heo Rừng Bán Hoang Dã</span>
+                                    <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                                </a>
+                                <div class="collapse" id="collapseNordicHeo">
+                                    <ul class="nordic-submenu-lv3">
+                                        <li><a href="#san-pham">• Ba Rọi Heo Rừng Giòn Bì</a></li>
+                                        <li><a href="#san-pham">• Dựng Heo Khò Rơm Sạch</a></li>
+                                        <li><a href="#san-pham">• Nạm Sữa Heo Non</a></li>
+                                        <li><a href="#san-pham">• Sườn Heo Rừng Tự Nhiên</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <!-- Nhóm 3: Gia Cầm & Chim -->
+                            <li class="lv2-item">
+                                <a href="#collapseNordicGa" class="lv2-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseNordicGa">
+                                    <span>🕊️ Thực Phẩm Dưỡng Khí</span>
+                                    <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                                </a>
+                                <div class="collapse" id="collapseNordicGa">
+                                    <ul class="nordic-submenu-lv3">
+                                        <li><a href="#san-pham">• Gà Đen H'Mông Quý Hiếm</a></li>
+                                        <li><a href="#san-pham">• Chim Trĩ Đỏ Thượng Hạng</a></li>
+                                        <li><a href="#san-pham">• Gà Ta Thả Vườn Tự Nhiên</a></li>
+                                        <li><a href="#san-pham">• Gà Đồi Chạy Bộ Sườn Núi</a></li>
+                                        <li><a href="#san-pham">• Thịt Chim Cút Vô Trùng</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <!-- Gợi Ý Thực Đơn Bếp Trưởng -->
+                <li class="nordic-nav-item">
+                    <a href="#san-pham" class="nordic-nav-link">
+                        <span><i class="fa-solid fa-utensils nav-icon"></i> Công Thức Bếp Trưởng</span>
+                    </a>
+                </li>
+
+                <!-- Chuỗi Lạnh Khép Kín -->
+                <li class="nordic-nav-item">
+                    <a href="#san-pham" class="nordic-nav-link">
+                        <span><i class="fa-solid fa-snowflake nav-icon"></i> Chuỗi Lạnh -2°C ~ 4°C</span>
+                    </a>
+                </li>
+
+                <!-- Báo Giá Sỉ Thượng Hạng -->
+                <li class="nordic-nav-item">
+                    <a href="tel:0938133830" class="nordic-nav-link">
+                        <span><i class="fa-solid fa-crown nav-icon text-gold"></i> Báo Giá Sỉ & Đặt Tiệc</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Footer trong Offcanvas -->
+            <div class="nordic-offcanvas-footer">
+                <div class="nordic-hours-pill">
+                    <i class="fa-regular fa-clock me-1 text-gold"></i> Giờ phục vụ: <span class="hours-highlight">06:00 – 20:00</span>
+                </div>
+                <a href="tel:0938133830" class="btn btn-warning w-100 rounded-pill fw-bold py-2 text-dark shadow-sm">
+                    <i class="fa-solid fa-phone me-1"></i> Hotline: 0938.133.830
+                </a>
+            </div>
+        </div>
+    </div>
+
+
     @include('frontend.demo.includes.demo_switcher', ['current' => 5])
 
     <!-- 1. TOP BAR ANNOUNCEMENT -->
@@ -26,13 +148,32 @@
 
     <!-- 2. SITE HEADER & NAVIGATION (SYNCED HEADER & MENU) -->
     <header class="nordic-header">
-        <div class="container text-center">
-            {{-- [TẠM ẨN LINK MẪU 5]
-<a href="{{ route('demo.concept5') }}" class="nordic-logo d-inline-block">
-                <img src="{{ get_image(setting_option('logo')) }}" alt="Tam Nông Logo">
-            </a>
---}}
-            <nav class="nordic-nav-links">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between">
+                <!-- Hamburger (Mobile) -->
+                <button class="btn btn-nordic-menu d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#nordicOffcanvas" aria-controls="nordicOffcanvas" aria-label="Mở menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <!-- Logo Centered or Left -->
+                <a href="{{ route('home') }}" class="nordic-logo d-inline-block mx-auto mx-lg-0">
+                    <img src="{{ get_image(setting_option('logo')) }}" alt="Tam Nông Logo">
+                </a>
+
+                <!-- Desktop Hotline -->
+                <div class="d-none d-lg-block">
+                    <a href="tel:0938133830" class="btn btn-sm btn-outline-dark rounded-pill fw-bold px-3 py-1.5" style="border-color: #D4AF37;">
+                        <i class="fa-solid fa-phone me-1 text-gold"></i> 0938.133.830
+                    </a>
+                </div>
+                <!-- Mobile Phone Icon -->
+                <a href="tel:0938133830" class="btn btn-nordic-menu d-lg-none" aria-label="Gọi điện">
+                    <i class="fa-solid fa-phone"></i>
+                </a>
+            </div>
+
+            <!-- Desktop Nav Links -->
+            <nav class="nordic-nav-links d-none d-lg-flex">
                 <a href="{{ route('home') }}" class="active">TRANG CHỦ</a>
                 <a href="{{ route('product') }}">THỊT BÊ TƯƠI</a>
                 <a href="{{ route('product') }}">HEO RỪNG F1</a>

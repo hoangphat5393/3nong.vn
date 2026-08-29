@@ -578,3 +578,205 @@ body {
     30%, 60% { transform: rotate(15deg); }
     75% { transform: rotate(0deg); }
 }
+
+
+/* ========================================================
+   MẪU 4: BENTO BOX THEMED OFFCANVAS & RESPONSIVE
+   ======================================================== */
+.btn-bento-menu {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    border: 2px solid #1E293B;
+    color: #1E293B;
+    background: #22C55E;
+    box-shadow: 3px 3px 0 #1E293B;
+    transition: all 0.15s ease;
+
+    &:hover, &:focus {
+        background: #16A34A;
+        color: #FFFFFF;
+        transform: translate(1px, 1px);
+        box-shadow: 2px 2px 0 #1E293B;
+    }
+}
+
+.bento-offcanvas-menu {
+    max-width: 340px;
+    width: 88vw;
+    background: #F8FAFC;
+    border-right: 3px solid #1E293B;
+
+    .offcanvas-header {
+        background: #0A2315;
+        color: #FFFFFF;
+        border-bottom: 3px solid #1E293B;
+        padding: 16px 20px;
+
+        .mobile-logo {
+            max-height: 42px;
+            width: auto;
+        }
+
+        .bento-badge-mini {
+            background: #22C55E;
+            color: #0A2315;
+            font-size: 0.72rem;
+            font-weight: 900;
+            padding: 3px 8px;
+            border-radius: 6px;
+            border: 1.5px solid #1E293B;
+        }
+
+        .btn-close {
+            filter: invert(1);
+            opacity: 0.8;
+            &:hover { opacity: 1; }
+        }
+    }
+
+    .offcanvas-body {
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    /* Bento Tile Block for Menu */
+    .bento-menu-card {
+        background: #FFFFFF;
+        border: 2px solid #1E293B;
+        border-radius: 14px;
+        box-shadow: 3px 3px 0 #1E293B;
+        padding: 12px 14px;
+        transition: transform 0.15s ease;
+
+        &:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0 #1E293B;
+        }
+
+        .bento-menu-header-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: #0F172A;
+            font-weight: 800;
+            font-size: 0.95rem;
+
+            .bento-tag {
+                font-size: 0.7rem;
+                font-weight: 800;
+                padding: 2px 6px;
+                border-radius: 4px;
+                border: 1px solid #1E293B;
+            }
+
+            .chevron-icon {
+                font-size: 0.75rem;
+                color: #64748B;
+                transition: transform 0.25s ease;
+            }
+
+            &[aria-expanded="true"] .chevron-icon {
+                transform: rotate(90deg);
+                color: #22C55E;
+            }
+        }
+
+        .bento-sub-list {
+            list-style: none;
+            padding: 10px 0 0 10px;
+            margin: 8px 0 0;
+            border-top: 1.5px dashed #CBD5E1;
+
+            li a {
+                display: block;
+                padding: 5px 8px;
+                font-size: 0.85rem;
+                font-weight: 600;
+                color: #475569;
+                text-decoration: none;
+                border-radius: 6px;
+                transition: all 0.2s ease;
+
+                &:hover {
+                    background: #ECFDF5;
+                    color: #065F46;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+
+    /* Bento Quick Action Grid */
+    .bento-action-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 10px;
+
+        .bento-quick-tile {
+            border: 2px solid #1E293B;
+            border-radius: 12px;
+            box-shadow: 3px 3px 0 #1E293B;
+            padding: 12px 10px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 800;
+            font-size: 0.82rem;
+            transition: all 0.15s ease;
+
+            &:hover {
+                transform: translate(1px, 1px);
+                box-shadow: 2px 2px 0 #1E293B;
+            }
+
+            &.tile-call {
+                background: #FEF08A;
+                color: #854D0E;
+            }
+
+            &.tile-zalo {
+                background: #BFDBFE;
+                color: #1E40AF;
+            }
+        }
+    }
+}
+
+/* Media queries for Mẫu 4 */
+@media (max-width: 767.98px) {
+    .bento-header {
+        padding: 10px 0;
+        .bento-logo img { max-height: 42px; }
+    }
+
+    .bento-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+
+        .bento-card {
+            padding: 20px 16px !important;
+            border-radius: 18px !important;
+        }
+    }
+
+    .floating-contact-bento {
+        bottom: 20px !important;
+        right: 14px !important;
+        gap: 10px !important;
+
+        .bento-fly-tile {
+            width: 46px !important;
+            height: 46px !important;
+            .zalo-text { font-size: 0.95rem !important; }
+            i { font-size: 1.1rem !important; }
+        }
+    }
+}

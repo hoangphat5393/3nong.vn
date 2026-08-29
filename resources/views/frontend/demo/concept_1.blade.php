@@ -24,6 +24,158 @@
 </head>
 <body>
 
+    <!-- OFFCANVAS MOBILE NAVIGATION (XUẤT BÊN TRÁI - ĐỦ CÁC CẤP CHUYÊN MỤC) -->
+    <div class="offcanvas offcanvas-start mobile-menu-offcanvas" tabindex="-1" id="mobileMenuOffcanvas" aria-labelledby="mobileMenuOffcanvasLabel">
+        <div class="offcanvas-header">
+            <a href="index.html" class="d-flex align-items-center">
+                <img src="/upload/images/logo/logo.png" alt="Tam Nông Logo" class="mobile-logo">
+            </a>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <!-- Search nhanh trong menu -->
+            <div class="mobile-search-input mb-3">
+                <input type="text" placeholder="Tìm thịt bê, heo rừng, gà đồi...">
+                <button type="button" aria-label="Tìm kiếm"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+
+            <!-- Danh sách menu đa cấp -->
+            <ul class="mobile-nav-list">
+                <!-- 1. Trang Chủ -->
+                <li class="mobile-nav-item">
+                    <a href="index.html" class="mobile-nav-link active">
+                        <span><i class="fa-solid fa-house nav-icon"></i> Trang Chủ</span>
+                    </a>
+                </li>
+
+                <!-- 2. Cấp 1: DANH MỤC THỰC PHẨM SẠCH (Accordion đa cấp) -->
+                <li class="mobile-nav-item">
+                    <a href="#collapseCategories" class="mobile-nav-link" data-bs-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCategories">
+                        <span><i class="fa-solid fa-utensils nav-icon"></i> Danh Mục Thực Phẩm</span>
+                        <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                    </a>
+                    
+                    <!-- Cấp 2: Các Nhóm Chuyên Mục -->
+                    <div class="collapse show" id="collapseCategories">
+                        <ul class="mobile-submenu-lv2">
+                            <!-- Cấp 2.1: Thịt Bê Tươi -->
+                            <li class="lv2-item">
+                                <a href="#collapseBeTuoi" class="lv2-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseBeTuoi">
+                                    <span>🥩 Thịt Bê Tươi Thả Cỏ</span>
+                                    <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                                </a>
+                                <!-- Cấp 3: Sản phẩm chi tiết -->
+                                <div class="collapse" id="collapseBeTuoi">
+                                    <ul class="mobile-submenu-lv3">
+                                        <li><a href="#san-pham">• Bê Bó Giò Thượng Hạng</a></li>
+                                        <li><a href="#san-pham">• Bê Xối Xả Ướp Sẵn</a></li>
+                                        <li><a href="#san-pham">• Bê Rút Xương Lọc Sạch</a></li>
+                                        <li><a href="#san-pham">• Thịt Bê Thăn & Bắp Tơ</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <!-- Cấp 2.2: Heo Rừng F1 -->
+                            <li class="lv2-item">
+                                <a href="#collapseHeoRung" class="lv2-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseHeoRung">
+                                    <span>🐗 Heo Rừng Lai F1</span>
+                                    <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                                </a>
+                                <!-- Cấp 3: Sản phẩm chi tiết -->
+                                <div class="collapse" id="collapseHeoRung">
+                                    <ul class="mobile-submenu-lv3">
+                                        <li><a href="#san-pham">• Ba Rọi Heo Rừng Tự Nhiên</a></li>
+                                        <li><a href="#san-pham">• Dựng Heo Khò Rơm</a></li>
+                                        <li><a href="#san-pham">• Nạm Sữa Heo Giòn Ngọt</a></li>
+                                        <li><a href="#san-pham">• Sườn Non Heo Rừng</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <!-- Cấp 2.3: Gà Đồi & Chim Sạch -->
+                            <li class="lv2-item">
+                                <a href="#collapseGiaCam" class="lv2-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseGiaCam">
+                                    <span>🐔 Gà Đồi & Gia Cầm Sạch</span>
+                                    <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                                </a>
+                                <!-- Cấp 3: Sản phẩm chi tiết -->
+                                <div class="collapse" id="collapseGiaCam">
+                                    <ul class="mobile-submenu-lv3">
+                                        <li><a href="#san-pham">• Gà Ta Thả Vườn</a></li>
+                                        <li><a href="#san-pham">• Gà Đồi Chạy Bộ Sườn Núi</a></li>
+                                        <li><a href="#san-pham">• Gà Đen H'Mông Dinh Dưỡng</a></li>
+                                        <li><a href="#san-pham">• Chim Trĩ Đỏ Bổ Dưỡng</a></li>
+                                        <li><a href="#san-pham">• Thịt Chim Cút Tươi Đóng Khay</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <!-- Cấp 2.4: Món Ướp Sẵn BBQ -->
+                            <li class="lv2-item">
+                                <a href="#collapseMonUop" class="lv2-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseMonUop">
+                                    <span>🌶️ Món Ướp Sẵn Tiện Lợi</span>
+                                    <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                                </a>
+                                <!-- Cấp 3: Sản phẩm chi tiết -->
+                                <div class="collapse" id="collapseMonUop">
+                                    <ul class="mobile-submenu-lv3">
+                                        <li><a href="#san-pham">• Gà Nòi Ướp Sả Ớt BBQ</a></li>
+                                        <li><a href="#san-pham">• Bê Tơ Sa Tế Cay Nồng</a></li>
+                                        <li><a href="#san-pham">• Sườn Heo Muối Ớt Rừng</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <!-- 3. Flash Sale Giờ Vàng -->
+                <li class="mobile-nav-item">
+                    <a href="#san-pham" class="mobile-nav-link">
+                        <span><i class="fa-solid fa-bolt-lightning text-danger nav-icon"></i> Flash Sale Giờ Vàng</span>
+                        <span class="badge bg-danger text-white rounded-pill px-2 py-0.5 small">HOT</span>
+                    </a>
+                </li>
+
+                <!-- 4. Góc Ẩm Thực & Mẹo Bếp -->
+                <li class="mobile-nav-item">
+                    <a href="#tin-tuc" class="mobile-nav-link">
+                        <span><i class="fa-solid fa-book-open-reader nav-icon"></i> Góc Ẩm Thực & Mẹo Bếp</span>
+                    </a>
+                </li>
+
+                <!-- 5. Cam Kết Vệ Sinh Chuỗi Lạnh -->
+                <li class="mobile-nav-item">
+                    <a href="#cam-ket" class="mobile-nav-link">
+                        <span><i class="fa-solid fa-shield-halved nav-icon"></i> Chuỗi Lạnh & Kiểm Dịch</span>
+                    </a>
+                </li>
+
+                <!-- 6. Liên Hệ / Đăng Ký Đại Lý -->
+                <li class="mobile-nav-item">
+                    <a href="tel:0938133830" class="mobile-nav-link">
+                        <span><i class="fa-solid fa-headset nav-icon"></i> Liên Hệ / Hợp Tác Đại Lý</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Footer trong Offcanvas -->
+            <div class="mobile-offcanvas-footer">
+                <a href="tel:0938133830" class="mobile-hotline-card">
+                    <div class="hotline-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div>
+                        <div class="hotline-text">Hotline Đặt Hàng & Tư Vấn:</div>
+                        <div class="hotline-num">0938.133.830</div>
+                    </div>
+                </a>
+                <a href="https://zalo.me/0938133830" target="_blank" rel="noopener" class="btn btn-outline-primary w-100 rounded-pill fw-bold py-2 small d-flex align-items-center justify-content-center gap-2">
+                    <span class="fw-bold">Zalo:</span> Nhắn Tin Trực Tiếp
+                </a>
+            </div>
+        </div>
+    </div>
+
+
             <!-- TOP DEMO SWITCHER BAR (5 MẪU) -->
     <div class="demo-nav-top py-2 px-3 sticky-top shadow-lg" style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); z-index: 999999; border-bottom: 2px solid #EAB308; font-family: 'Plus Jakarta Sans', sans-serif;">
         <div class="container-fluid d-flex flex-wrap justify-content-between align-items-center gap-2">
@@ -68,13 +220,18 @@
     <!-- MAIN HEADER -->
     <header class="site-header">
         <div class="container">
-            <div class="d-flex align-items-center justify-content-between gap-3">
-                <!-- Logo -->
-                <a href="{{ route('home') }}" class="header-logo">
-                    <img src="{{ get_image(setting_option('logo')) }}" alt="Tam Nông - Thực Phẩm Sạch">
-                </a>
+            <div class="d-flex align-items-center justify-content-between gap-2">
+                <!-- Left: Hamburger (Mobile) & Logo -->
+                <div class="d-flex align-items-center gap-2">
+                    <button class="btn btn-mobile-menu d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenuOffcanvas" aria-controls="mobileMenuOffcanvas" aria-label="Mở menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <a href="{{ route('home') }}" class="header-logo">
+                        <img src="{{ get_image(setting_option('logo')) }}" alt="Tam Nông - Thực Phẩm Sạch">
+                    </a>
+                </div>
 
-                <!-- Live Search Bar -->
+                <!-- Center: Live Search Bar (Desktop) -->
                 <div class="header-search d-none d-lg-block">
                     <form action="{{ route('search') }}" method="GET">
                         <input type="text" name="q" placeholder="Tìm thịt bê, heo rừng, gà đồi, chim trĩ...">
@@ -82,10 +239,16 @@
                     </form>
                 </div>
 
-                <!-- Contact & Cart Action -->
-                <div class="d-flex align-items-center gap-3">
-                    <div class="d-none d-sm-flex align-items-center gap-2">
-                        <div class="rounded-circle p-2.5 d-flex align-items-center justify-content-center text-white" style="background: var(--tn-orange); width: 44px; height: 44px;">
+                <!-- Right: Contact Action -->
+                <div class="d-flex align-items-center gap-2">
+                    <!-- Mobile Call Button -->
+                    <a href="tel:0938133830" class="btn btn-sm text-white rounded-pill px-3 py-1.5 d-lg-none fw-bold d-flex align-items-center gap-1.5 shadow-sm" style="background: var(--tn-orange);">
+                        <i class="fa-solid fa-phone"></i> <span>Gọi Ngay</span>
+                    </a>
+                    
+                    <!-- Desktop Hotline -->
+                    <div class="d-none d-lg-flex align-items-center gap-2">
+                        <div class="rounded-circle p-2.5 d-flex align-items-center justify-content-center text-white shadow-sm" style="background: var(--tn-orange); width: 44px; height: 44px;">
                             <i class="fa-solid fa-phone-volume fs-5"></i>
                         </div>
                         <div>
@@ -93,14 +256,13 @@
                             <a href="tel:0938133830" class="fw-bold text-dark text-decoration-none fs-6">0938.133.830</a>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
     </header>
 
     <!-- NAVIGATION MENU -->
-    <nav class="site-nav">
+    <nav class="site-nav d-none d-lg-block">
         <div class="container d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center gap-1">
                 <a href="{{ route('product') }}" class="cat-dropdown-btn">

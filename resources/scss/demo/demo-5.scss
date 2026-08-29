@@ -809,3 +809,281 @@ body {
     24%, 48% { transform: rotate(12deg); }
     60% { transform: rotate(0deg); }
 }
+
+
+/* ========================================================
+   MẪU 5: NORDIC LUXURY CONCIERGE OFFCANVAS & RESPONSIVE
+   ======================================================== */
+.btn-nordic-menu {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1.5px solid #D4AF37;
+    color: #D4AF37;
+    background: #042F24;
+    box-shadow: 0 4px 14px rgba(4, 47, 36, 0.25);
+    transition: all 0.25s ease;
+
+    &:hover, &:focus {
+        background: #D4AF37;
+        color: #042F24;
+        transform: scale(1.05);
+    }
+}
+
+.nordic-offcanvas-menu {
+    max-width: 330px;
+    width: 85vw;
+    background: #042F24;
+    color: #FFFFFF;
+    border-right: 2px solid #D4AF37;
+
+    .offcanvas-header {
+        background: #03241C;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+        padding: 18px 20px;
+
+        .mobile-logo {
+            max-height: 44px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .btn-close {
+            filter: invert(1);
+            opacity: 0.8;
+            &:hover { opacity: 1; }
+        }
+    }
+
+    .offcanvas-body {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nordic-menu-search {
+        position: relative;
+        input {
+            width: 100%;
+            height: 42px;
+            padding: 0 42px 0 16px;
+            border-radius: 99px;
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            background: rgba(255, 255, 255, 0.08);
+            color: #FFFFFF;
+            font-size: 0.88rem;
+
+            &::placeholder { color: #94A3B8; }
+
+            &:focus {
+                outline: none;
+                border-color: #D4AF37;
+                background: rgba(255, 255, 255, 0.14);
+                box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+            }
+        }
+
+        button {
+            position: absolute;
+            right: 4px;
+            top: 4px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: none;
+            background: #D4AF37;
+            color: #042F24;
+            font-size: 0.82rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .nordic-nav-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        .nordic-nav-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            .nordic-nav-link {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 13px 0;
+                color: #CBD5E1;
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 700;
+                font-size: 0.92rem;
+                letter-spacing: 0.5px;
+                text-decoration: none;
+                transition: all 0.2s ease;
+
+                i.nav-icon {
+                    width: 24px;
+                    color: #D4AF37;
+                    font-size: 1rem;
+                }
+
+                &:hover, &.active {
+                    color: #D4AF37;
+                }
+
+                .chevron-icon {
+                    font-size: 0.75rem;
+                    color: #94A3B8;
+                    transition: transform 0.25s ease;
+                }
+
+                &[aria-expanded="true"] .chevron-icon {
+                    transform: rotate(90deg);
+                    color: #D4AF37;
+                }
+            }
+
+            /* Submenu Level 2 */
+            .nordic-submenu-lv2 {
+                list-style: none;
+                padding: 0 0 10px 14px;
+                margin: 0;
+                border-left: 2px solid rgba(212, 175, 55, 0.35);
+                margin-left: 10px;
+
+                .lv2-item {
+                    margin-bottom: 4px;
+
+                    .lv2-link {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 8px 10px;
+                        font-size: 0.88rem;
+                        font-weight: 600;
+                        color: #E2E8F0;
+                        text-decoration: none;
+                        border-radius: 8px;
+                        transition: all 0.2s ease;
+
+                        &:hover {
+                            background: rgba(212, 175, 55, 0.12);
+                            color: #D4AF37;
+                        }
+
+                        &[aria-expanded="true"] .chevron-icon {
+                            transform: rotate(90deg);
+                            color: #D4AF37;
+                        }
+                    }
+
+                    /* Submenu Level 3 */
+                    .nordic-submenu-lv3 {
+                        list-style: none;
+                        padding: 4px 0 6px 14px;
+                        margin: 0;
+                        border-left: 1.5px dashed rgba(212, 175, 55, 0.25);
+                        margin-left: 10px;
+
+                        li a {
+                            display: block;
+                            padding: 6px 10px;
+                            font-size: 0.83rem;
+                            font-weight: 500;
+                            color: #94A3B8;
+                            text-decoration: none;
+                            border-radius: 6px;
+                            transition: all 0.2s ease;
+
+                            &:hover {
+                                background: rgba(212, 175, 55, 0.15);
+                                color: #FEF3C7;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .nordic-offcanvas-footer {
+        margin-top: auto;
+        padding-top: 20px;
+        border-top: 1px solid rgba(212, 175, 55, 0.25);
+
+        .nordic-hours-pill {
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            border-radius: 12px;
+            padding: 10px 14px;
+            margin-bottom: 12px;
+            font-size: 0.78rem;
+            color: #FEF3C7;
+
+            .hours-highlight {
+                color: #D4AF37;
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+/* Media Queries for Mẫu 5 */
+@media (max-width: 991.98px) {
+    .nordic-header {
+        padding: 12px 0;
+        .nordic-logo img { max-height: 42px; }
+    }
+
+    .nordic-hero {
+        padding: 30px 18px !important;
+        border-radius: 20px !important;
+
+        .nordic-hero-title {
+            font-size: 1.85rem !important;
+            line-height: 1.25 !important;
+        }
+
+        .nordic-btn-primary, .nordic-btn-outline {
+            padding: 10px 22px !important;
+            font-size: 0.88rem !important;
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    .nordic-product-card {
+        border-radius: 14px !important;
+        .nordic-body {
+            padding: 14px 10px !important;
+            .nordic-title { font-size: 0.88rem !important; height: 2.6em !important; }
+            .nordic-price-current { font-size: 1rem !important; }
+        }
+    }
+
+    .floating-contact-nordic {
+        bottom: 20px !important;
+        right: 14px !important;
+        gap: 10px !important;
+
+        .nordic-fly-capsule {
+            width: 46px !important;
+            height: 46px !important;
+            .zalo-serif { font-size: 0.95rem !important; }
+            i { font-size: 1.1rem !important; }
+        }
+
+        .nordic-fly-top {
+            width: 36px !important;
+            height: 36px !important;
+        }
+    }
+}
