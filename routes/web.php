@@ -2,6 +2,7 @@
 
 // use Illuminate\Support\Facades\Response; // JSON response
 // use Illuminate\Support\Facades\Cache;
+use App\Http\Controllers\AiChatController;
 use App\Models\Frontend\Page;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -250,6 +251,10 @@ Route::get('search', 'SearchController@index')->name('search');
 Route::get('404-v1', fn () => response()->view('errors.404-v1', [], 404))->name('404.v1');
 Route::get('404-v2', fn () => response()->view('errors.404-v2', [], 404))->name('404.v2');
 Route::get('404-v3', fn () => response()->view('errors.404-v3', [], 404))->name('404.v3');
+
+// AI Chatbot Routes
+Route::post('ai-chat', [AiChatController::class, 'chat'])->name('ai.chat');
+Route::post('ai-chat/reset', [AiChatController::class, 'reset'])->name('ai.chat.reset');
 
 // Generic Static Page
 Route::get('{slug}', 'PageController@page')->name('page');

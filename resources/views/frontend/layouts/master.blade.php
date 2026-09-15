@@ -140,6 +140,9 @@
         });
     </script>
 
+    <!-- AI Chatbot Floating Widget -->
+    @include('frontend.components.ai-chat-widget')
+
     @stack('scripts')
 </body>
 
