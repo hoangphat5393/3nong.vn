@@ -37,15 +37,21 @@ class AjaxController extends Controller
     public function __construct() {}
 
     /**
-     * Reset AUTO_INCREMENT sau bulk delete (MySQL). Bỏ qua trên SQLite (test env).
+     * Reset AUTO_INCREMENT sau bulk delete (MySQL/PostgreSQL). Bỏ qua trên SQLite (test env).
      */
     private function resetTableAutoIncrement(string $table): void
     {
-        if (Schema::getConnection()->getDriverName() === 'sqlite') {
-            return;
-        }
+        $driver = Schema::getConnection()->getDriverName();
 
-        DB::statement("ALTER TABLE `{$table}` AUTO_INCREMENT = 1");
+        if ($driver === 'mysql') {
+            DB::statement("ALTER TABLE `{$table}` AUTO_INCREMENT = 1");
+        } elseif ($driver === 'pgsql') {
+            $pk = $table === 'shop_orders' ? 'cart_id' : 'id';
+            $seq = DB::selectOne('SELECT pg_get_serial_sequence(?, ?)', [$table, $pk])?->pg_get_serial_sequence;
+            if ($seq) {
+                DB::statement("SELECT setval(?, COALESCE((SELECT MAX({$pk}) FROM \"{$table}\"), 1), (SELECT COUNT(*) > 0 FROM \"{$table}\"))", [$seq]);
+            }
+        }
     }
 
     /**
