@@ -203,6 +203,11 @@ Route::namespace('Admin')->group(function () {
                 Route::put('/', 'AdminController@updateCSS')->name('admin.css.update');
             });
 
+            Route::group(['prefix' => 'database-maintenance'], function () {
+                Route::get('/', 'DatabaseMaintenanceController@index')->name('admin.database-maintenance.index');
+                Route::post('/reset', 'DatabaseMaintenanceController@reset')->name('admin.database-maintenance.reset');
+            });
+
             // Setting | Theme-option
             Route::get('menu', 'MenuController@index')->name('admin.menu.index');
             // Route::get('menu/create', 'MenuController@index')->name('admin.menu.create');
