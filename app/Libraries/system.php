@@ -617,7 +617,7 @@ if (! function_exists('msg_move_page')) {
             }
         }
 
-        if ($isExit) {
+        if ($isExit && ! app()->runningUnitTests()) {
             exit();
         }
     }

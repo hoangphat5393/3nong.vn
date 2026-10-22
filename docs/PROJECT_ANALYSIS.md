@@ -11,7 +11,8 @@ Tài liệu này tổng hợp kiến trúc, cơ sở dữ liệu, luồng dữ l
 
 - **Mục đích:** Website thương mại điện tử / giới thiệu sản phẩm nông nghiệp (thương hiệu giao diện: _3 Nông_, _Nông Nghiệp Sạch_), hỗ trợ **danh mục sản phẩm**, **giỏ hàng**, **đặt hàng / thanh toán**, **tin bài / trang tĩnh**, **tìm kiếm**, **liên hệ**, và **khu vực quản trị** (CMS + đơn hàng + phân quyền).
 - **Công nghệ lõi:**
-    - **Backend:** PHP **8.4+**, **Laravel 12**, Eloquent ORM.
+    - **Backend:** PHP **8.3+**, **Laravel 13 (v13.37.0)**, Eloquent ORM.
+    - **Database:** **PostgreSQL 16** (Port 5432, UTF-8, Sequence ID Management, 15 Foreign Keys).
     - **Auth:** Guard `web` (khách hàng) và guard `admin` (quản trị — model dùng bảng `users`).
     - **Frontend:** Blade + **Vite 7**, **Tailwind CSS 4**, jQuery / Axios / Swiper / AOS (bundle `resources/js/app.js`).
     - **Thư viện đáng chú ý:** `surfsidemedia/shoppingcart`, `gornymedia/laravel-shortcodes`, `ckfinder/ckfinder-laravel-package`, `intervention/image`, Socialite, reCAPTCHA v3, Mailgun.

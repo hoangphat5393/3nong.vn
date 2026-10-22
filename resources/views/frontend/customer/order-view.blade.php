@@ -1,9 +1,6 @@
 @php
-
-    $id = $order->cart_id ?? 0;
-
-    $order_details = \App\Models\Frontend\OrderItem::where('cart_id', $id)->get();
-
+    $id = $order->id ?? $order->cart_id ?? 0;
+    $order_details = \App\Models\Frontend\OrderItem::where('order_id', $id)->get();
 @endphp
 
 

@@ -475,7 +475,7 @@ class PaypalTestController extends Controller
     public function paymentOrder($cart_id)
     {
 
-        $cart = Addtocard::where('cart_id', $cart_id)->first();
+        $cart = Addtocard::where('id', $cart_id)->first();
 
         if ($cart && $cart->cart_status == 'waiting-payment') {
 
@@ -572,7 +572,7 @@ class PaypalTestController extends Controller
 
                 // Insert transaction data into the database
 
-                $isPaymentExist = Addtocard::where('cart_id', $cart_id)->first();
+                $isPaymentExist = Addtocard::where('id', $cart_id)->first();
 
                 $date_now = date('Y-m-d H:i:s');
 

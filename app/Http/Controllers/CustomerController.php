@@ -615,7 +615,7 @@ class CustomerController extends Controller
     {
         $id = request()->id;
         $order = Addtocard::query()
-            ->where('cart_id', $id)
+            ->where('id', $id)
             ->where('user_id', Auth::id())
             ->first();
 

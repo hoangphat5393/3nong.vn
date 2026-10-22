@@ -42,7 +42,7 @@ class CheckSystemHealth extends Command
         }
 
         // 2. Check Critical Tables
-        $tables = ['roles', 'users', 'permissions', 'permission_role', 'shop_orders'];
+        $tables = ['roles', 'users', 'permissions', 'permission_role', 'orders'];
         foreach ($tables as $table) {
             if (Schema::hasTable($table)) {
                 $this->info("✅ Table '$table' exists.");

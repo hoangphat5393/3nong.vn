@@ -37,3 +37,13 @@
 * **Màu Xanh Lá Mầm Tươi (`#5E9C3C`):** Tượng trưng cho thiên nhiên, nguồn thức ăn sạch và nông nghiệp sinh thái.
 * **Màu Cam Ánh Dương (`#E88E23`):** Tượng trưng cho sự ấm cúng của gian bếp gia đình, món ăn ngon và năng lượng.
 * **Màu Nền Đề Xuất:** Trắng sứ (`#F8FAF6`), Xanh mầm nhạt (`#F0F7EC`), hoặc Xám sáng thanh lịch (`#F1F5F9`). **Không sử dụng nền nâu đất cũ.**
+
+---
+
+## 5. Nền Tảng Kỹ Thuật (Tech Stack)
+
+* **Framework & Runtime:** PHP 8.3+, Laravel 13 (v13.37.0), Composer 2
+* **Cơ sở dữ liệu (Database):** PostgreSQL 16 (Port 5432, UTF-8, Sequence ID Management, 15 Foreign Keys)
+* **Frontend Storefront:** Blade, Vite 7, Tailwind CSS 4, Axios, jQuery, Swiper, AOS
+* **Trang Quản trị (Admin):** AdminLTE 4.1 (Bootstrap 5.3), Axios, FontAwesome Pro, CKFinder
+* **Tài liệu hệ thống chi tiết:** Xem thêm tại [MASTER.md](MASTER.md) và [docs/PROJECT_ANALYSIS.md](docs/PROJECT_ANALYSIS.md).

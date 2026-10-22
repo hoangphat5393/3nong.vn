@@ -238,7 +238,7 @@ class CartController extends Controller
     public function checkPayment($cart_id)
     {
         $this->localized();
-        $this->data['cart'] = Order::where('cart_id', $cart_id)->first();
+        $this->data['cart'] = Order::where('id', $cart_id)->first();
         // dd($cart);
         if ($this->data['cart'] && $this->data['cart']['cart_status'] == 'waiting-payment') {
             return view('frontend.checkout.check-payment', $this->data);

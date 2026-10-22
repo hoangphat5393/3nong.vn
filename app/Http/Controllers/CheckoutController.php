@@ -63,7 +63,7 @@ class CheckoutController extends Controller
     public function checkPayment($cart_id)
     {
         $this->localized();
-        $this->data['cart'] = \App\Models\Frontend\Addtocard::where('cart_id', $cart_id)->first();
+        $this->data['cart'] = \App\Models\Frontend\Addtocard::where('id', $cart_id)->first();
         // dd($cart);
         if ($this->data['cart'] && $this->data['cart']['cart_status'] == 'waiting-payment') {
             return view($this->templatePath.'.cart.check-payment', $this->data);
@@ -262,9 +262,9 @@ class CheckoutController extends Controller
 
         $respons = \App\Models\Frontend\Addtocard::create($database);
 
-        $order_id = auto_code('Order', $respons->cart_id);
-        $cart = \App\Models\Frontend\Addtocard::where('cart_id', $respons->cart_id)->first();
-        $cart->cart_code = $order_id;
+        $order_id = auto_code('Order', $respons->id);
+        $cart = \App\Models\Frontend\Addtocard::where('id', $respons->id)->first();
+        $cart->code = $order_id;
         $cart->save();
 
         // insert in Addtocard_Detail
@@ -311,7 +311,7 @@ class CheckoutController extends Controller
                         $content = htmlspecialchars_decode($checkContent->text);
                         $content_admin = htmlspecialchars_decode($checkContent_admin->text);
 
-                        $order_detail = Addtocard_Detail::where('cart_id', $id_post)->get();
+                        $order_detail = Addtocard_Detail::where('order_id', $id_post)->get();
                         $orderDetail = '';
                         foreach ($order_detail as $key => $detail) {
                             $product = $detail->getProduct;
@@ -463,8 +463,8 @@ class CheckoutController extends Controller
             // $this->data['order_status'] = $this->orderStatus();
             // $this->data['orderPayment'] = $this->orderPayment();
             // dd($this->orderPayment);
-            $this->data['order'] = Addtocard::where('cart_code', $id)->first();
-            $this->data['order_detail'] = $order_detail = Addtocard_Detail::where('cart_id', $this->data['order']->cart_id)->get();
+            $this->data['order'] = Addtocard::where('code', $id)->orWhere('id', $id)->first();
+            $this->data['order_detail'] = $order_detail = Addtocard_Detail::where('order_id', $this->data['order']->id)->get();
 
             $total_price = isset($order_detail->total) ? $order_detail->total : 0;
 
