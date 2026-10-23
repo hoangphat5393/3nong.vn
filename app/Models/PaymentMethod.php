@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Models\Backend;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ShopPaymentMethod extends Model
+class PaymentMethod extends Model
 {
     public $timestamps = false;
 
-    protected $table = 'shop_payment_method';
+    protected $table = 'payment_methods';
 
     protected $guarded = [];
 }

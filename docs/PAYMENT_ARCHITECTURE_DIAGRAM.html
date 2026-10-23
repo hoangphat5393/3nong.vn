@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sơ Đồ Kiến Trúc Thanh Toán Đơn Hàng Đa Cổng (Multi-Gateway ERD)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark',
+            themeVariables: {
+                darkMode: true,
+                background: '#0f172a',
+                primaryColor: '#1e293b',
+                primaryTextColor: '#f8fafc',
+                primaryBorderColor: '#3b82f6',
+                lineColor: '#60a5fa',
+                secondaryColor: '#0f766e',
+                tertiaryColor: '#1e1b4b'
+            }
+        });
+    </script>
+    <style>
+        :root {
+            --bg-body: #0b0f19;
+            --bg-card: #111827;
+            --bg-card-hover: #1f2937;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(59, 130, 246, 0.3);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-blue: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --accent-emerald: #10b981;
+            --accent-amber: #f59e0b;
+            --accent-purple: #8b5cf6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 32px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .badge-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.lead {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 860px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 28px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            transition: border-color 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: var(--border-highlight);
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .card-title h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge-status {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .mermaid-wrapper {
+            background: #090d16;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 24px;
+            overflow-x: auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin-bottom: 28px;
+        }
+
+        .tier-box {
+            background: #131b2e;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tier-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tier-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .tier-1 .tier-number { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); }
+        .tier-2 .tier-number { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
+        .tier-3 .tier-number { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); }
+
+        .tier-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .tier-table-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #93c5fd;
+            background: rgba(59, 130, 246, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 4px;
+        }
+
+        .tier-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .use-case-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 6px;
+        }
+
+        .use-case-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.92rem;
+            color: #cbd5e1;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-blue);
+        }
+
+        .use-case-item strong {
+            color: #ffffff;
+        }
+
+        .code-container {
+            background: #090d16;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            overflow-x: auto;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <span class="badge-tag">Kiến Trúc Chuẩn TMĐT Quốc Tế</span>
+        <h1>Mô Hình Thanh Toán Đa Cổng (Split Payment ERD)</h1>
+        <p class="lead">Thiết kế phân tầng xử lý thanh toán đơn hàng hỗ trợ kết hợp nhiều cổng thanh toán, thanh toán cọc theo đợt và lưu vết giao dịch chi tiết.</p>
+    </header>
+
+    <!-- Sơ đồ Mermaid -->
+    <div class="card">
+        <div class="card-title">
+            <h2>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                Sơ Đồ Thực Thể Quan Hệ (Interactive ERD)
+            </h2>
+            <span class="badge-status">E-Commerce Architecture v1.0</span>
+        </div>
+        <div class="mermaid-wrapper">
+            <pre class="mermaid">
+erDiagram
+    PAYMENT_METHODS ||--o{ ORDER_PAYMENTS : "được chọn bởi"
+    ORDERS ||--|{ ORDER_PAYMENTS : "có 1 hoặc nhiều giao dịch"
+    ORDERS ||--|{ ORDER_ITEMS : "chứa"
+
+    PAYMENT_METHODS {
+        string code PK "cod, vnpay, momo, points"
+        string name "Tên cổng"
+        boolean is_active "Bật/Tắt"
+    }
+
+    ORDERS {
+        bigint id PK
+        decimal total "Tổng tiền đơn hàng"
+        decimal paid_amount "Tổng tiền đã trả"
+        string payment_status "unpaid, partial, paid, refunded"
+    }
+
+    ORDER_PAYMENTS {
+        bigint id PK
+        bigint order_id FK "Thuộc đơn hàng nào"
+        string payment_method "vnpay, momo, cash, loyalty_point"
+        decimal amount "Số tiền thanh toán cổng này"
+        string transaction_code "Mã GD từ cổng ngân hàng"
+        string status "success, pending, failed"
+        timestamp paid_at "Thời điểm thanh toán"
+    }
+            </pre>
+        </div>
+    </div>
+
+    <!-- 3 Tầng Kiến Trúc -->
+    <div class="grid-3">
+        <div class="tier-box tier-1">
+            <div class="tier-header">
+                <div class="tier-number">1</div>
+                <div>
+                    <div class="tier-name">Cấu Hình Cổng Thanh Toán</div>
+                    <span class="tier-table-tag">payment_methods</span>
+                </div>
+            </div>
+            <p class="tier-desc">Bảng danh mục các phương thức thanh toán toàn hệ thống (COD, VNPay, Momo, Stripe, Chuyển khoản). Admin có thể bật/tắt hoặc cấu hình API key mà không cần sửa code.</p>
+        </div>
+
+        <div class="tier-box tier-2">
+            <div class="tier-header">
+                <div class="tier-number">2</div>
+                <div>
+                    <div class="tier-name">Đơn Hàng Tổng Thể</div>
+                    <span class="tier-table-tag">orders</span>
+                </div>
+            </div>
+            <p class="tier-desc">Chỉ theo dõi số liệu tài chính tổng quan: Tổng giá trị đơn hàng (<code>total</code>), tổng tiền khách đã thanh toán (<code>paid_amount</code>) và trạng thái tổng hợp (<code>payment_status</code>).</p>
+        </div>
+
+        <div class="tier-box tier-3">
+            <div class="tier-header">
+                <div class="tier-number">3</div>
+                <div>
+                    <div class="tier-name">Nhật Ký Từng Giao Dịch</div>
+                    <span class="tier-table-tag">order_payments</span>
+                </div>
+            </div>
+            <p class="tier-desc">Bảng then chốt: Lưu vết mỗi lần phát sinh thanh toán tiền (thành công hay thất bại, qua cổng nào, mã tham chiếu ngân hàng, số tiền tương ứng).</p>
+        </div>
+    </div>
+
+    <!-- 4 Bài toán giải quyết thực tế -->
+    <div class="card">
+        <div class="card-title">
+            <h2>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                4 Kịch Bản Nghiệp Vụ Chuẩn Mô Hình Này Giải Quyết
+            </h2>
+        </div>
+        <ul class="use-case-list">
+            <li class="use-case-item">
+                <div>
+                    <strong>1. Thanh toán hỗn hợp (Split Payment):</strong>
+                    Một đơn hàng trị giá 1.000.000đ được trả bằng 200.000đ điểm tích lũy + 800.000đ quẹt ví điện tử VNPay. Hệ thống ghi nhận 2 bản ghi giao dịch rõ ràng.
+                </div>
+            </li>
+            <li class="use-case-item">
+                <div>
+                    <strong>2. Đặt cọc & Thanh toán từng đợt (Installment / Deposit):</strong>
+                    Đơn hàng nông sản lớn đặt cọc online trước 30% qua Momo (300.000đ). Khi shipper giao hàng tới, khách trả nốt 70% tiền mặt COD (700.000đ).
+                </div>
+            </li>
+            <li class="use-case-item">
+                <div>
+                    <strong>3. Lưu vết lỗi & Cho phép thanh toán lại (Retry Logging):</strong>
+                    Khách quét mã VNPay bị lỗi mạng (ghi nhận trạng thái <code>failed</code>). Khách chuyển sang quét Momo thành công (ghi nhận trạng thái <code>success</code>). Không ghi đè làm mất lịch sử đối soát.
+                </div>
+            </li>
+            <li class="use-case-item">
+                <div>
+                    <strong>4. Hoàn tiền một phần (Partial Refunds):</strong>
+                    Đơn hàng có 1 sản phẩm bị hỏng cần hoàn tiền 150.000đ. Kế toán biết chính xác giao dịch gốc ở cổng nào để thao tác hoàn tiền chuẩn xác.
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Code Schema Preview -->
+    <div class="card">
+        <div class="card-title">
+            <h2>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                Mã Nguồn Mermaid Gốc
+            </h2>
+        </div>
+        <div class="code-container">erDiagram
+    PAYMENT_METHODS ||--o{ ORDER_PAYMENTS : "được chọn bởi"
+    ORDERS ||--|{ ORDER_PAYMENTS : "có 1 hoặc nhiều giao dịch"
+    ORDERS ||--|{ ORDER_ITEMS : "chứa"
+
+    PAYMENT_METHODS {
+        string code PK "cod, vnpay, momo, points"
+        string name "Tên cổng"
+        boolean is_active "Bật/Tắt"
+    }
+
+    ORDERS {
+        bigint id PK
+        decimal total "Tổng tiền đơn hàng"
+        decimal paid_amount "Tổng tiền đã trả"
+        string payment_status "unpaid, partial, paid, refunded"
+    }
+
+    ORDER_PAYMENTS {
+        bigint id PK
+        bigint order_id FK "Thuộc đơn hàng nào"
+        string payment_method "vnpay, momo, cash, loyalty_point"
+        decimal amount "Số tiền thanh toán cổng này"
+        string transaction_code "Mã GD từ cổng ngân hàng"
+        string status "success, pending, failed"
+        timestamp paid_at "Thời điểm thanh toán"
+    }</div>
+    </div>
+
+    <footer>
+        Tài liệu kiến trúc cơ sở dữ liệu hệ sinh thái 3 Nông & Vật tư nông nghiệp 58 &copy; 2026.
+    </footer>
+</div>
+
+</body>
+</html>

@@ -539,7 +539,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'2026_10_07_152633_create_admin_menus_table',1),(2,'2026_10_07_152633_create_album_items_table',1),(3,'2026_10_07_152633_create_albums_table',1),(4,'2026_10_07_152633_create_cache_locks_table',1),(5,'2026_10_07_152633_create_cache_table',1),(6,'2026_10_07_152633_create_categories_table',1),(7,'2026_10_07_152633_create_contacts_table',1),(8,'2026_10_07_152633_create_countries_table',1),(9,'2026_10_07_152633_create_customer_forget_pass_otp_table',1),(10,'2026_10_07_152633_create_email_templates_table',1),(11,'2026_10_07_152633_create_failed_jobs_table',1),(12,'2026_10_07_152633_create_import_log_table',1),(13,'2026_10_07_152633_create_jobs_table',1),(14,'2026_10_07_152633_create_media_files_table',1),(15,'2026_10_07_152633_create_menu_items_table',1),(16,'2026_10_07_152633_create_menus_table',1),(17,'2026_10_07_152633_create_pages_table',1),(18,'2026_10_07_152633_create_password_reset_tokens_table',1),(19,'2026_10_07_152633_create_permission_role_table',1),(20,'2026_10_07_152633_create_permissions_table',1),(21,'2026_10_07_152633_create_product_categories_table',1),(22,'2026_10_07_152633_create_product_prices_table',1),(23,'2026_10_07_152633_create_products_table',1),(24,'2026_10_07_152633_create_role_user_table',1),(25,'2026_10_07_152633_create_roles_table',1),(26,'2026_10_07_152633_create_sessions_table',1),(27,'2026_10_07_152633_create_settings_table',1),(28,'2026_10_07_152633_create_shop_currencies_table',1),(29,'2026_10_07_152633_create_shop_order_items_table',1),(30,'2026_10_07_152633_create_shop_order_payment_status_table',1),(31,'2026_10_07_152633_create_shop_order_status_table',1),(32,'2026_10_07_152633_create_shop_orders_table',1),(33,'2026_10_07_152633_create_shop_payment_method_table',1),(34,'2026_10_07_152633_create_users_table',1),(35,'2026_10_07_152950_add_foreign_keys_to_tables',2),(36,'2026_10_22_193500_refactor_shop_orders_to_orders_table',3),(37,'2026_10_23_181500_drop_legacy_shop_status_tables',4);
+INSERT INTO `migrations` VALUES (1,'2026_10_07_152633_create_admin_menus_table',1),(2,'2026_10_07_152633_create_album_items_table',1),(3,'2026_10_07_152633_create_albums_table',1),(4,'2026_10_07_152633_create_cache_locks_table',1),(5,'2026_10_07_152633_create_cache_table',1),(6,'2026_10_07_152633_create_categories_table',1),(7,'2026_10_07_152633_create_contacts_table',1),(8,'2026_10_07_152633_create_countries_table',1),(9,'2026_10_07_152633_create_customer_forget_pass_otp_table',1),(10,'2026_10_07_152633_create_email_templates_table',1),(11,'2026_10_07_152633_create_failed_jobs_table',1),(12,'2026_10_07_152633_create_import_log_table',1),(13,'2026_10_07_152633_create_jobs_table',1),(14,'2026_10_07_152633_create_media_files_table',1),(15,'2026_10_07_152633_create_menu_items_table',1),(16,'2026_10_07_152633_create_menus_table',1),(17,'2026_10_07_152633_create_pages_table',1),(18,'2026_10_07_152633_create_password_reset_tokens_table',1),(19,'2026_10_07_152633_create_permission_role_table',1),(20,'2026_10_07_152633_create_permissions_table',1),(21,'2026_10_07_152633_create_product_categories_table',1),(22,'2026_10_07_152633_create_product_prices_table',1),(23,'2026_10_07_152633_create_products_table',1),(24,'2026_10_07_152633_create_role_user_table',1),(25,'2026_10_07_152633_create_roles_table',1),(26,'2026_10_07_152633_create_sessions_table',1),(27,'2026_10_07_152633_create_settings_table',1),(28,'2026_10_07_152633_create_shop_currencies_table',1),(29,'2026_10_07_152633_create_shop_order_items_table',1),(30,'2026_10_07_152633_create_shop_order_payment_status_table',1),(31,'2026_10_07_152633_create_shop_order_status_table',1),(32,'2026_10_07_152633_create_shop_orders_table',1),(33,'2026_10_07_152633_create_shop_payment_method_table',1),(34,'2026_10_07_152633_create_users_table',1),(35,'2026_10_07_152950_add_foreign_keys_to_tables',2),(36,'2026_10_22_193500_refactor_shop_orders_to_orders_table',3),(37,'2026_10_23_181500_drop_legacy_shop_status_tables',4),(38,'2026_10_23_221100_rename_shop_payment_method_to_order_payment_methods',5),(39,'2026_10_23_235500_standardize_payment_schema',6);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -601,6 +601,7 @@ CREATE TABLE `orders` (
   `address` text COLLATE utf8mb4_unicode_ci,
   `note` text COLLATE utf8mb4_unicode_ci,
   `total` double NOT NULL DEFAULT '0',
+  `paid_amount` decimal(15,2) NOT NULL DEFAULT '0.00',
   `discount` double DEFAULT NULL,
   `status` smallint NOT NULL DEFAULT '0',
   `shipping_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -635,9 +636,37 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (85,'0','0','Vũ Hoàng Phát','+84937226422','test@gmail.com','29/38 Đ.Nguyễn Văn Khối, F.11','test',48000,NULL,0,NULL,NULL,'0',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2026-04-01 12:03:30','2026-04-01 12:09:43',NULL,0,NULL),(86,'0','0','ăef','awefa23 qr23r','test@gmail.coma23','awea ưe3','ra 3wtr',81000,NULL,0,NULL,NULL,'0',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2026-04-01 12:22:30','2026-04-01 12:22:30',NULL,0,NULL),(87,'0','0','Phat Vu','84937226422','test@gmail.com','29/38 Đ.Nguyễn Văn Khối, F.11','eafawef',10706,NULL,0,NULL,NULL,'0',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2026-04-06 08:06:26','2026-04-06 08:07:44',NULL,0,NULL),(88,'0','0','Phat Vu','34937226422','test@gmail.com','29/38 Đ.Nguyễn Văn Khối, F.11','awefawe fa',1754,NULL,0,NULL,NULL,'0',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2026-04-06 08:09:05','2026-04-06 08:09:05',NULL,0,NULL),(89,'0','0','Vũ Hoàng Phát','84937226422','test@gmail.c','29/38 Đ.Nguyễn Văn Khối, F.11',NULL,40000,NULL,0,NULL,NULL,'0',NULL,NULL,NULL,NULL,NULL,52,NULL,NULL,'2026-07-25 10:36:03','2026-08-11 09:02:35',NULL,0,NULL);
+INSERT INTO `orders` (`id`, `firstname`, `lastname`, `name`, `phone`, `email`, `address`, `note`, `total`, `discount`, `status`, `shipping_type`, `shipping_fee`, `shipping_cost`, `city`, `province`, `ward`, `country_code`, `postal_code`, `user_id`, `payment_id`, `payment_method`, `created_at`, `updated_at`, `code`, `payment_status`, `cart_content`) VALUES (85,'0','0','Vũ Hoàng Phát','+84937226422','test@gmail.com','29/38 Đ.Nguyễn Văn Khối, F.11','test',48000,NULL,0,NULL,NULL,'0',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2026-04-01 12:03:30','2026-04-01 12:09:43',NULL,0,NULL),(86,'0','0','ăef','awefa23 qr23r','test@gmail.coma23','awea ưe3','ra 3wtr',81000,NULL,0,NULL,NULL,'0',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2026-04-01 12:22:30','2026-04-01 12:22:30',NULL,0,NULL),(87,'0','0','Phat Vu','84937226422','test@gmail.com','29/38 Đ.Nguyễn Văn Khối, F.11','eafawef',10706,NULL,0,NULL,NULL,'0',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2026-04-06 08:06:26','2026-04-06 08:07:44',NULL,0,NULL),(88,'0','0','Phat Vu','34937226422','test@gmail.com','29/38 Đ.Nguyễn Văn Khối, F.11','awefawe fa',1754,NULL,0,NULL,NULL,'0',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2026-04-06 08:09:05','2026-04-06 08:09:05',NULL,0,NULL),(89,'0','0','Vũ Hoàng Phát','84937226422','test@gmail.c','29/38 Đ.Nguyễn Văn Khối, F.11',NULL,40000,NULL,0,NULL,NULL,'0',NULL,NULL,NULL,NULL,NULL,52,NULL,NULL,'2026-07-25 10:36:03','2026-08-11 09:02:35',NULL,0,NULL);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `order_payments`
+--
+
+DROP TABLE IF EXISTS `order_payments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `order_payments` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `order_id` bigint unsigned NOT NULL,
+  `gateway` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `amount` decimal(15,2) NOT NULL,
+  `currency` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'VND',
+  `transaction_code` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
+  `payload` json DEFAULT NULL,
+  `paid_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `order_payments_order_id_foreign` (`order_id`),
+  KEY `order_payments_gateway_index` (`gateway`),
+  KEY `order_payments_transaction_code_index` (`transaction_code`),
+  KEY `order_payments_status_index` (`status`),
+  CONSTRAINT `order_payments_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `pages`
@@ -1048,13 +1077,13 @@ INSERT INTO `shop_currencies` VALUES (1,'USD Dola','USD','$',1.00,2,1,',',0,0),(
 UNLOCK TABLES;
 
 --
--- Table structure for table `shop_payment_method`
+-- Table structure for table `payment_methods`
 --
 
-DROP TABLE IF EXISTS `shop_payment_method`;
+DROP TABLE IF EXISTS `payment_methods`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `shop_payment_method` (
+CREATE TABLE `payment_methods` (
   `id` int unsigned NOT NULL,
   `name` varchar(100) DEFAULT NULL,
   `code` char(30) DEFAULT NULL,
@@ -1065,13 +1094,13 @@ CREATE TABLE `shop_payment_method` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shop_payment_method`
+-- Dumping data for table `payment_methods`
 --
 
-LOCK TABLES `shop_payment_method` WRITE;
-/*!40000 ALTER TABLE `shop_payment_method` DISABLE KEYS */;
-INSERT INTO `shop_payment_method` VALUES (1,'Visa Mastercard','stripe__card','/assets/images/payment/visa-mastercard.png',1),(2,'Alipay','stripe__alipay','assets/images/payment/alipaycn.png',1),(3,'Thẻ nội địa và tài khoản ngân hàng','banks','/assets/images/payment-point/paytype_local_card.png',0),(4,'Thẻ thanh toán quốc tế','visa','/assets/images/payment-point/paytype_intcard.png',0),(5,'Ví điện tử VNPay','vnpay','/assets/images/payment-point/vnpay.png',0);
-/*!40000 ALTER TABLE `shop_payment_method` ENABLE KEYS */;
+LOCK TABLES `payment_methods` WRITE;
+/*!40000 ALTER TABLE `payment_methods` DISABLE KEYS */;
+INSERT INTO `payment_methods` VALUES (1,'Visa Mastercard','stripe__card','/assets/images/payment/visa-mastercard.png',1),(2,'Alipay','stripe__alipay','assets/images/payment/alipaycn.png',1),(3,'Thẻ nội địa và tài khoản ngân hàng','banks','/assets/images/payment-point/paytype_local_card.png',0),(4,'Thẻ thanh toán quốc tế','visa','/assets/images/payment-point/paytype_intcard.png',0),(5,'Ví điện tử VNPay','vnpay','/assets/images/payment-point/vnpay.png',0);
+/*!40000 ALTER TABLE `payment_methods` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
