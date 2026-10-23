@@ -18,11 +18,13 @@
                     <div class="col-md-12 p-0 pt-md-2 px-md-3">
                         <div class="swiper slider-swiper">
                             <div class="swiper-wrapper">
-                                @foreach ($slides as $s)
+                                @foreach ($slides as $idx => $s)
                                     <div class="swiper-slide">
                                         <a href="{{ $s['link'] ?? '#' }}" title="{{ $s['title'] ?? 'Slide' }}">
                                             <img class="d-block w-100 slide" src="{{ get_image($s['image']) }}"
-                                                alt="{{ $s['title'] ?? 'Slide' }}" title="{{ $s['title'] ?? 'Slide' }}">
+                                                alt="{{ $s['title'] ?? 'Slide' }}" title="{{ $s['title'] ?? 'Slide' }}"
+                                                {{ $idx === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy" decoding="async"' }}
+                                                onerror="this.onerror=null;this.src='{{ asset('assets/images/placeholder.png') }}';">
                                         </a>
                                     </div>
                                 @endforeach
@@ -76,7 +78,10 @@
                                                         <span class="badge-sale-percent">-{{ $discountPercent }}%</span>
                                                     @endif
                                                     <img class="w-100" src="{{ get_image($v->image) }}"
-                                                        alt="{{ $v->name }}">
+                                                        alt="{{ $v->name }}"
+                                                        loading="lazy"
+                                                        decoding="async"
+                                                        onerror="this.onerror=null;this.src='{{ asset('assets/images/placeholder.png') }}';this.classList.add('img-fallback');">
                                                     <figcaption>{{ $v->name }}</figcaption>
                                                 </figure>
                                             </a>
@@ -120,7 +125,9 @@
                             <div class="col-md-12 animate_bn">
                                 <a href="{{ route('product.category', $cat->slug) }}" title="{{ $cat->name }}">
                                     <figure class="cate-banner">
-                                        <img class="w-100" src="{{ get_image($cat->image) }}" alt="{{ $cat->name }}">
+                                        <img class="w-100" src="{{ get_image($cat->image) }}" alt="{{ $cat->name }}"
+                                            loading="lazy" decoding="async"
+                                            onerror="this.onerror=null;this.src='{{ asset('assets/images/placeholder.png') }}';">
                                     </figure>
                                 </a>
                             </div>
@@ -172,7 +179,10 @@
                                                                     class="badge-sale-percent">-{{ $discountPercent1 }}%</span>
                                                             @endif
                                                             <img class="w-100" src="{{ get_image($v1->image) }}"
-                                                                alt="{{ $v1->name }}">
+                                                                alt="{{ $v1->name }}"
+                                                                loading="lazy"
+                                                                decoding="async"
+                                                                onerror="this.onerror=null;this.src='{{ asset('assets/images/placeholder.png') }}';this.classList.add('img-fallback');">
                                                             <figcaption>{{ $v1->name }}</figcaption>
                                                         </figure>
                                                     </a>
@@ -243,8 +253,11 @@
                                         title="{{ data_get($firstPost, 'name') }}">
                                         <img src="{{ get_image(data_get($firstPost, 'image')) }}"
                                             alt="{{ data_get($firstPost, 'name') }}"
+                                            loading="lazy"
+                                            decoding="async"
                                             class="w-full h-full object-cover transition-transform duration-500 hover-scale"
-                                            style="width: 100%; height: 100%; object-fit: cover;">
+                                            style="width: 100%; height: 100%; object-fit: cover;"
+                                            onerror="this.onerror=null;this.src='{{ asset('assets/images/placeholder.png') }}';">
                                     </a>
                                     <span
                                         class="badge bg-success position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill shadow-sm">
@@ -296,7 +309,10 @@
                                                         title="{{ $pTitle }}">
                                                         <img class="img-fluid rounded-3 w-100 object-cover shadow-xs"
                                                             src="{{ get_image($pImage) }}" alt="{{ $pTitle }}"
-                                                            style="height: 90px; object-fit: cover;">
+                                                            loading="lazy"
+                                                            decoding="async"
+                                                            style="height: 90px; object-fit: cover;"
+                                                            onerror="this.onerror=null;this.src='{{ asset('assets/images/placeholder.png') }}';">
                                                     </a>
                                                 </div>
                                                 <div class="col-8 col-sm-9">

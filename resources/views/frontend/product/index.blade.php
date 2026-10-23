@@ -69,7 +69,10 @@
                                         @if ($discountPercent > 0)
                                             <span class="badge-sale-percent">-{{ $discountPercent }}%</span>
                                         @endif
-                                        <img class="w-100" src="{{ get_image($pImage) }}" alt="{{ $pName }}">
+                                        <img class="w-100" src="{{ get_image($pImage) }}" alt="{{ $pName }}"
+                                            loading="lazy"
+                                            decoding="async"
+                                            onerror="this.onerror=null;this.src='{{ asset('assets/images/placeholder.png') }}';this.classList.add('img-fallback');">
                                         <figcaption>{{ $pName }}</figcaption>
                                     </figure>
                                 </a>

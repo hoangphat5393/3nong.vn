@@ -1926,3 +1926,74 @@ footer {
     text-decoration: line-through;
     margin-top: 2px;
 }
+
+/* ==========================================================================
+   TẦNG 1: TỐI ƯU MẠNG CHẬM & TRẢI NGHIỆM SKELETON / SHIMMER LOADING
+   ========================================================================== */
+
+@keyframes skeletonShimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Khung ảnh sản phẩm chuẩn tỉ lệ 1:1, chống giật layout (CLS) và hiển thị Shimmer khi mạng chậm */
+.product-list .product-list-item figure,
+.product-swiper .product-list-item figure {
+    position: relative;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    border-radius: 6px;
+    background-color: #f3f4f6;
+}
+
+.product-list .product-list-item figure img,
+.product-swiper .product-list-item figure img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    border-radius: 6px !important;
+    background: #f1f3f5 linear-gradient(90deg, #f1f3f5 0%, #e2e5e9 35%, #f1f3f5 70%);
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.8s infinite linear;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Khi hover ảnh sản phẩm */
+.product-list .product-list-item figure img:hover,
+.product-swiper .product-list-item figure img:hover {
+    transform: scale(1.04);
+}
+
+/* Fallback mờ khi ảnh lỗi hoặc timeout */
+.product-list .product-list-item figure img.img-fallback,
+.product-swiper .product-list-item figure img.img-fallback {
+    object-fit: contain !important;
+    padding: 16px;
+    background: #f8f9fa !important;
+    animation: none !important;
+}
+
+/* Category banner & Slider chống giật layout */
+.cate-banner {
+    background: #f1f3f5;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.cate-banner img {
+    width: 100%;
+    object-fit: cover;
+    background: #f1f3f5 linear-gradient(90deg, #f1f3f5 0%, #e2e5e9 35%, #f1f3f5 70%);
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.8s infinite linear;
+}
+
+/* Card tin tức hiển thị mượt mà */
+.home-news img {
+    background-color: #f3f4f6;
+}

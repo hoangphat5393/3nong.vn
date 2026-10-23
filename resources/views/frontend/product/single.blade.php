@@ -190,7 +190,10 @@
                                                     title="{{ $v->name }}">
                                                     <figure>
                                                         <img class="w-100" src="{{ get_image($v->image) }}"
-                                                            alt="{{ $v->name }}">
+                                                            alt="{{ $v->name }}"
+                                                            loading="lazy"
+                                                            decoding="async"
+                                                            onerror="this.onerror=null;this.src='{{ asset('assets/images/placeholder.png') }}';this.classList.add('img-fallback');">
                                                         <figcaption>{{ $v->name }}</figcaption>
                                                     </figure>
                                                 </a>
