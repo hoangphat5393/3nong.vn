@@ -539,7 +539,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'2026_10_07_152633_create_admin_menus_table',1),(2,'2026_10_07_152633_create_album_items_table',1),(3,'2026_10_07_152633_create_albums_table',1),(4,'2026_10_07_152633_create_cache_locks_table',1),(5,'2026_10_07_152633_create_cache_table',1),(6,'2026_10_07_152633_create_categories_table',1),(7,'2026_10_07_152633_create_contacts_table',1),(8,'2026_10_07_152633_create_countries_table',1),(9,'2026_10_07_152633_create_customer_forget_pass_otp_table',1),(10,'2026_10_07_152633_create_email_templates_table',1),(11,'2026_10_07_152633_create_failed_jobs_table',1),(12,'2026_10_07_152633_create_import_log_table',1),(13,'2026_10_07_152633_create_jobs_table',1),(14,'2026_10_07_152633_create_media_files_table',1),(15,'2026_10_07_152633_create_menu_items_table',1),(16,'2026_10_07_152633_create_menus_table',1),(17,'2026_10_07_152633_create_pages_table',1),(18,'2026_10_07_152633_create_password_reset_tokens_table',1),(19,'2026_10_07_152633_create_permission_role_table',1),(20,'2026_10_07_152633_create_permissions_table',1),(21,'2026_10_07_152633_create_product_categories_table',1),(22,'2026_10_07_152633_create_product_prices_table',1),(23,'2026_10_07_152633_create_products_table',1),(24,'2026_10_07_152633_create_role_user_table',1),(25,'2026_10_07_152633_create_roles_table',1),(26,'2026_10_07_152633_create_sessions_table',1),(27,'2026_10_07_152633_create_settings_table',1),(28,'2026_10_07_152633_create_shop_currencies_table',1),(29,'2026_10_07_152633_create_shop_order_items_table',1),(30,'2026_10_07_152633_create_shop_order_payment_status_table',1),(31,'2026_10_07_152633_create_shop_order_status_table',1),(32,'2026_10_07_152633_create_shop_orders_table',1),(33,'2026_10_07_152633_create_shop_payment_method_table',1),(34,'2026_10_07_152633_create_users_table',1),(35,'2026_10_07_152950_add_foreign_keys_to_tables',2),(36,'2026_10_22_193500_refactor_shop_orders_to_orders_table',3);
+INSERT INTO `migrations` VALUES (1,'2026_10_07_152633_create_admin_menus_table',1),(2,'2026_10_07_152633_create_album_items_table',1),(3,'2026_10_07_152633_create_albums_table',1),(4,'2026_10_07_152633_create_cache_locks_table',1),(5,'2026_10_07_152633_create_cache_table',1),(6,'2026_10_07_152633_create_categories_table',1),(7,'2026_10_07_152633_create_contacts_table',1),(8,'2026_10_07_152633_create_countries_table',1),(9,'2026_10_07_152633_create_customer_forget_pass_otp_table',1),(10,'2026_10_07_152633_create_email_templates_table',1),(11,'2026_10_07_152633_create_failed_jobs_table',1),(12,'2026_10_07_152633_create_import_log_table',1),(13,'2026_10_07_152633_create_jobs_table',1),(14,'2026_10_07_152633_create_media_files_table',1),(15,'2026_10_07_152633_create_menu_items_table',1),(16,'2026_10_07_152633_create_menus_table',1),(17,'2026_10_07_152633_create_pages_table',1),(18,'2026_10_07_152633_create_password_reset_tokens_table',1),(19,'2026_10_07_152633_create_permission_role_table',1),(20,'2026_10_07_152633_create_permissions_table',1),(21,'2026_10_07_152633_create_product_categories_table',1),(22,'2026_10_07_152633_create_product_prices_table',1),(23,'2026_10_07_152633_create_products_table',1),(24,'2026_10_07_152633_create_role_user_table',1),(25,'2026_10_07_152633_create_roles_table',1),(26,'2026_10_07_152633_create_sessions_table',1),(27,'2026_10_07_152633_create_settings_table',1),(28,'2026_10_07_152633_create_shop_currencies_table',1),(29,'2026_10_07_152633_create_shop_order_items_table',1),(30,'2026_10_07_152633_create_shop_order_payment_status_table',1),(31,'2026_10_07_152633_create_shop_order_status_table',1),(32,'2026_10_07_152633_create_shop_orders_table',1),(33,'2026_10_07_152633_create_shop_payment_method_table',1),(34,'2026_10_07_152633_create_users_table',1),(35,'2026_10_07_152950_add_foreign_keys_to_tables',2),(36,'2026_10_22_193500_refactor_shop_orders_to_orders_table',3),(37,'2026_10_23_181500_drop_legacy_shop_status_tables',4);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1045,56 +1045,6 @@ LOCK TABLES `shop_currencies` WRITE;
 /*!40000 ALTER TABLE `shop_currencies` DISABLE KEYS */;
 INSERT INTO `shop_currencies` VALUES (1,'USD Dola','USD','$',1.00,2,1,',',0,0),(2,'VietNam Dong','VND','đ',1.00,0,0,',',1,1);
 /*!40000 ALTER TABLE `shop_currencies` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `shop_order_payment_status`
---
-
-DROP TABLE IF EXISTS `shop_order_payment_status`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `shop_order_payment_status` (
-  `id` int unsigned NOT NULL,
-  `name` varchar(100) DEFAULT NULL,
-  `name_en` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_order_payment_status`
---
-
-LOCK TABLES `shop_order_payment_status` WRITE;
-/*!40000 ALTER TABLE `shop_order_payment_status` DISABLE KEYS */;
-INSERT INTO `shop_order_payment_status` VALUES (1,'Đã thanh toán','Wait for confirmation'),(2,'Chưa thanh toán','Processing'),(3,'Đang chờ','Pending'),(4,'Hoàn tiền','Refunded'),(5,'Hết hạn','Expired'),(6,'Thanh toán lỗi','Failed');
-/*!40000 ALTER TABLE `shop_order_payment_status` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `shop_order_status`
---
-
-DROP TABLE IF EXISTS `shop_order_status`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `shop_order_status` (
-  `id` int unsigned NOT NULL,
-  `name` varchar(100) DEFAULT NULL,
-  `name_en` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shop_order_status`
---
-
-LOCK TABLES `shop_order_status` WRITE;
-/*!40000 ALTER TABLE `shop_order_status` DISABLE KEYS */;
-INSERT INTO `shop_order_status` VALUES (1,'Chờ xác nhận','Wait for confirmation'),(2,'Đã tiếp nhận','Processing'),(3,'Đã hủy','Canceled'),(4,'Đang giao hàng','Delivery in progress'),(5,'Hoàn thành','Done');
-/*!40000 ALTER TABLE `shop_order_status` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
