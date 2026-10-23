@@ -8,6 +8,8 @@ use App\Traits\LocalizeController;
 use Gornymedia\Shortcodes\Facades\Shortcode;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -16,12 +18,26 @@ class PostController extends Controller
 
     public array $data = [];
 
-    public function index(): string
+    public function index(Request $request): string
     {
-        $posts = Page::posts()->where('status', 1)
-            ->with(['user'])
-            ->orderbyDesc('sort')
-            ->paginate(10);
+        $keyword = trim($request->input('q') ?? $request->input('keyword') ?? '');
+        $query = Page::posts()->where('status', 1)->with(['user']);
+
+        if (! empty($keyword)) {
+            $lowerKey = mb_strtolower($keyword, 'UTF-8');
+            $query->where(function ($q) use ($lowerKey, $keyword) {
+                $q->whereRaw('LOWER(name) LIKE ?', ['%'.$lowerKey.'%'])
+                    ->orWhereRaw('LOWER(description) LIKE ?', ['%'.$lowerKey.'%'])
+                    ->orWhereRaw('LOWER(content) LIKE ?', ['%'.$lowerKey.'%'])
+                    ->orWhere('slug', 'like', '%'.Str::slug($keyword).'%');
+            });
+            $this->data['keyword'] = $keyword;
+        }
+
+        $posts = $query->orderbyDesc('sort')
+            ->orderbyDesc('id')
+            ->paginate(10)
+            ->appends($request->only('q', 'keyword'));
 
         $posts->through(fn (Page $post) => $this->transformPostListItem($post));
 

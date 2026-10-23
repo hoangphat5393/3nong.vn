@@ -117,9 +117,10 @@
                         <h3 class="sidebar-title"><i class="fa-solid fa-magnifying-glass me-2"></i>Tìm kiếm</h3>
                         <div class="sidebar-body">
                             <form action="{{ route('search') }}" method="GET" class="d-flex gap-2">
-                                <input type="text" name="keyword" placeholder="Tìm bài viết..."
+                                <input type="text" name="q" placeholder="Tìm bài viết..."
                                     class="sidebar-search-input">
-                                <button type="submit" class="btn-search-submit"><i
+                                <input type="hidden" name="tab" value="posts">
+                                <button type="submit" class="btn-search-submit" aria-label="Tìm kiếm"><i
                                         class="fa-solid fa-magnifying-glass"></i></button>
                             </form>
                         </div>

@@ -18,9 +18,27 @@
             <span>Tin tức & Sự kiện</span>
         </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="block-title h3 mb-4 fw-bold text-success border-bottom pb-2">Tin Tức & Sự Kiện</h1>
+        <div class="row align-items-center mb-4 pb-2 border-bottom">
+            <div class="col-md-7">
+                <h1 class="block-title h3 mb-2 mb-md-0 fw-bold text-success">
+                    Tin Tức & Sự Kiện
+                    @if (!empty($keyword))
+                        <span class="fs-6 text-muted fw-normal ms-2">(Kết quả cho: "{{ $keyword }}")</span>
+                    @endif
+                </h1>
+            </div>
+            <div class="col-md-5">
+                <form action="{{ route('news') }}" method="GET" class="d-flex">
+                    <input type="search" name="q" class="form-control me-2 py-2" placeholder="Tìm kiếm bài viết..." value="{{ $keyword ?? '' }}">
+                    <button type="submit" class="btn btn-success px-3" aria-label="Tìm kiếm">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    @if (!empty($keyword))
+                        <a href="{{ route('news') }}" class="btn btn-outline-secondary ms-2" title="Xóa tìm kiếm">
+                            <i class="fa-solid fa-rotate-left"></i>
+                        </a>
+                    @endif
+                </form>
             </div>
         </div>
 
@@ -37,7 +55,9 @@
                     <div class="col-md-6 col-lg-4 mb-4">
                         <div class="card h-100 border-0 shadow-sm overflow-hidden">
                             <a href="{{ route('news.detail', ['slug' => $postSlug, 'id' => $postId]) }}">
-                                <img src="{{ get_image($postImage) }}" class="card-img-top" alt="{{ $postTitle }}" style="height: 220px; object-fit: cover;">
+                                <img src="{{ get_image($postImage) }}" class="card-img-top" alt="{{ $postTitle }}" style="height: 220px; object-fit: cover;"
+                                    loading="lazy" decoding="async"
+                                    onerror="this.onerror=null;this.src='{{ asset('assets/images/placeholder.png') }}';">
                             </a>
                             <div class="card-body">
                                 <h2 class="card-title h5 fw-bold">

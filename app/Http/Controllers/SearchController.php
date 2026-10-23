@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Frontend\Category;
+use App\Models\Frontend\Page;
 use App\Models\Frontend\Product;
 use App\Traits\FrontendDataTransform;
 use App\Traits\LocalizeController;
@@ -25,41 +26,77 @@ class SearchController extends Controller
         // Lấy từ khóa tìm kiếm (hỗ trợ cả 'q', 'keyword', 's')
         $keyword = trim($request->input('q') ?? $request->input('keyword') ?? $request->input('s') ?? '');
         $this->data['keyword'] = $keyword;
+        $activeTab = $request->input('tab', '');
 
         $nameCol = ($lc === 'vi') ? 'name' : 'name_'.$lc;
 
         if (! empty($keyword)) {
-            $query = Product::query()->where('status', 1);
+            $lowerKey = mb_strtolower($keyword, 'UTF-8');
 
-            $query->where(function ($q) use ($keyword, $nameCol) {
-                // Khớp trọn cụm từ khóa hoặc slug
-                $q->where($nameCol, 'like', '%'.$keyword.'%')
+            // 1. Tìm kiếm Sản Phẩm
+            $prodQuery = Product::query()->where('status', 1);
+            $prodQuery->where(function ($q) use ($lowerKey, $keyword, $nameCol) {
+                $q->whereRaw("LOWER($nameCol) LIKE ?", ['%'.$lowerKey.'%'])
                     ->orWhere('slug', 'like', '%'.Str::slug($keyword).'%');
 
-                // Khớp từng từ đơn nếu nhập nhiều từ
-                $words = array_filter(explode(' ', $keyword));
+                $words = array_filter(explode(' ', $lowerKey));
                 if (count($words) > 1) {
                     $q->orWhere(function ($subQ) use ($nameCol, $words) {
                         foreach ($words as $w) {
-                            $subQ->where($nameCol, 'like', '%'.$w.'%');
+                            $subQ->whereRaw("LOWER($nameCol) LIKE ?", ['%'.$w.'%']);
                         }
                     });
                 }
             });
 
-            $products = $query
+            $products = $prodQuery
                 ->select('id', 'name', 'slug', 'image', 'price', 'sale_price', 'price_type', 'unit', 'sort')
                 ->orderByDesc('sort')
                 ->orderByDesc('id')
-                ->paginate(12)
-                ->appends(['q' => $keyword]);
+                ->paginate(12, ['*'], 'p_page')
+                ->appends(['q' => $keyword, 'tab' => 'products']);
 
             $products->through(fn (Product $product) => $this->transformProductCard($product));
-
             $this->data['products'] = $products;
+
+            // 2. Tìm kiếm Bài Viết & Tin Tức (Page type = 'post')
+            $postQuery = Page::posts()->where('status', 1)->with(['user']);
+            $postQuery->where(function ($q) use ($lowerKey, $keyword) {
+                $q->whereRaw('LOWER(name) LIKE ?', ['%'.$lowerKey.'%'])
+                    ->orWhereRaw('LOWER(description) LIKE ?', ['%'.$lowerKey.'%'])
+                    ->orWhereRaw('LOWER(content) LIKE ?', ['%'.$lowerKey.'%'])
+                    ->orWhere('slug', 'like', '%'.Str::slug($keyword).'%');
+
+                $words = array_filter(explode(' ', $lowerKey));
+                if (count($words) > 1) {
+                    $q->orWhere(function ($subQ) use ($words) {
+                        foreach ($words as $w) {
+                            $subQ->whereRaw('LOWER(name) LIKE ?', ['%'.$w.'%']);
+                        }
+                    });
+                }
+            });
+
+            $posts = $postQuery
+                ->orderByDesc('sort')
+                ->orderByDesc('id')
+                ->paginate(10, ['*'], 'post_page')
+                ->appends(['q' => $keyword, 'tab' => 'posts']);
+
+            $posts->through(fn (Page $post) => $this->transformPostListItem($post));
+            $this->data['posts'] = $posts;
+
+            // Tự động chọn tab nếu người dùng chưa chỉ định: nếu không có sản phẩm mà có bài viết -> mở tab bài viết
+            if (empty($activeTab)) {
+                $activeTab = ($products->total() === 0 && $posts->total() > 0) ? 'posts' : 'products';
+            }
         } else {
             $this->data['products'] = new LengthAwarePaginator([], 0, 12);
+            $this->data['posts'] = new LengthAwarePaginator([], 0, 10);
+            $activeTab = 'products';
         }
+
+        $this->data['activeTab'] = $activeTab;
 
         // Lấy danh mục sản phẩm cho Sidebar
         $this->data['categories'] = Category::where(['status' => 1, 'parent' => 0])

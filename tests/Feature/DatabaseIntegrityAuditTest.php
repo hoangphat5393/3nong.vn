@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Http\Controllers\Admin\AjaxController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
@@ -190,7 +192,7 @@ class DatabaseIntegrityAuditTest extends TestCase
         // 1. Create a dummy test post in pages
         $testId = $db->table('pages')->insertGetId([
             'name' => 'Test Bulk Delete Post',
-            'slug' => 'test-bulk-delete-' . time(),
+            'slug' => 'test-bulk-delete-'.time(),
             'type' => 'post',
             'status' => 0,
             'sort' => 9999,
@@ -201,8 +203,8 @@ class DatabaseIntegrityAuditTest extends TestCase
         $this->assertNotNull($db->table('pages')->where('id', $testId)->first());
 
         // 2. Execute bulk delete via AjaxController
-        $controller = new \App\Http\Controllers\Admin\AjaxController();
-        $request = new \Illuminate\Http\Request();
+        $controller = new AjaxController;
+        $request = new Request;
         $request->merge([
             'type' => 'post',
             'seq_list' => [$testId],
@@ -217,7 +219,7 @@ class DatabaseIntegrityAuditTest extends TestCase
         // 4. Verify subsequent insert succeeds and sequence increments properly
         $newId = $db->table('pages')->insertGetId([
             'name' => 'Post After Bulk Delete',
-            'slug' => 'post-after-bulk-delete-' . time(),
+            'slug' => 'post-after-bulk-delete-'.time(),
             'type' => 'post',
             'status' => 0,
             'sort' => 9999,
