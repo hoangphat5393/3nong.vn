@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Ai\Agents\AgriculturalAdvisorAgent;
 use Tests\TestCase;
 
 class AiChatTest extends TestCase
@@ -60,9 +61,7 @@ class AiChatTest extends TestCase
      */
     public function test_ai_chat_sends_prompt_and_receives_reply(): void
     {
-        if (empty(env('GEMINI_API_KEY'))) {
-            $this->markTestSkipped('GEMINI_API_KEY is not configured in .env');
-        }
+        AgriculturalAdvisorAgent::fake(['Chào bà con, sầu riêng bị rụng bông non cần chú ý tưới đủ ẩm, bổ sung Canxi-Bo và phòng ngừa thán thư nhé!']);
 
         $response = $this->postJson('/ai-chat', [
             'message' => 'Chào chuyên gia 3 Nông, cho tôi hỏi sầu riêng bị rụng bông non thì xử lý thế nào?',
