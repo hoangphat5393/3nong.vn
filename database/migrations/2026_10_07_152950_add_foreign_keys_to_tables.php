@@ -12,12 +12,16 @@ return new class extends Migration
      */
     public function up(): void
     {
+        $conn = Schema::getConnection();
+
         // 1. Cho phép nullable trên các cột liên kết để có thể set NULL khi bản ghi cha bị xóa
-        DB::statement('ALTER TABLE shop_order_items ALTER COLUMN product_id DROP NOT NULL');
-        DB::statement('ALTER TABLE shop_order_items ALTER COLUMN product_price_id DROP NOT NULL');
-        DB::statement('ALTER TABLE shop_order_items ALTER COLUMN user_id DROP NOT NULL');
-        DB::statement('ALTER TABLE shop_orders ALTER COLUMN user_id DROP NOT NULL');
-        DB::statement('ALTER TABLE pages ALTER COLUMN user_id DROP NOT NULL');
+        if ($conn->getDriverName() === 'pgsql') {
+            $conn->statement('ALTER TABLE shop_order_items ALTER COLUMN product_id DROP NOT NULL');
+            $conn->statement('ALTER TABLE shop_order_items ALTER COLUMN product_price_id DROP NOT NULL');
+            $conn->statement('ALTER TABLE shop_order_items ALTER COLUMN user_id DROP NOT NULL');
+            $conn->statement('ALTER TABLE shop_orders ALTER COLUMN user_id DROP NOT NULL');
+            $conn->statement('ALTER TABLE pages ALTER COLUMN user_id DROP NOT NULL');
+        }
 
         // 2. Dọn dẹp dữ liệu mồ côi (Orphan records)
         DB::table('product_prices')
@@ -58,11 +62,24 @@ return new class extends Migration
             ->update(['user_id' => null]);
 
         // 3. Đồng bộ kiểu cột (Type cast sang bigint để khớp khóa chính id của users & products)
-        DB::statement('ALTER TABLE product_categories ALTER COLUMN product_id TYPE bigint');
-        DB::statement('ALTER TABLE role_user ALTER COLUMN user_id TYPE bigint');
-        DB::statement('ALTER TABLE shop_orders ALTER COLUMN user_id TYPE bigint');
-        DB::statement('ALTER TABLE shop_order_items ALTER COLUMN product_id TYPE bigint');
-        DB::statement('ALTER TABLE shop_order_items ALTER COLUMN user_id TYPE bigint');
+        $conn = Schema::getConnection();
+        if ($conn->getDriverName() === 'pgsql') {
+            $conn->statement('ALTER TABLE product_categories ALTER COLUMN product_id TYPE bigint');
+            $conn->statement('ALTER TABLE role_user ALTER COLUMN user_id TYPE bigint');
+            $conn->statement('ALTER TABLE shop_orders ALTER COLUMN user_id TYPE bigint');
+            $conn->statement('ALTER TABLE shop_order_items ALTER COLUMN product_id TYPE bigint');
+            $conn->statement('ALTER TABLE shop_order_items ALTER COLUMN user_id TYPE bigint');
+        } else {
+            $conn->statement('ALTER TABLE product_categories MODIFY COLUMN product_id bigint unsigned');
+            $conn->statement('ALTER TABLE role_user MODIFY COLUMN user_id bigint unsigned');
+            $conn->statement('ALTER TABLE role_user MODIFY COLUMN role_id int');
+            $conn->statement('ALTER TABLE permission_role MODIFY COLUMN permission_id int');
+            $conn->statement('ALTER TABLE permission_role MODIFY COLUMN role_id int');
+            $conn->statement('ALTER TABLE menu_items MODIFY COLUMN menu_id int');
+            $conn->statement('ALTER TABLE shop_orders MODIFY COLUMN user_id bigint unsigned');
+            $conn->statement('ALTER TABLE shop_order_items MODIFY COLUMN product_id bigint unsigned');
+            $conn->statement('ALTER TABLE shop_order_items MODIFY COLUMN user_id bigint unsigned');
+        }
 
         // 4. Thêm các ràng buộc khóa ngoại (Foreign Keys)
         Schema::table('product_categories', function (Blueprint $table) {
