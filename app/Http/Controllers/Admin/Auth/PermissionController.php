@@ -114,12 +114,10 @@ class PermissionController extends Controller
 
         $save = $request->submit ?? 'apply';
         if ($save == 'apply') {
-            $msg = 'Permission has been created successfully';
-            $url = route('admin.permission.edit', [$insert_id]);
-            msg_move_page($msg, $url);
-        } else {
-            return redirect(route('admin.permission.index'));
+            return redirect()->route('admin.permission.edit', [$insert_id])->with('success', __('Thêm quyền thành công!'));
         }
+
+        return redirect()->route('admin.permission.index')->with('success', __('Thêm quyền thành công!'));
     }
 
     /**
@@ -167,12 +165,10 @@ class PermissionController extends Controller
         $save = $request->submit ?? 'apply';
 
         if ($save == 'apply') {
-            $msg = 'Permission has been updated successfully';
-            $url = route('admin.permission.edit', [$id]);
-            msg_move_page($msg, $url);
-        } else {
-            return redirect(route('admin.permission.index'));
+            return redirect()->route('admin.permission.edit', [$id])->with('success', __('Cập nhật quyền thành công!'));
         }
+
+        return redirect()->route('admin.permission.index')->with('success', __('Cập nhật quyền thành công!'));
     }
 
     /**
